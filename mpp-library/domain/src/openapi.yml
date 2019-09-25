@@ -1,0 +1,232 @@
+openapi: 3.0.0
+info:
+  title: News API
+  version: v2
+servers: 
+  - url: https://newsapi.org/v2
+    description: live
+paths:
+  /top-headlines:
+    get:
+      tags:
+        - news
+      summary: 'live top and breaking headlines'
+      description: |
+        This endpoint provides live top and breaking headlines for a country, specific category in a country, single source, or multiple sources. You can also search with keywords. Articles are sorted by the earliest date published first. 
+      
+        This endpoint is great for retrieving headlines for display on news tickers or similar.
+      parameters: 
+        - name: country
+          in: query
+          description: The 2-letter ISO 3166-1 code of the country you want to get headlines for.
+          required: false
+          schema:
+            type: string
+            enum: 
+              - ae
+              - ar
+              - at
+              - au
+              - be
+              - bg 
+              - br
+              - ca
+              - ch
+              - cn
+              - co
+              - cu
+              - cz
+              - de
+              - eg
+              - fr
+              - gb
+              - gr
+              - hk
+              - hu
+              - id
+              - ie
+              - il
+              - in
+              - it
+              - jp
+              - kr
+              - lt
+              - lv
+              - ma
+              - mx
+              - my
+              - ng
+              - nl
+              - no
+              - nz
+              - ph
+              - pl
+              - pt
+              - ro
+              - rs
+              - ru
+              - sa
+              - se
+              - sg
+              - si
+              - sk
+              - th
+              - tr
+              - tw
+              - ua
+              - us
+              - ve
+              - za
+        - name: category
+          in: query
+          description: The category you want to get headlines for
+          required: false
+          schema:
+            type: string
+            enum: 
+            - business
+            - entertainment
+            - general
+            - health
+            - science
+            - sports
+            - technology
+        - name: q
+          in: query
+          schema:
+            type: string
+          description: Keywords or a phrase to search for
+          required: false
+          example: android
+        - name: pageSize
+          in: query
+          required: false
+          schema:
+            type: integer
+          description: The number of results to return per page (request). 20 is the default, 100 is the maximum.
+          example: 20
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: integer
+          description: Use this to page through the results if the total results found is greater than the page size.
+      security: 
+        - bearerAuth: []
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TopHeadlinesResponse'
+        '400':
+          description: 'Bad request'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+  schemas:
+    BadRequest:
+      properties:
+        status:
+          description: >
+            If the request was successful or not. 
+            Options: ok, error. In the case of error a code and message property will be populated.
+          type: string
+          enum: [ok, error]
+          example: error
+        code:
+          type: string
+          example: parametersMissing
+        message:
+          type: string
+          example: >
+            Required parameters are missing. Please set any of the following parameters and try again: sources, q, language, country, category.
+      required: 
+        - status
+        - code
+        - message
+    TopHeadlinesResponse:
+      properties:
+        status:
+          description: >
+            If the request was successful or not. 
+            Options: ok, error. In the case of error a code and message property will be populated.
+          type: string
+          enum: [ok, error]
+          example: ok
+        totalResults:
+          type: integer
+          description: The total number of results available for your request.
+        articles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Article'
+      required: 
+        - status
+        - totalResults
+        - articles
+      type: object
+    Article:
+      type: object
+      properties:
+        source:
+          $ref: '#/components/schemas/Source'
+        author:
+          type: string
+          description: The author of the article
+          example: Stephen King
+        title:
+          type: string
+          description: The headline or title of the article.
+          example: The Dark Tower
+        description:
+          type: string
+          description: A description or snippet from the article.
+          example: The Dark Tower is a series of eight books and one short story written by American author Stephen King that incorporate themes from multiple genres.
+        url:
+          type: string
+          description: The direct URL to the article.
+          example: https://en.wikipedia.org/wiki/The_Dark_Tower_(series)
+        urlToImage:
+          type: string
+          description: The URL to a relevant image for the article.
+          example: https://upload.wikimedia.org/wikipedia/en/5/54/Thedarktower7.jpg
+        publishedAt:
+          type: string
+          format: date-time
+          description: The date and time that the article was published, in UTC (+000)
+        content:
+          type: string
+          description: The unformatted content of the article, where available. This is truncated to 260 chars for Developer plan users.
+          example: >
+            The series was chiefly inspired by the poem "Childe Roland to the Dark Tower Came" by Robert Browning, whose full text was included in the final volume's appendix. In the preface to the revised 2003 edition of The Gunslinger, King also identifies The Lord of the Rings, Arthurian Legend, and The Good, the Bad and the Ugly as inspirations. He identifies Clint Eastwood's "Man with No Name" character as one of the major inspirations for the protagonist, Roland Deschain. King's style of location names in the series, such as Mid-World, and his development of a unique language abstract to our own (High Speech), are also influenced by J. R. R. Tolkien's work.
+      required: 
+        - source
+        - title
+        - url
+        - publishedAt
+    Source:
+      type: object
+      properties:
+        id:
+          type: string
+          example: wiki
+        name:
+          type: string
+          example: Wikipedia
+      required: 
+        - name
+  parameters:
+    Authorization:
+      name: Authorization
+      in: header
+      required: true
+      schema:
+        type: string

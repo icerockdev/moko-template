@@ -1,0 +1,39 @@
+PODS:
+  - MultiPlatformLibrary (0.1.0)
+  - MultiPlatformLibraryMvvm/Core (0.1.0):
+    - MultiPlatformLibrary
+    - MultiPlatformLibraryResources
+  - MultiPlatformLibraryResources (0.2.0):
+    - MultiPlatformLibrary
+
+DEPENDENCIES:
+  - MultiPlatformLibrary (from `../mpp-library`)
+  - MultiPlatformLibraryMvvm/Core (from `https://github.com/icerockdev/moko-mvvm.git`, tag `release/0.2.0`)
+  - MultiPlatformLibraryResources (from `https://github.com/icerockdev/moko-resources.git`, tag `release/0.3.0`)
+
+EXTERNAL SOURCES:
+  MultiPlatformLibrary:
+    :path: "../mpp-library"
+  MultiPlatformLibraryMvvm:
+    :git: https://github.com/icerockdev/moko-mvvm.git
+    :tag: release/0.2.0
+  MultiPlatformLibraryResources:
+    :git: https://github.com/icerockdev/moko-resources.git
+    :tag: release/0.3.0
+
+CHECKOUT OPTIONS:
+  MultiPlatformLibraryMvvm:
+    :git: https://github.com/icerockdev/moko-mvvm.git
+    :tag: release/0.2.0
+  MultiPlatformLibraryResources:
+    :git: https://github.com/icerockdev/moko-resources.git
+    :tag: release/0.3.0
+
+SPEC CHECKSUMS:
+  MultiPlatformLibrary: 176fb8ade516666cd47e93de1b71ba0441a541bb
+  MultiPlatformLibraryMvvm: f66c30caed0bd09ccc5443b068cb6b330e3166a8
+  MultiPlatformLibraryResources: 5cc246020c1b505ff909b4a0851c216847bb92eb
+
+PODFILE CHECKSUM: e18bd7f643844c328d06457ae0a6ea9e67296ef8
+
+COCOAPODS: 1.7.5

@@ -1,0 +1,23 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+# ignore all warnings from all pods
+inhibit_all_warnings!
+
+use_frameworks!
+platform :ios, '11.0'
+
+pre_install do |installer|
+  # We represent a Kotlin/Native module to CocoaPods as a vendored framework.
+  # CocoaPods needs access to such frameworks during installation process to obtain
+  # their type (static or dynamic) and configure the Xcode project accordingly.
+  # Build MultiPlatformLibrary framework to correct install Pod
+  puts "prepare MultiPlatformLibrary.framework (require some time...)"
+  `cd .. && ./gradlew :mpp-library:syncMultiPlatformLibraryDebugFrameworkIosX64`
+  puts "preparing MultiPlatformLibrary.framework complete"
+end
+
+target 'ios-app' do
+  pod 'MultiPlatformLibrary', :path => '../mpp-library'
+  pod 'MultiPlatformLibraryMvvm/Core', :git => 'https://github.com/icerockdev/moko-mvvm.git', :tag => 'release/0.2.0'
+  pod 'MultiPlatformLibraryResources', :git => 'https://github.com/icerockdev/moko-resources.git', :tag => 'release/0.3.0'
+end
