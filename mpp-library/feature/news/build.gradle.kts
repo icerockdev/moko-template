@@ -5,8 +5,12 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.multiplatform")
+    id("kotlin-android-extensions")
     id("dev.icerock.mobile.multiplatform")
-    id("dev.icerock.mobile.multiplatform-resources")
+}
+
+androidExtensions {
+    isExperimental = true
 }
 
 android {
@@ -18,27 +22,14 @@ android {
     }
 }
 
-val mppLibs = listOf(
-    Deps.Libs.MultiPlatform.mokoCore,
-    Deps.Libs.MultiPlatform.mokoResources,
-    Deps.Libs.MultiPlatform.mokoMvvm
-)
-val mppModules = listOf(
-    Modules.MultiPlatform.domain,
-    Modules.MultiPlatform.Feature.auth,
-    Modules.MultiPlatform.Feature.news
-)
-
-setupFramework(
-    exports = mppLibs + mppModules
-)
-
 dependencies {
     mppLibrary(Deps.Libs.MultiPlatform.kotlinStdLib)
     mppLibrary(Deps.Libs.MultiPlatform.coroutines)
 
     androidLibrary(Deps.Libs.Android.lifecycle)
 
-    mppLibs.forEach { mppLibrary(it) }
-    mppModules.forEach { mppModule(it) }
+    mppLibrary(Deps.Libs.MultiPlatform.mokoMvvm)
+    mppLibrary(Deps.Libs.MultiPlatform.mokoResources)
+
+    mppModule(Modules.MultiPlatform.domain)
 }

@@ -4,6 +4,32 @@
 
 package org.example.library
 
-class Factory {
+import com.russhwolf.settings.Settings
+import org.example.library.feature.news.model.News
+import org.example.library.feature.news.model.NewsSource
+import org.example.library.domain.di.Factory as DomainFactory
+import org.example.library.feature.news.di.Factory as NewsFactory
 
+class Factory(
+    settings: Settings,
+    baseUrl: String
+) {
+    private val domainFactory = DomainFactory(
+        settings = settings,
+        baseUrl = baseUrl
+    )
+
+    val newsFactory = NewsFactory(
+        newsSource = object : NewsSource {
+            override suspend fun getNewsList(): List<News> {
+                return domainFactory.newsRepository.getNewsList().map { item ->
+                    News(
+                        id = item.id.toLong(),
+                        title = item.fullName.orEmpty(),
+                        description = item.description
+                    )
+                }
+            }
+        }
+    )
 }

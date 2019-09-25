@@ -15,6 +15,8 @@ object Versions {
     private const val mokoNetwork = "0.1.0"
 
     object Plugins {
+        const val kotlin = Versions.kotlin
+        const val serialization = Versions.kotlin
         const val androidExtensions = Versions.kotlin
         const val mokoResources = Versions.mokoResources
         const val mokoNetwork = Versions.mokoNetwork
@@ -31,7 +33,12 @@ object Versions {
 
         object MultiPlatform {
             const val kotlinStdLib = Versions.kotlin
+
             const val coroutines = "1.3.0"
+            const val serialization = "0.13.0"
+            const val ktorClient = "1.2.4"
+            const val ktorClientLogging = ktorClient
+
             const val mokoCore = "0.1.0"
             const val mokoMvvm = "0.2.0"
             const val mokoResources = Versions.mokoResources
@@ -39,6 +46,9 @@ object Versions {
             const val mokoFields = "0.1.0"
             const val mokoPermissions = "0.1.0"
             const val mokoMedia = "0.1.0"
+
+            const val napier = "1.0.0"
+            const val settings = "0.3.3"
         }
     }
 }
