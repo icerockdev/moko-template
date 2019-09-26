@@ -11,6 +11,7 @@ import dev.icerock.moko.mvvm.livedata.MutableLiveData
 import dev.icerock.moko.mvvm.livedata.errorTransform
 import dev.icerock.moko.mvvm.livedata.map
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
+import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.resources.desc.desc
 import kotlinx.coroutines.launch
@@ -18,7 +19,8 @@ import org.example.library.feature.news.model.News
 import org.example.library.feature.news.model.NewsSource
 
 class NewsListViewModel(
-    private val newsSource: NewsSource
+    private val newsSource: NewsSource,
+    private val strings: Strings
 ) : ViewModel() {
 
     private val _state: MutableLiveData<State<List<News>, Throwable>> =
@@ -26,8 +28,7 @@ class NewsListViewModel(
 
     val state: LiveData<State<List<News>, StringDesc>> = _state
         .errorTransform {
-            map { it.message ?: "unknown error" }
-                .map { it.desc() as StringDesc }
+            map { it.message?.desc() ?: strings.unknownError.desc() }
         }
 
     init {
@@ -54,5 +55,9 @@ class NewsListViewModel(
                 _state.value = State.Error(error)
             }
         }
+    }
+
+    interface Strings {
+        val unknownError: StringResource
     }
 }

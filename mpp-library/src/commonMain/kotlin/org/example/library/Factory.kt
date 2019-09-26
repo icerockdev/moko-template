@@ -5,8 +5,10 @@
 package org.example.library
 
 import com.russhwolf.settings.Settings
+import dev.icerock.moko.resources.StringResource
 import org.example.library.feature.news.model.News
 import org.example.library.feature.news.model.NewsSource
+import org.example.library.feature.news.presentation.NewsListViewModel
 import org.example.library.domain.di.Factory as DomainFactory
 import org.example.library.feature.news.di.Factory as NewsFactory
 
@@ -30,6 +32,9 @@ class Factory(
                     )
                 }
             }
+        },
+        newsListStrings = object : NewsListViewModel.Strings {
+            override val unknownError: StringResource = MR.strings.unknown_error
         }
     )
 }

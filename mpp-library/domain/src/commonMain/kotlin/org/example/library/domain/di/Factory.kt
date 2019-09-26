@@ -53,8 +53,8 @@ class Factory(
             install(TokenFeature) {
                 tokenHeaderName = "Authorization"
                 tokenProvider = object : TokenFeature.TokenProvider {
-                    override fun getToken(): String? =
-                        "ed155d0a445e4b4fbd878fe1f3bc1b7f" //keyValueStorage.token?.let { "Bearer $it" }
+                    override fun getToken(): String? = //keyValueStorage.token?.let { "Bearer $it" }
+                        "ed155d0a445e4b4fbd878fe1f3bc1b7f"
                 }
             }
 

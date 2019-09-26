@@ -42,3 +42,7 @@ dependencies {
     mppLibs.forEach { mppLibrary(it) }
     mppModules.forEach { mppModule(it) }
 }
+
+multiplatformResources {
+    multiplatformResourcesPackage = "org.example.library"
+}

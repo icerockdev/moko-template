@@ -8,11 +8,13 @@ import org.example.library.feature.news.model.NewsSource
 import org.example.library.feature.news.presentation.NewsListViewModel
 
 class Factory(
-    private val newsSource: NewsSource
+    private val newsSource: NewsSource,
+    private val newsListStrings: NewsListViewModel.Strings
 ) {
     fun createNewsListViewModel(): NewsListViewModel {
         return NewsListViewModel(
-            newsSource = newsSource
+            newsSource = newsSource,
+            strings = newsListStrings
         )
     }
 }
