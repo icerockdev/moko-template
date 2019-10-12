@@ -8,7 +8,6 @@ plugins {
     id("kotlin-android-extensions")
     id("kotlin-kapt")
     id("dev.icerock.mobile.multiplatform")
-    id("dev.icerock.mobile.multiplatform-units")
 }
 
 androidExtensions {
@@ -38,10 +37,4 @@ dependencies {
     mppLibrary(Deps.Libs.MultiPlatform.mokoMvvm)
     mppLibrary(Deps.Libs.MultiPlatform.mokoResources)
     mppLibrary(Deps.Libs.MultiPlatform.mokoUnits)
-}
-
-multiplatformUnits {
-    classesPackage = "org.example.library.feature.news"
-    dataBindingPackage = "org.example.library.feature.news"
-    layoutsSourceSet = "androidMain"
 }

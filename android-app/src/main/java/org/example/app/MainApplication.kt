@@ -10,7 +10,6 @@ import com.russhwolf.settings.AndroidSettings
 import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.units.UnitItem
 import org.example.library.Factory
-import org.example.library.feature.news.TileNews
 import org.example.library.feature.news.presentation.NewsListViewModel
 
 class MainApplication : Application() {

@@ -6,6 +6,7 @@ plugins {
     id("com.android.application")
     id("kotlin-android")
     id("kotlin-kapt")
+    id("dev.icerock.mobile.multiplatform-units")
 }
 
 android {
@@ -58,4 +59,10 @@ dependencies {
     implementation(Deps.Libs.Android.recyclerView.name)
 
     implementation(project(":mpp-library"))
+}
+
+multiplatformUnits {
+    classesPackage = "org.example.app"
+    dataBindingPackage = "org.example.app"
+    layoutsSourceSet = "main"
 }
