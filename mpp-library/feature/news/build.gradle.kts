@@ -6,7 +6,9 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.multiplatform")
     id("kotlin-android-extensions")
+    id("kotlin-kapt")
     id("dev.icerock.mobile.multiplatform")
+    id("dev.icerock.mobile.multiplatform-units")
 }
 
 androidExtensions {
@@ -20,6 +22,10 @@ android {
         minSdkVersion(Versions.Android.minSdk)
         targetSdkVersion(Versions.Android.targetSdk)
     }
+
+    dataBinding {
+        isEnabled = true
+    }
 }
 
 dependencies {
@@ -27,7 +33,15 @@ dependencies {
     mppLibrary(Deps.Libs.MultiPlatform.coroutines)
 
     androidLibrary(Deps.Libs.Android.lifecycle)
+    androidLibrary(Deps.Libs.Android.recyclerView)
 
     mppLibrary(Deps.Libs.MultiPlatform.mokoMvvm)
     mppLibrary(Deps.Libs.MultiPlatform.mokoResources)
+    mppLibrary(Deps.Libs.MultiPlatform.mokoUnits)
+}
+
+multiplatformUnits {
+    classesPackage = "org.example.library.feature.news"
+    dataBindingPackage = "org.example.library.feature.news"
+    layoutsSourceSet = "androidMain"
 }

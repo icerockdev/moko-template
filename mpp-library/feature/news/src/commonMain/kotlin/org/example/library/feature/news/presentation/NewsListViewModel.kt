@@ -6,27 +6,37 @@ package org.example.library.feature.news.presentation
 
 import dev.icerock.moko.mvvm.State
 import dev.icerock.moko.mvvm.asState
-import dev.icerock.moko.mvvm.livedata.LiveData
-import dev.icerock.moko.mvvm.livedata.MutableLiveData
-import dev.icerock.moko.mvvm.livedata.errorTransform
-import dev.icerock.moko.mvvm.livedata.map
+import dev.icerock.moko.mvvm.livedata.*
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
 import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.resources.desc.desc
+import dev.icerock.moko.units.UnitItem
 import kotlinx.coroutines.launch
 import org.example.library.feature.news.model.News
 import org.example.library.feature.news.model.NewsSource
 
 class NewsListViewModel(
     private val newsSource: NewsSource,
-    private val strings: Strings
+    private val strings: Strings,
+    private val unitsFactory: UnitsFactory
 ) : ViewModel() {
 
     private val _state: MutableLiveData<State<List<News>, Throwable>> =
         MutableLiveData(initialValue = State.Loading())
 
-    val state: LiveData<State<List<News>, StringDesc>> = _state
+    val state: LiveData<State<List<UnitItem>, StringDesc>> = _state
+        .dataTransform {
+            map { news ->
+                news.map { item ->
+                    unitsFactory.createNewsTile(
+                        id = item.id,
+                        title = item.title,
+                        description = item.description?.desc() ?: strings.noDescription.desc()
+                    )
+                }
+            }
+        }
         .errorTransform {
             map { it.message?.desc() ?: strings.unknownError.desc() }
         }
@@ -57,7 +67,16 @@ class NewsListViewModel(
         }
     }
 
+    interface UnitsFactory {
+        fun createNewsTile(
+            id: Long,
+            title: String,
+            description: StringDesc
+        ): UnitItem
+    }
+
     interface Strings {
         val unknownError: StringResource
+        val noDescription: StringResource
     }
 }

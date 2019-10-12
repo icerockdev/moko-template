@@ -14,7 +14,8 @@ import org.example.library.feature.news.di.Factory as NewsFactory
 
 class Factory(
     settings: Settings,
-    baseUrl: String
+    baseUrl: String,
+    newsUnitsFactory: NewsListViewModel.UnitsFactory
 ) {
     private val domainFactory = DomainFactory(
         settings = settings,
@@ -35,6 +36,8 @@ class Factory(
         },
         newsListStrings = object : NewsListViewModel.Strings {
             override val unknownError: StringResource = MR.strings.unknown_error
-        }
+            override val noDescription: StringResource = MR.strings.no_description
+        },
+        newsUnitsFactory = newsUnitsFactory
     )
 }

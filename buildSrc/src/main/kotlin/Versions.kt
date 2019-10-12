@@ -13,6 +13,7 @@ object Versions {
 
     private const val mokoResources = "0.3.0"
     private const val mokoNetwork = "0.1.0"
+    private const val mokoUnits = "0.1.0"
 
     object Plugins {
         const val kotlin = Versions.kotlin
@@ -20,6 +21,7 @@ object Versions {
         const val androidExtensions = Versions.kotlin
         const val mokoResources = Versions.mokoResources
         const val mokoNetwork = Versions.mokoNetwork
+        const val mokoUnits = Versions.mokoUnits
     }
 
     object Libs {
@@ -29,6 +31,7 @@ object Versions {
             const val material = "1.0.0"
             const val constraintLayout = "1.1.3"
             const val lifecycle = "2.0.0"
+            const val recyclerView = "1.0.0"
         }
 
         object MultiPlatform {
@@ -46,6 +49,7 @@ object Versions {
             const val mokoFields = "0.1.0"
             const val mokoPermissions = "0.1.0"
             const val mokoMedia = "0.1.0"
+            const val mokoUnits = Versions.mokoUnits
 
             const val napier = "1.0.0"
             const val settings = "0.3.3"

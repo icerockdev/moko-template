@@ -12,6 +12,8 @@ object Deps {
             "dev.icerock.moko:resources-generator:${Versions.Plugins.mokoResources}"
         const val mokoNetwork =
             "dev.icerock.moko:network-generator:${Versions.Plugins.mokoNetwork}"
+        const val mokoUnits =
+            "dev.icerock.moko:units-generator:${Versions.Plugins.mokoUnits}"
     }
 
     object Libs {
@@ -24,6 +26,9 @@ object Deps {
             )
             val material = AndroidLibrary(
                 name = "com.google.android.material:material:${Versions.Libs.Android.material}"
+            )
+            val recyclerView = AndroidLibrary(
+                name = "androidx.recyclerview:recyclerview:${Versions.Libs.Android.recyclerView}"
             )
             val constraintLayout = AndroidLibrary(
                 name = "androidx.constraintlayout:constraintlayout:${Versions.Libs.Android.constraintLayout}"
@@ -88,6 +93,11 @@ object Deps {
                 iosX64 = "dev.icerock.moko:network-iosx64:${Versions.Libs.MultiPlatform.mokoNetwork}",
                 iosArm64 = "dev.icerock.moko:network-iosarm64:${Versions.Libs.MultiPlatform.mokoNetwork}"
             )
+            val mokoUnits = MultiPlatformLibrary(
+                common = "dev.icerock.moko:units:${Versions.Libs.MultiPlatform.mokoUnits}",
+                iosX64 = "dev.icerock.moko:units-iosx64:${Versions.Libs.MultiPlatform.mokoUnits}",
+                iosArm64 = "dev.icerock.moko:units-iosarm64:${Versions.Libs.MultiPlatform.mokoUnits}"
+            )
             val mokoFields = MultiPlatformLibrary(
                 common = "dev.icerock.moko:fields:${Versions.Libs.MultiPlatform.mokoFields}",
                 iosX64 = "dev.icerock.moko:fields-iosx64:${Versions.Libs.MultiPlatform.mokoFields}",
@@ -108,6 +118,7 @@ object Deps {
         "kotlin-android-extensions" to Plugins.androidExtensions,
         "kotlinx-serialization" to Plugins.kotlinSerialization,
         "dev.icerock.mobile.multiplatform-resources" to Plugins.mokoResources,
-        "dev.icerock.mobile.multiplatform-network-generator" to Plugins.mokoNetwork
+        "dev.icerock.mobile.multiplatform-network-generator" to Plugins.mokoNetwork,
+        "dev.icerock.mobile.multiplatform-units" to Plugins.mokoUnits
     )
 }

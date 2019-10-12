@@ -29,6 +29,9 @@ android {
         versionName = "0.1.0"
 
         vectorDrawables.useSupportLibrary = true
+
+        val url = "https://newsapi.org/v2/"
+        buildConfigField("String", "BASE_URL", "\"$url\"")
     }
 
     buildTypes {
@@ -51,6 +54,8 @@ dependencies {
     implementation(Deps.Libs.Android.kotlinStdLib.name)
 
     implementation(Deps.Libs.Android.appCompat.name)
+    implementation(Deps.Libs.Android.material.name)
+    implementation(Deps.Libs.Android.recyclerView.name)
 
     implementation(project(":mpp-library"))
 }

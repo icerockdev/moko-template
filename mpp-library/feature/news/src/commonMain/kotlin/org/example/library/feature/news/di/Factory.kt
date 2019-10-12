@@ -9,12 +9,14 @@ import org.example.library.feature.news.presentation.NewsListViewModel
 
 class Factory(
     private val newsSource: NewsSource,
-    private val newsListStrings: NewsListViewModel.Strings
+    private val newsListStrings: NewsListViewModel.Strings,
+    private val newsUnitsFactory: NewsListViewModel.UnitsFactory
 ) {
     fun createNewsListViewModel(): NewsListViewModel {
         return NewsListViewModel(
             newsSource = newsSource,
-            strings = newsListStrings
+            strings = newsListStrings,
+            unitsFactory = newsUnitsFactory
         )
     }
 }
