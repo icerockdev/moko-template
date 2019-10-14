@@ -6,6 +6,8 @@ package org.example.app
 
 import android.app.Application
 import android.content.Context
+import com.github.aakira.napier.DebugAntilog
+import com.github.aakira.napier.Napier
 import com.russhwolf.settings.AndroidSettings
 import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.units.UnitItem
@@ -15,6 +17,8 @@ import org.example.library.feature.news.presentation.NewsListViewModel
 class MainApplication : Application() {
     override fun onCreate() {
         super.onCreate()
+
+        Napier.base(DebugAntilog())
 
         factory = Factory(
             baseUrl = BuildConfig.BASE_URL,

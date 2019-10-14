@@ -13,6 +13,9 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     static var factory: Factory__!
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
+        
+        Napier().base(antilog: DebugAntilog(defaultTag: "MPP"))
+        
         AppDelegate.factory = Factory__(
             settings: AppleSettings(delegate: UserDefaults.standard),
             baseUrl: "https://newsapi.org/v2/",
