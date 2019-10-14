@@ -104,7 +104,9 @@ object Deps {
                 iosArm64 = "dev.icerock.moko:fields-iosarm64:${Versions.Libs.MultiPlatform.mokoFields}"
             )
             val settings = MultiPlatformLibrary(
-                common = "com.russhwolf:multiplatform-settings:${Versions.Libs.MultiPlatform.settings}"
+                common = "com.russhwolf:multiplatform-settings:${Versions.Libs.MultiPlatform.settings}",
+                iosX64 = "com.russhwolf:multiplatform-settings-iossim:${Versions.Libs.MultiPlatform.settings}",
+                iosArm64 = "com.russhwolf:multiplatform-settings-ios:${Versions.Libs.MultiPlatform.settings}"
             )
             val napier = MultiPlatformLibrary(
                 android = "com.github.aakira:napier-android:${Versions.Libs.MultiPlatform.napier}",
