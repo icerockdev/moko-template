@@ -47,5 +47,5 @@ multiplatformResources {
     multiplatformResourcesPackage = "org.example.library"
 }
 
-// генератор схемы зависимостей
+// dependencies graph generator
 apply(from = "https://raw.githubusercontent.com/JakeWharton/SdkSearch/master/gradle/projectDependencyGraph.gradle")

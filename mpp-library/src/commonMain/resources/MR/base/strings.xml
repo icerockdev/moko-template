@@ -2,4 +2,6 @@
 <resources>
     <string name="unknown_error">Unknown error</string>
     <string name="no_description">No description</string>
+    <string name="invalid_language_s">Language must be one of (%s)</string>
+    <string name="invalid_token">Token can\'t be empty</string>
 </resources>

@@ -25,4 +25,5 @@ dependencies {
 
     mppLibrary(Deps.Libs.MultiPlatform.mokoMvvm)
     mppLibrary(Deps.Libs.MultiPlatform.mokoResources)
+    mppLibrary(Deps.Libs.MultiPlatform.mokoFields)
 }

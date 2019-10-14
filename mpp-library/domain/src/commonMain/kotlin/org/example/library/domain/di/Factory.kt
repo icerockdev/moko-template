@@ -18,6 +18,7 @@ import io.ktor.client.features.logging.Logger
 import io.ktor.client.features.logging.Logging
 import io.ktor.http.HttpStatusCode
 import kotlinx.serialization.json.Json
+import org.example.library.domain.repository.AuthRepository
 import org.example.library.domain.repository.NewsRepository
 import org.example.library.domain.storage.KeyValueStorage
 
@@ -53,8 +54,7 @@ class Factory(
             install(TokenFeature) {
                 tokenHeaderName = "Authorization"
                 tokenProvider = object : TokenFeature.TokenProvider {
-                    override fun getToken(): String? = //keyValueStorage.token?.let { "Bearer $it" }
-                        "ed155d0a445e4b4fbd878fe1f3bc1b7f"
+                    override fun getToken(): String? = keyValueStorage.token
                 }
             }
 
@@ -72,6 +72,13 @@ class Factory(
     }
 
     val newsRepository: NewsRepository by lazy {
-        NewsRepository(newsApi = newsApi)
+        NewsRepository(
+            newsApi = newsApi,
+            keyValueStorage = keyValueStorage
+        )
+    }
+
+    val authRepository: AuthRepository by lazy {
+        AuthRepository(keyValueStorage = keyValueStorage)
     }
 }
