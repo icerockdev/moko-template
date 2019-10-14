@@ -275,6 +275,7 @@
 		2876280F1F319065007FA12B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CURRENT_PROJECT_VERSION = 0;
 				DEFINES_MODULE = YES;
 				SWIFT_VERSION = 4.0;
@@ -284,6 +285,7 @@
 		287628101F319065007FA12B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CURRENT_PROJECT_VERSION = 0;
 				DEFINES_MODULE = YES;
 				SWIFT_VERSION = 4.0;
@@ -301,7 +303,6 @@
 				PRODUCT_NAME = mokoApp;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 			};
 			name = Debug;
 		};
@@ -316,7 +317,6 @@
 				PRODUCT_NAME = mokoApp;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 			};
 			name = Release;
 		};
