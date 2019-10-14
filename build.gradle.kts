@@ -2,6 +2,10 @@
  * Copyright 2019 IceRock MAG Inc. Use of this source code is governed by the Apache 2.0 license.
  */
 
+plugins {
+    id("com.gradle.build-scan") version("2.1")
+}
+
 allprojects {
     repositories {
         mavenLocal()
@@ -18,6 +22,11 @@ allprojects {
 
     // workaround for https://youtrack.jetbrains.com/issue/KT-27170
     configurations.create("compileClasspath")
+}
+
+buildScan {
+    termsOfServiceUrl = "https://gradle.com/terms-of-service"
+    termsOfServiceAgree = "yes"
 }
 
 tasks.register("clean", Delete::class).configure {
