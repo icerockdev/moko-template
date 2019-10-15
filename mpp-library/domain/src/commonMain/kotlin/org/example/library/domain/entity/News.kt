@@ -4,8 +4,8 @@
 
 package org.example.library.domain.entity
 
-import dev.icerock.moko.core.Parcelable
-import dev.icerock.moko.core.Parcelize
+import dev.icerock.moko.parcelize.Parcelable
+import dev.icerock.moko.parcelize.Parcelize
 import dev.icerock.moko.network.generated.models.Article
 
 @Parcelize

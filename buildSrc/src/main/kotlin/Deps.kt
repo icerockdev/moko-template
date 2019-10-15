@@ -63,10 +63,20 @@ object Deps {
                 common = "org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:${Versions.Libs.MultiPlatform.serialization}",
                 ios = "org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:${Versions.Libs.MultiPlatform.serialization}"
             )
-            val mokoCore = MultiPlatformLibrary(
-                common = "dev.icerock.moko:core:${Versions.Libs.MultiPlatform.mokoCore}",
-                iosX64 = "dev.icerock.moko:core-iosx64:${Versions.Libs.MultiPlatform.mokoCore}",
-                iosArm64 = "dev.icerock.moko:core-iosarm64:${Versions.Libs.MultiPlatform.mokoCore}"
+            val mokoParcelize = MultiPlatformLibrary(
+                common = "dev.icerock.moko:parcelize:${Versions.Libs.MultiPlatform.mokoParcelize}",
+                iosX64 = "dev.icerock.moko:parcelize-iosx64:${Versions.Libs.MultiPlatform.mokoParcelize}",
+                iosArm64 = "dev.icerock.moko:parcelize-iosarm64:${Versions.Libs.MultiPlatform.mokoParcelize}"
+            )
+            val mokoGraphics = MultiPlatformLibrary(
+                common = "dev.icerock.moko:graphics:${Versions.Libs.MultiPlatform.mokoGraphics}",
+                iosX64 = "dev.icerock.moko:graphics-iosx64:${Versions.Libs.MultiPlatform.mokoGraphics}",
+                iosArm64 = "dev.icerock.moko:graphics-iosarm64:${Versions.Libs.MultiPlatform.mokoGraphics}"
+            )
+            val mokoTime = MultiPlatformLibrary(
+                common = "dev.icerock.moko:time:${Versions.Libs.MultiPlatform.mokoTime}",
+                iosX64 = "dev.icerock.moko:time-iosx64:${Versions.Libs.MultiPlatform.mokoTime}",
+                iosArm64 = "dev.icerock.moko:time-iosarm64:${Versions.Libs.MultiPlatform.mokoTime}"
             )
             val mokoMvvm = MultiPlatformLibrary(
                 common = "dev.icerock.moko:mvvm:${Versions.Libs.MultiPlatform.mokoMvvm}",

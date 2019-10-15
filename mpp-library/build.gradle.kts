@@ -21,7 +21,7 @@ android {
 val mppLibs = listOf(
     Deps.Libs.MultiPlatform.settings,
     Deps.Libs.MultiPlatform.napier,
-    Deps.Libs.MultiPlatform.mokoCore,
+    Deps.Libs.MultiPlatform.mokoParcelize,
     Deps.Libs.MultiPlatform.mokoResources,
     Deps.Libs.MultiPlatform.mokoMvvm,
     Deps.Libs.MultiPlatform.mokoUnits

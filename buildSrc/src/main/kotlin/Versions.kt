@@ -42,7 +42,9 @@ object Versions {
             const val ktorClient = "1.2.4"
             const val ktorClientLogging = ktorClient
 
-            const val mokoCore = "0.1.0"
+            const val mokoParcelize = "0.1.0"
+            const val mokoTime = "0.1.0"
+            const val mokoGraphics = "0.1.0"
             const val mokoMvvm = "0.2.0"
             const val mokoResources = Versions.mokoResources
             const val mokoNetwork = Versions.mokoNetwork

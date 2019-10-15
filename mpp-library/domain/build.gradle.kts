@@ -27,7 +27,7 @@ dependencies {
     mppLibrary(Deps.Libs.MultiPlatform.ktorClient)
     mppLibrary(Deps.Libs.MultiPlatform.ktorClientLogging)
 
-    mppLibrary(Deps.Libs.MultiPlatform.mokoCore)
+    mppLibrary(Deps.Libs.MultiPlatform.mokoParcelize)
     mppLibrary(Deps.Libs.MultiPlatform.mokoNetwork)
 
     mppLibrary(Deps.Libs.MultiPlatform.settings)
