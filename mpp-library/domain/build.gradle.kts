@@ -11,10 +11,6 @@ plugins {
     id("dev.icerock.mobile.multiplatform-network-generator")
 }
 
-androidExtensions {
-    isExperimental = true
-}
-
 android {
     compileSdkVersion(Versions.Android.compileSdk)
 
