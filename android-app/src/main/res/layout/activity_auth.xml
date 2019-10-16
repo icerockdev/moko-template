@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="org.example.library.feature.auth.presentation.LoginViewModel" />
+            type="org.example.library.feature.auth.presentation.AuthViewModel" />
     </data>
 
     <LinearLayout

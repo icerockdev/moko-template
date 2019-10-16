@@ -11,15 +11,15 @@ import dev.icerock.moko.mvvm.dispatcher.EventsDispatcher
 import dev.icerock.moko.mvvm.dispatcher.EventsDispatcherOwner
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
 import dev.icerock.moko.resources.desc.StringDesc
-import org.example.library.feature.auth.model.LoginStorage
+import org.example.library.feature.auth.model.AuthStore
 
-class LoginViewModel(
+class AuthViewModel(
     override val eventsDispatcher: EventsDispatcher<EventsListener>,
-    private val loginStorage: LoginStorage,
+    private val authStore: AuthStore,
     validations: Validations,
     defaultToken: String,
     defaultLanguage: String
-) : ViewModel(), EventsDispatcherOwner<LoginViewModel.EventsListener> {
+) : ViewModel(), EventsDispatcherOwner<AuthViewModel.EventsListener> {
 
     val apiTokenField: FormField<String, StringDesc> =
         FormField(defaultToken, liveBlock(validations::validateToken))
@@ -31,8 +31,8 @@ class LoginViewModel(
     fun onSubmitPressed() {
         if (!fields.validate()) return
 
-        loginStorage.apiToken = apiTokenField.value()
-        loginStorage.language = languageField.value()
+        authStore.apiToken = apiTokenField.value()
+        authStore.language = languageField.value()
 
         eventsDispatcher.dispatchEvent { routeToNews() }
     }

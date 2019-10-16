@@ -12,12 +12,12 @@ class AuthViewController: UIViewController {
     @IBOutlet private var tokenField: SkyFloatingLabelTextField!
     @IBOutlet private var languageField: SkyFloatingLabelTextField!
     
-    private var viewModel: LoginViewModel!
+    private var viewModel: AuthViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel = AppDelegate.factory.authFactory.createLoginViewModel(eventsDispatcher: EventsDispatcher(listener: self))
+        viewModel = AppDelegate.factory.authFactory.createAuthViewModel(eventsDispatcher: EventsDispatcher(listener: self))
         
         tokenField.bindTextTwoWay(liveData: viewModel.apiTokenField.data)
         tokenField.bindError(liveData: viewModel.apiTokenField.error)
@@ -35,7 +35,7 @@ class AuthViewController: UIViewController {
     }
 }
 
-extension AuthViewController: LoginViewModelEventsListener {
+extension AuthViewController: AuthViewModelEventsListener {
     func routeToNews() {
         performSegue(withIdentifier: "routeToNews", sender: nil)
     }

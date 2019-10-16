@@ -8,16 +8,16 @@ import com.russhwolf.settings.Settings
 import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.resources.desc.desc
-import org.example.library.feature.auth.model.LoginStorage
-import org.example.library.feature.auth.presentation.LoginViewModel
+import org.example.library.domain.di.DomainFactory
+import org.example.library.feature.auth.di.AuthFactory
+import org.example.library.feature.auth.model.AuthStore
+import org.example.library.feature.auth.presentation.AuthViewModel
+import org.example.library.feature.news.di.NewsFactory
 import org.example.library.feature.news.model.News
 import org.example.library.feature.news.model.NewsSource
 import org.example.library.feature.news.presentation.NewsListViewModel
-import org.example.library.domain.di.Factory as DomainFactory
-import org.example.library.feature.auth.di.Factory as AuthFactory
-import org.example.library.feature.news.di.Factory as NewsFactory
 
-class Factory(
+class SharedFactory(
     settings: Settings,
     baseUrl: String,
     newsUnitsFactory: NewsListViewModel.UnitsFactory
@@ -47,7 +47,7 @@ class Factory(
     )
 
     val authFactory = AuthFactory(
-        loginStorage = object : LoginStorage {
+        authStore = object : AuthStore {
             override var apiToken: String?
                 get() = domainFactory.authRepository.apiToken
                 set(value) {
@@ -59,9 +59,9 @@ class Factory(
                     domainFactory.authRepository.language = value
                 }
         },
-        loginValidations = object : LoginViewModel.Validations {
+        validations = object : AuthViewModel.Validations {
             override fun validateToken(value: String): StringDesc? {
-                return if(value.isBlank()) {
+                return if (value.isBlank()) {
                     MR.strings.invalid_token.desc()
                 } else {
                     null

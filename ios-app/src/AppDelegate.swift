@@ -10,13 +10,13 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    static var factory: Factory__!
+    static var factory: SharedFactory!
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         
         Napier().base(antilog: DebugAntilog(defaultTag: "MPP"))
         
-        AppDelegate.factory = Factory__(
+        AppDelegate.factory = SharedFactory(
             settings: AppleSettings(delegate: UserDefaults.standard),
             baseUrl: "https://newsapi.org/v2/",
             newsUnitsFactory: NewsListUnitsFactory()

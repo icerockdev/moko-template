@@ -7,7 +7,7 @@ package org.example.library.feature.news.di
 import org.example.library.feature.news.model.NewsSource
 import org.example.library.feature.news.presentation.NewsListViewModel
 
-class Factory(
+class NewsFactory(
     private val newsSource: NewsSource,
     private val newsListStrings: NewsListViewModel.Strings,
     private val newsUnitsFactory: NewsListViewModel.UnitsFactory

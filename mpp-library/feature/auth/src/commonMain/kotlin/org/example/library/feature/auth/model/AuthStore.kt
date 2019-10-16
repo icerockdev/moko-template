@@ -4,7 +4,7 @@
 
 package org.example.library.feature.auth.model
 
-interface LoginStorage {
+interface AuthStore {
     var apiToken: String?
     var language: String?
 }

@@ -12,19 +12,19 @@ import dev.icerock.moko.mvvm.dispatcher.eventsDispatcherOnMain
 import org.example.app.BR
 import org.example.app.MainApplication
 import org.example.app.R
-import org.example.app.databinding.ActivityLoginBinding
-import org.example.library.feature.auth.presentation.LoginViewModel
+import org.example.app.databinding.ActivityAuthBinding
+import org.example.library.feature.auth.presentation.AuthViewModel
 
-class LoginActivity :
-    MvvmEventsActivity<ActivityLoginBinding, LoginViewModel, LoginViewModel.EventsListener>(),
-    LoginViewModel.EventsListener {
+class AuthActivity :
+    MvvmEventsActivity<ActivityAuthBinding, AuthViewModel, AuthViewModel.EventsListener>(),
+    AuthViewModel.EventsListener {
 
-    override val layoutId: Int = R.layout.activity_login
-    override val viewModelClass: Class<LoginViewModel> = LoginViewModel::class.java
+    override val layoutId: Int = R.layout.activity_auth
+    override val viewModelClass: Class<AuthViewModel> = AuthViewModel::class.java
     override val viewModelVariableId: Int = BR.viewModel
 
     override fun viewModelFactory(): ViewModelProvider.Factory = createViewModelFactory {
-        MainApplication.factory.authFactory.createLoginViewModel(
+        MainApplication.factory.authFactory.createAuthViewModel(
             eventsDispatcher = eventsDispatcherOnMain()
         )
     }

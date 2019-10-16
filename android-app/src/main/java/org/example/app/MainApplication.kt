@@ -11,7 +11,7 @@ import com.github.aakira.napier.Napier
 import com.russhwolf.settings.AndroidSettings
 import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.units.UnitItem
-import org.example.library.Factory
+import org.example.library.SharedFactory
 import org.example.library.feature.news.presentation.NewsListViewModel
 
 class MainApplication : Application() {
@@ -20,7 +20,7 @@ class MainApplication : Application() {
 
         Napier.base(DebugAntilog())
 
-        factory = Factory(
+        factory = SharedFactory(
             baseUrl = BuildConfig.BASE_URL,
             settings = AndroidSettings(getSharedPreferences("app", Context.MODE_PRIVATE)),
             newsUnitsFactory = object: NewsListViewModel.UnitsFactory {
@@ -40,6 +40,6 @@ class MainApplication : Application() {
     }
 
     companion object {
-        lateinit var factory: Factory
+        lateinit var factory: SharedFactory
     }
 }

@@ -22,7 +22,7 @@ import org.example.library.domain.repository.AuthRepository
 import org.example.library.domain.repository.NewsRepository
 import org.example.library.domain.storage.KeyValueStorage
 
-class Factory(
+class DomainFactory(
     private val settings: Settings,
     private val baseUrl: String
 ) {
