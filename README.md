@@ -6,16 +6,21 @@ This is a Kotlin MultiPlatform library that provides architecture components of 
  for UI applications. Components is lifecycle aware on both mobile platforms.  
 
 ## Table of Contents
+- [Features](#features)
 - [Modules](#modules)
 - [Screenshots](#screenshots)
-- [Features](#features)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Samples](#samples)
-- [Set Up Locally](#setup-locally)
+- [Set Up Project](#set-up-project)
 - [Contributing](#contributing)
 - [License](#license)
+
+## Features
+- **Kotlin Multiplatform** - shared code on Kotlin for Android and iOS. *Don't Repeat Yourself*;
+- **Kotlin gradle DSL** - project configuration in kotlin gradle dsl give more flexible way to configuration;
+- **Modularized** - feature implemetation in separated modules;
+- **Dependencies definition in buildSrc** - simplify dependency management across modules;
+- **moko libraries** - all mobile kotlin libraries already have dependency definition. Common usecases already implemented - ViewModels, LiveData, resources management, runtime permissions access, media access, control lists content from shared code, network layer generation from OpenAPI;
+- **Dependency Injection** - compile-time dependencies injection via `Factory` class of each module;
+- **Parallel build of modules** - feature modules and `domain` module are independent of each other, this provides better caching of build results each module and ability to reuse module without changes.
 
 ## Modules
 ![modules scheme](https://user-images.githubusercontent.com/5010169/66910966-c7f47680-f039-11e9-8aa0-7485757cc39b.jpg)
@@ -50,30 +55,13 @@ Connections between `feature:news` classes and `domain` classes implemented in `
 |![android-app](https://user-images.githubusercontent.com/5010169/66911569-f9ba0d00-f03a-11e9-80b0-d4992bf61fbe.png)|![ios-app](https://user-images.githubusercontent.com/5010169/66911572-fa52a380-f03a-11e9-8425-19014e14c7b8.png)|
 |![android-app](https://user-images.githubusercontent.com/5010169/66911571-fa52a380-f03a-11e9-9470-ea3dc05a6dff.png)|![ios-app](https://user-images.githubusercontent.com/5010169/66911574-fa52a380-f03a-11e9-9f67-a1a48865bf97.png)|
 
-## Features
-TODO
-
-## Requirements
-
-## Installation
+## Set Up Project
 ### Setup own ApplicationId
 In `android-app/build.gradle.kts` change `org.example.app` to own appId at line:
 ```kotlin
 applicationId = "org.example.app"
 ```
 In ios-app change `Bundle Identifier` to own appId in Xcode project settings.
-
-## Usage
-TODO
-
-## Samples
-TODO
-
-## Set Up Locally 
-TODO
-
-## Projects based on template
-TODO
 
 ## Contributing
 All development (both new features and bug fixes) is performed in `develop` branch. This way `master` sources always contain sources of the most recently released version. Please send PRs with bug fixes to `develop` branch. Fixes to documentation in markdown files are an exception to this rule. They are updated directly in `master`.
