@@ -2,8 +2,7 @@
 [![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0)
 
 # Mobile Kotlin multiplatform project template
-This is a Kotlin MultiPlatform library that provides architecture components of Model-View-ViewModel
- for UI applications. Components is lifecycle aware on both mobile platforms.  
+TODO
 
 ## Table of Contents
 - [Features](#features)
@@ -41,11 +40,11 @@ In `mpp-library` setting up connections between feature modules and `domain` mod
 Each color show in what module class/interface defined. Class and interface showed by different shapes.
 
 ### Auth module scheme
-![auth module scheme](https://user-images.githubusercontent.com/5010169/66910971-cd51c100-f039-11e9-957a-7c2b500e74ef.jpg)
+![auth module scheme](https://user-images.githubusercontent.com/5010169/66917408-84a10480-f047-11e9-8f4a-0c089e24ff6d.jpg)
 Connections between `feature:auth` classes and `domain` classes implemented in `mpp-library` module.
 
 ### News module scheme
-![news module scheme](https://user-images.githubusercontent.com/5010169/66910972-cdea5780-f039-11e9-9268-15b768bf14c5.jpg)
+![news module scheme](https://user-images.githubusercontent.com/5010169/66917411-85d23180-f047-11e9-9e7f-b2f3387fac51.jpg)
 Connections between `feature:news` classes and `domain` classes implemented in `mpp-library` module.  
 `NewsUnitsFactory` interface implementation on both platforms - on android and ios.
 
