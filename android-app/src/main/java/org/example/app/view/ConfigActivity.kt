@@ -15,6 +15,7 @@ import org.example.app.R
 import org.example.app.databinding.ActivityConfigBinding
 import org.example.library.feature.config.presentation.ConfigViewModel
 
+// MvvmEventsActivity for simplify creation of MVVM screen with https://github.com/icerockdev/moko-mvvm
 class ConfigActivity :
     MvvmEventsActivity<ActivityConfigBinding, ConfigViewModel, ConfigViewModel.EventsListener>(),
     ConfigViewModel.EventsListener {
@@ -23,12 +24,15 @@ class ConfigActivity :
     override val viewModelClass: Class<ConfigViewModel> = ConfigViewModel::class.java
     override val viewModelVariableId: Int = BR.viewModel
 
+    // createViewModelFactory is extension from https://github.com/icerockdev/moko-mvvm
+    // ViewModel not recreating at configuration changes
     override fun viewModelFactory(): ViewModelProvider.Factory = createViewModelFactory {
         AppComponent.factory.configFactory.createConfigViewModel(
             eventsDispatcher = eventsDispatcherOnMain()
         )
     }
 
+    // route called by EventsDispatcher from ViewModel (https://github.com/icerockdev/moko-mvvm)
     override fun routeToNews() {
         Intent(this, NewsActivity::class.java).also { startActivity(it) }
     }

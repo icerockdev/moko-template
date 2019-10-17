@@ -22,18 +22,22 @@ class NewsViewController: UIViewController {
         super.viewDidLoad()
         
         viewModel = AppComponent.factory.newsFactory.createNewsListViewModel()
-        
+
+        // binding methods from https://github.com/icerockdev/moko-mvvm
         activityIndicator.bindVisibility(liveData: viewModel.state.isLoadingState())
         tableView.bindVisibility(liveData: viewModel.state.isSuccessState())
         emptyView.bindVisibility(liveData: viewModel.state.isEmptyState())
         errorView.bindVisibility(liveData: viewModel.state.isErrorState())
-        
+
+        // in/out generics of Kotlin removed in swift, so we should map to valid class
         let errorText: LiveData<StringDesc> = viewModel.state.error().map { $0 as? StringDesc } as! LiveData<StringDesc>
         errorLabel.bindText(liveData: errorText)
-        
+
+        // datasource from https://github.com/icerockdev/moko-units
         dataSource = FlatUnitTableViewDataSource()
         dataSource.setup(for: tableView)
-        
+
+        // manual bind to livedata, see https://github.com/icerockdev/moko-mvvm
         viewModel.state.data().addObserver { [weak self] itemsObject in
             guard let items = itemsObject as? [UITableViewCellUnitProtocol] else { return }
             

@@ -5,6 +5,7 @@
 import UIKit
 import MultiPlatformLibraryUnits
 
+// Fillable interface from https://github.com/icerockdev/moko-units
 class NewsTableViewCell: UITableViewCell, Fillable {
     typealias DataType = CellModel
     
@@ -27,6 +28,7 @@ class NewsTableViewCell: UITableViewCell, Fillable {
     }
 }
 
+// Reusable interface from https://github.com/icerockdev/moko-units
 extension NewsTableViewCell: Reusable {
     static func reusableIdentifier() -> String {
         return "NewsTableViewCell"

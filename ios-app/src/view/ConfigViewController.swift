@@ -18,7 +18,8 @@ class ConfigViewController: UIViewController {
         super.viewDidLoad()
         
         viewModel = AppComponent.factory.configFactory.createConfigViewModel(eventsDispatcher: EventsDispatcher(listener: self))
-        
+
+        // binding methods from https://github.com/icerockdev/moko-mvvm
         tokenField.bindTextTwoWay(liveData: viewModel.apiTokenField.data)
         tokenField.bindError(liveData: viewModel.apiTokenField.error)
         
@@ -31,11 +32,13 @@ class ConfigViewController: UIViewController {
     }
     
     deinit {
+        // clean viewmodel to stop all coroutines immediately
         viewModel.onCleared()
     }
 }
 
 extension ConfigViewController: ConfigViewModelEventsListener {
+    // callsed from ViewModel by EventsDispatcher - see https://github.com/icerockdev/moko-mvvm
     func routeToNews() {
         performSegue(withIdentifier: "routeToNews", sender: nil)
     }

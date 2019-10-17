@@ -11,6 +11,7 @@ class NewsListUnitsFactory: NewsListViewModelUnitsFactory {
         id: Int64,
         title: String,
         description: StringDesc) -> UnitItem {
+        // create unit for https://github.com/icerockdev/moko-units
         return UITableViewCellUnit<NewsTableViewCell>(
             data: NewsTableViewCell.CellModel(
                 id: id,
