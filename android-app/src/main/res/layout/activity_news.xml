@@ -37,16 +37,31 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:gravity="center"
             android:text="@string/no_news"
             app:visibleOrGone="@{viewModel.state.ld.isEmpty}" />
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@{viewModel.state.ld.errorValue}"
-            app:visibleOrGone="@{viewModel.state.ld.isError}" />
+            android:layout_gravity="center"
+            android:padding="16dp"
+            android:orientation="vertical"
+            app:visibleOrGone="@{viewModel.state.ld.isError}">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@{viewModel.state.ld.errorValue}" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:onClick="@{() -> viewModel.onRetryPressed()}"
+                android:text="@string/retry_btn" />
+        </LinearLayout>
     </FrameLayout>
 </layout>

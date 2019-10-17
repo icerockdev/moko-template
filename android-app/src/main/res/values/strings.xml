@@ -5,4 +5,5 @@
     <string name="submit_btn">Submit</string>
     <string name="token_hint">API token</string>
     <string name="language_hint">Language code</string>
+    <string name="retry_btn">Retry</string>
 </resources>
