@@ -3,7 +3,10 @@
 
 # Mobile Kotlin multiplatform project template
 
+A sample project that helps to start building a Mobile Kotlin Multiplatform application. It establishes an architecture optimized for building cross-platform mobile applications through separation of concerns between the UI and business logic.
+
 ## Table of Contents
+
 - [Features](#features)
 - [Modules](#modules)
 - [Screenshots](#screenshots)
@@ -43,20 +46,17 @@ This scheme shows structure of the project:
     - `news` contains news feature ViewModel, data source interface, list items factory interface, NewsFactory which create instances of ViewModel.
 
 ### Legend for schemes
-
 Color describes different modules. Shape - type of an element (class|interface)
-
 ![legend](https://user-images.githubusercontent.com/5010169/66910970-cd51c100-f039-11e9-9dfa-775a39b0d748.jpg)
 
 ### Auth module scheme
-
 ![auth module scheme](https://user-images.githubusercontent.com/5010169/66917408-84a10480-f047-11e9-8f4a-0c089e24ff6d.jpg)
 Connections between `feature:auth` classes and `domain` classes implemented in `mpp-library` module.
 
 ### News module scheme
 ![news module scheme](https://user-images.githubusercontent.com/5010169/66917411-85d23180-f047-11e9-9e7f-b2f3387fac51.jpg)
 Connections between `feature:news` classes and `domain` classes implemented in `mpp-library` module.  
-`NewsListViewModel.UnitsFactory` interface is implemented on both platforms - Android (`android-app`) and iOS (ios-app).
+`NewsListViewModel.UnitsFactory` interface is implemented on both platforms - Android (`android-app`) and iOS (`ios-app`).
 
 ## Screenshots
 
