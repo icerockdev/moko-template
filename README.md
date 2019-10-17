@@ -7,7 +7,7 @@
 - [Features](#features)
 - [Modules](#modules)
 - [Screenshots](#screenshots)
-- [Set Up Project](#set-up-project)
+- [Project setup](#project-setup)
 - [Contributing](#contributing)
 - [License](#license)
 
