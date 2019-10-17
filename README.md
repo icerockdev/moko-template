@@ -16,7 +16,7 @@ A sample project that helps to start building a Mobile Kotlin Multiplatform appl
 
 ## Features
 
-- **Kotlin Multiplatform** - *Don't Repeat Yourself*. Share business logic code written in Kotlin with Android and iOS apps. 
+- **Kotlin Multiplatform** - *Don't Repeat Yourself*. Share business logic code written in Kotlin with Android and iOS apps. Truly native UI and perfomance (shared code compiled into native libraries). 
 - **Kotlin Gradle DSL** - Configure project with flexible Kotlin Gradle DSL.
 - **Modularized architecture** - Implement app features independently of each other. Inject dependencies at compile-time into features through the use of `Factory` class.
 - **Parallel build of modules** - Feature modules and `domain` module are independent of each other. This provides caching of build artifacts for each module and results in better compile time.
