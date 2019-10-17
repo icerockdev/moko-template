@@ -29,6 +29,6 @@ include(":mpp-library")
 
 listOf(
     Modules.MultiPlatform.domain,
-    Modules.MultiPlatform.Feature.auth,
+    Modules.MultiPlatform.Feature.config,
     Modules.MultiPlatform.Feature.news
 ).forEach { include(it.name) }

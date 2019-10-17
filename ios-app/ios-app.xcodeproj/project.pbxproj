@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		451D7B1A235845B100095112 /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451D7B19235845B100095112 /* AppComponent.swift */; };
 		4539A7B3235437660081362B /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4539A7B2235437660081362B /* NewsViewController.swift */; };
-		4539A7B52354376F0081362B /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4539A7B42354376F0081362B /* AuthViewController.swift */; };
+		4539A7B52354376F0081362B /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4539A7B42354376F0081362B /* ConfigViewController.swift */; };
 		4539A7B723543B1C0081362B /* NewsListUnitsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4539A7B623543B1C0081362B /* NewsListUnitsFactory.swift */; };
 		4539A7BE2354471C0081362B /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4539A7BD2354471C0081362B /* NewsTableViewCell.swift */; };
 		4539A7C02354472A0081362B /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4539A7BF2354472A0081362B /* NewsTableViewCell.xib */; };
@@ -25,7 +25,7 @@
 		363BA6BFAA3FA87230445070 /* Pods_ios_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		451D7B19235845B100095112 /* AppComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppComponent.swift; sourceTree = "<group>"; };
 		4539A7B2235437660081362B /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
-		4539A7B42354376F0081362B /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		4539A7B42354376F0081362B /* ConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewController.swift; sourceTree = "<group>"; };
 		4539A7B623543B1C0081362B /* NewsListUnitsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListUnitsFactory.swift; sourceTree = "<group>"; };
 		4539A7BD2354471C0081362B /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		4539A7BF2354472A0081362B /* NewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableViewCell.xib; sourceTree = "<group>"; };
@@ -89,7 +89,7 @@
 		451D7B1B235845D400095112 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				4539A7B42354376F0081362B /* AuthViewController.swift */,
+				4539A7B42354376F0081362B /* ConfigViewController.swift */,
 				4539A7B2235437660081362B /* NewsViewController.swift */,
 			);
 			path = view;
@@ -254,7 +254,7 @@
 				45F47922219463C7003D25FA /* AppDelegate.swift in Sources */,
 				4539A7B723543B1C0081362B /* NewsListUnitsFactory.swift in Sources */,
 				4539A7BE2354471C0081362B /* NewsTableViewCell.swift in Sources */,
-				4539A7B52354376F0081362B /* AuthViewController.swift in Sources */,
+				4539A7B52354376F0081362B /* ConfigViewController.swift in Sources */,
 				4539A7B3235437660081362B /* NewsViewController.swift in Sources */,
 				451D7B1A235845B100095112 /* AppComponent.swift in Sources */,
 			);

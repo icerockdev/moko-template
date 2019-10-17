@@ -8,16 +8,16 @@ import MultiPlatformLibrary
 import MultiPlatformLibraryMvvm
 import SkyFloatingLabelTextField
 
-class AuthViewController: UIViewController {
+class ConfigViewController: UIViewController {
     @IBOutlet private var tokenField: SkyFloatingLabelTextField!
     @IBOutlet private var languageField: SkyFloatingLabelTextField!
     
-    private var viewModel: AuthViewModel!
+    private var viewModel: ConfigViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel = AppComponent.factory.authFactory.createAuthViewModel(eventsDispatcher: EventsDispatcher(listener: self))
+        viewModel = AppComponent.factory.configFactory.createConfigViewModel(eventsDispatcher: EventsDispatcher(listener: self))
         
         tokenField.bindTextTwoWay(liveData: viewModel.apiTokenField.data)
         tokenField.bindError(liveData: viewModel.apiTokenField.error)
@@ -35,7 +35,7 @@ class AuthViewController: UIViewController {
     }
 }
 
-extension AuthViewController: AuthViewModelEventsListener {
+extension ConfigViewController: ConfigViewModelEventsListener {
     func routeToNews() {
         performSegue(withIdentifier: "routeToNews", sender: nil)
     }

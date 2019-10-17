@@ -11,9 +11,9 @@ import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.resources.desc.desc
 import org.example.library.domain.di.DomainFactory
-import org.example.library.feature.auth.di.AuthFactory
-import org.example.library.feature.auth.model.AuthStore
-import org.example.library.feature.auth.presentation.AuthViewModel
+import org.example.library.feature.config.di.ConfigFactory
+import org.example.library.feature.config.model.ConfigStore
+import org.example.library.feature.config.presentation.ConfigViewModel
 import org.example.library.feature.news.di.NewsFactory
 import org.example.library.feature.news.model.News
 import org.example.library.feature.news.model.NewsSource
@@ -49,8 +49,8 @@ class SharedFactory(
         newsUnitsFactory = newsUnitsFactory
     )
 
-    val authFactory = AuthFactory(
-        authStore = object : AuthStore {
+    val configFactory = ConfigFactory(
+        configStore = object : ConfigStore {
             override var apiToken: String?
                 get() = domainFactory.authRepository.apiToken
                 set(value) {
@@ -62,7 +62,7 @@ class SharedFactory(
                     domainFactory.authRepository.language = value
                 }
         },
-        validations = object : AuthViewModel.Validations {
+        validations = object : ConfigViewModel.Validations {
             override fun validateToken(value: String): StringDesc? {
                 return if (value.isBlank()) {
                     MR.strings.invalid_token.desc()

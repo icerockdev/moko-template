@@ -25,10 +25,10 @@
             </objects>
             <point key="canvasLocation" x="-5946" y="-1482"/>
         </scene>
-        <!--Auth View Controller-->
+        <!--moko-app-->
         <scene sceneID="heM-ap-51W">
             <objects>
-                <viewController id="tpQ-LY-4wm" customClass="AuthViewController" customModule="mokoApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="tpQ-LY-4wm" customClass="ConfigViewController" customModule="mokoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MKQ-Qk-EWk"/>
                         <viewControllerLayoutGuide type="bottom" id="Ba9-2V-dd9"/>
@@ -75,7 +75,7 @@
                             <constraint firstItem="aeS-KV-Tvh" firstAttribute="top" secondItem="IOd-DU-OXy" secondAttribute="bottom" constant="8" id="epK-cr-DiB"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="ftM-lC-K7M"/>
+                    <navigationItem key="navigationItem" title="moko-app" id="ftM-lC-K7M"/>
                     <connections>
                         <outlet property="languageField" destination="IOd-DU-OXy" id="w2o-7w-Qv9"/>
                         <outlet property="tokenField" destination="e3l-s2-CcZ" id="4oM-qT-pfl"/>
