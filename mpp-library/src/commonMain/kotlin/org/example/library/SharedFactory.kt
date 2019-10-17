@@ -4,6 +4,8 @@
 
 package org.example.library
 
+import com.github.aakira.napier.Antilog
+import com.github.aakira.napier.Napier
 import com.russhwolf.settings.Settings
 import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.desc.StringDesc
@@ -19,6 +21,7 @@ import org.example.library.feature.news.presentation.NewsListViewModel
 
 class SharedFactory(
     settings: Settings,
+    antilog: Antilog,
     baseUrl: String,
     newsUnitsFactory: NewsListViewModel.UnitsFactory
 ) {
@@ -83,4 +86,8 @@ class SharedFactory(
         defaultToken = "ed155d0a445e4b4fbd878fe1f3bc1b7f",
         defaultLanguage = "us"
     )
+
+    init {
+        Napier.base(antilog)
+    }
 }

@@ -21,7 +21,7 @@ class NewsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel = AppDelegate.factory.newsFactory.createNewsListViewModel()
+        viewModel = AppComponent.factory.newsFactory.createNewsListViewModel()
         
         activityIndicator.bindVisibility(liveData: viewModel.state.isLoadingState())
         tableView.bindVisibility(liveData: viewModel.state.isSuccessState())

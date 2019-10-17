@@ -17,7 +17,7 @@ class AuthViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel = AppDelegate.factory.authFactory.createAuthViewModel(eventsDispatcher: EventsDispatcher(listener: self))
+        viewModel = AppComponent.factory.authFactory.createAuthViewModel(eventsDispatcher: EventsDispatcher(listener: self))
         
         tokenField.bindTextTwoWay(liveData: viewModel.apiTokenField.data)
         tokenField.bindError(liveData: viewModel.apiTokenField.error)

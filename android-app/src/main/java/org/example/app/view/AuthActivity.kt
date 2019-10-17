@@ -9,8 +9,8 @@ import androidx.lifecycle.ViewModelProvider
 import dev.icerock.moko.mvvm.MvvmEventsActivity
 import dev.icerock.moko.mvvm.createViewModelFactory
 import dev.icerock.moko.mvvm.dispatcher.eventsDispatcherOnMain
+import org.example.app.AppComponent
 import org.example.app.BR
-import org.example.app.MainApplication
 import org.example.app.R
 import org.example.app.databinding.ActivityAuthBinding
 import org.example.library.feature.auth.presentation.AuthViewModel
@@ -24,7 +24,7 @@ class AuthActivity :
     override val viewModelVariableId: Int = BR.viewModel
 
     override fun viewModelFactory(): ViewModelProvider.Factory = createViewModelFactory {
-        MainApplication.factory.authFactory.createAuthViewModel(
+        AppComponent.factory.authFactory.createAuthViewModel(
             eventsDispatcher = eventsDispatcherOnMain()
         )
     }

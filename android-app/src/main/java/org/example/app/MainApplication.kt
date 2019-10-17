@@ -7,39 +7,26 @@ package org.example.app
 import android.app.Application
 import android.content.Context
 import com.github.aakira.napier.DebugAntilog
-import com.github.aakira.napier.Napier
 import com.russhwolf.settings.AndroidSettings
-import dev.icerock.moko.resources.desc.StringDesc
-import dev.icerock.moko.units.UnitItem
+import org.example.app.units.NewsListUnitsFactory
 import org.example.library.SharedFactory
-import org.example.library.feature.news.presentation.NewsListViewModel
 
 class MainApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        Napier.base(DebugAntilog())
-
-        factory = SharedFactory(
+        // create factory of shared module - it's main DI component of application.
+        // Provide ViewModels of all features.
+        // Input is platform-specific:
+        // * baseUrl - server url from platform build configs (allows use buildFlavors in configurations for server)
+        // * settings - settings platform storage for https://github.com/russhwolf/multiplatform-settings
+        // * antilog - platform logger with LogCat for https://github.com/AAkira/Napier
+        // * newsUnitsFactory - platform factory of RecyclerView items for https://github.com/icerockdev/moko-units
+        AppComponent.factory = SharedFactory(
             baseUrl = BuildConfig.BASE_URL,
             settings = AndroidSettings(getSharedPreferences("app", Context.MODE_PRIVATE)),
-            newsUnitsFactory = object: NewsListViewModel.UnitsFactory {
-                override fun createNewsTile(
-                    id: Long,
-                    title: String,
-                    description: StringDesc
-                ): UnitItem {
-                    return TileNews().apply {
-                        itemId = id
-                        this.title = title
-                        this.description = description
-                    }
-                }
-            }
+            antilog = DebugAntilog(),
+            newsUnitsFactory = NewsListUnitsFactory()
         )
-    }
-
-    companion object {
-        lateinit var factory: SharedFactory
     }
 }

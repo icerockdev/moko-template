@@ -7,8 +7,8 @@ package org.example.app.view
 import androidx.lifecycle.ViewModelProvider
 import dev.icerock.moko.mvvm.MvvmActivity
 import dev.icerock.moko.mvvm.createViewModelFactory
+import org.example.app.AppComponent
 import org.example.app.BR
-import org.example.app.MainApplication
 import org.example.app.R
 import org.example.app.databinding.ActivityNewsBinding
 import org.example.library.feature.news.presentation.NewsListViewModel
@@ -19,6 +19,6 @@ class NewsActivity : MvvmActivity<ActivityNewsBinding, NewsListViewModel>() {
     override val viewModelVariableId: Int = BR.viewModel
 
     override fun viewModelFactory(): ViewModelProvider.Factory = createViewModelFactory {
-        MainApplication.factory.newsFactory.createNewsListViewModel()
+        AppComponent.factory.newsFactory.createNewsListViewModel()
     }
 }
