@@ -1,4 +1,4 @@
-![moko-template](img/logo.png)  
+![moko-template](https://user-images.githubusercontent.com/5010169/66987007-1bbe9880-f0ea-11e9-8c3c-46b25926794b.png)  
 [![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0)
 
 # Mobile Kotlin multiplatform project template
@@ -32,7 +32,7 @@ A sample project that helps to start building a Mobile Kotlin Multiplatform appl
 
 ## Modules
 
-![modules scheme](https://user-images.githubusercontent.com/5010169/66910966-c7f47680-f039-11e9-8aa0-7485757cc39b.jpg)
+![modules scheme](https://user-images.githubusercontent.com/5010169/66987168-6b04c900-f0ea-11e9-94fa-00709a641ac2.jpg)
 This scheme shows structure of the project:  
 
 - We have two applications which represent View application layer:
@@ -42,16 +42,16 @@ This scheme shows structure of the project:
 - `mpp-library` consists of modules:
   - `domain` (kotlin multiplatform) - contains domain entities, repositories, server api classes and `DomainFactory` which creates instances of them all
   - `feature` (kotlin multiplatform). Every feature contains corresponding ViewModel, Factory, models and interfaces it expects to be injected from the parent module. In this example:
-    - `auth` contains auth feature ViewModel, data store interface and `AuthFactory` which create instances of ViewModel
-    - `news` contains news feature ViewModel, data source interface, list items factory interface, NewsFactory which create instances of ViewModel.
+    - `config` contains auth feature ViewModel, data store interface and `ConfigFactory` which create instances of ViewModel
+    - `news` contains news feature ViewModel, data source interface, list items factory interface, `NewsFactory` which create instances of ViewModel.
 
 ### Legend for schemes
 Color describes different modules. Shape - type of an element (class|interface)
 ![legend](https://user-images.githubusercontent.com/5010169/66910970-cd51c100-f039-11e9-9dfa-775a39b0d748.jpg)
 
-### Auth module scheme
-![auth module scheme](https://user-images.githubusercontent.com/5010169/66917408-84a10480-f047-11e9-8f4a-0c089e24ff6d.jpg)
-Connections between `feature:auth` classes and `domain` classes implemented in `mpp-library` module.
+### Config module scheme
+![config module scheme](https://user-images.githubusercontent.com/5010169/66987117-545e7200-f0ea-11e9-89c5-e7d1c79c8807.jpg)
+Connections between `feature:config` classes and `domain` classes implemented in `mpp-library` module.
 
 ### News module scheme
 ![news module scheme](https://user-images.githubusercontent.com/5010169/66917411-85d23180-f047-11e9-9e7f-b2f3387fac51.jpg)
