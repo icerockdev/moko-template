@@ -52,14 +52,14 @@ class SharedFactory(
     val configFactory = ConfigFactory(
         configStore = object : ConfigStore {
             override var apiToken: String?
-                get() = domainFactory.authRepository.apiToken
+                get() = domainFactory.configRepository.apiToken
                 set(value) {
-                    domainFactory.authRepository.apiToken = value
+                    domainFactory.configRepository.apiToken = value
                 }
             override var language: String?
-                get() = domainFactory.authRepository.language
+                get() = domainFactory.configRepository.language
                 set(value) {
-                    domainFactory.authRepository.language = value
+                    domainFactory.configRepository.language = value
                 }
         },
         validations = object : ConfigViewModel.Validations {

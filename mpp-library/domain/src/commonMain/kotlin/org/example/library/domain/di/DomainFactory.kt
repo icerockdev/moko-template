@@ -18,7 +18,7 @@ import io.ktor.client.features.logging.Logger
 import io.ktor.client.features.logging.Logging
 import io.ktor.http.HttpStatusCode
 import kotlinx.serialization.json.Json
-import org.example.library.domain.repository.AuthRepository
+import org.example.library.domain.repository.ConfigRepository
 import org.example.library.domain.repository.NewsRepository
 import org.example.library.domain.storage.KeyValueStorage
 
@@ -78,7 +78,7 @@ class DomainFactory(
         )
     }
 
-    val authRepository: AuthRepository by lazy {
-        AuthRepository(keyValueStorage = keyValueStorage)
+    val configRepository: ConfigRepository by lazy {
+        ConfigRepository(keyValueStorage = keyValueStorage)
     }
 }

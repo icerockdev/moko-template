@@ -6,7 +6,7 @@ package org.example.library.domain.repository
 
 import org.example.library.domain.storage.KeyValueStorage
 
-class AuthRepository(
+class ConfigRepository(
     private val keyValueStorage: KeyValueStorage
 ) {
     var apiToken: String?
