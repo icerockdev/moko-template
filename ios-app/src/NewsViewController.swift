@@ -11,6 +11,9 @@ import MultiPlatformLibraryUnits
 class NewsViewController: UIViewController {
     @IBOutlet private var tableView: UITableView!
     @IBOutlet private var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private var emptyView: UIView!
+    @IBOutlet private var errorView: UIView!
+    @IBOutlet private var errorLabel: UILabel!
     
     private var viewModel: NewsListViewModel!
     private var dataSource: FlatUnitTableViewDataSource!
@@ -22,6 +25,11 @@ class NewsViewController: UIViewController {
         
         activityIndicator.bindVisibility(liveData: viewModel.state.isLoadingState())
         tableView.bindVisibility(liveData: viewModel.state.isSuccessState())
+        emptyView.bindVisibility(liveData: viewModel.state.isEmptyState())
+        errorView.bindVisibility(liveData: viewModel.state.isErrorState())
+        
+        let errorText: LiveData<StringDesc> = viewModel.state.error().map { $0 as? StringDesc } as! LiveData<StringDesc>
+        errorLabel.bindText(liveData: errorText)
         
         dataSource = FlatUnitTableViewDataSource()
         dataSource.setup(for: tableView)
@@ -32,5 +40,9 @@ class NewsViewController: UIViewController {
             self?.dataSource.units = items
             self?.tableView.reloadData()
         }
+    }
+    
+    @IBAction func onRetryPressed() {
+        viewModel.onRetryPressed()
     }
 }
