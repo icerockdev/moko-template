@@ -3,20 +3,20 @@ PODS:
   - AlamofireImage (3.5.2):
     - Alamofire (~> 4.8)
   - MultiPlatformLibrary (0.1.0)
-  - MultiPlatformLibraryMvvm (0.1.0):
+  - MultiPlatformLibraryMvvm (0.3.0):
     - MultiPlatformLibrary
-    - MultiPlatformLibraryMvvm/AlamofireImage (= 0.1.0)
-    - MultiPlatformLibraryMvvm/Core (= 0.1.0)
-    - MultiPlatformLibraryMvvm/SkyFloatingLabelTextField (= 0.1.0)
+    - MultiPlatformLibraryMvvm/AlamofireImage (= 0.3.0)
+    - MultiPlatformLibraryMvvm/Core (= 0.3.0)
+    - MultiPlatformLibraryMvvm/SkyFloatingLabelTextField (= 0.3.0)
     - MultiPlatformLibraryResources
-  - MultiPlatformLibraryMvvm/AlamofireImage (0.1.0):
+  - MultiPlatformLibraryMvvm/AlamofireImage (0.3.0):
     - AlamofireImage
     - MultiPlatformLibrary
     - MultiPlatformLibraryResources
-  - MultiPlatformLibraryMvvm/Core (0.1.0):
+  - MultiPlatformLibraryMvvm/Core (0.3.0):
     - MultiPlatformLibrary
     - MultiPlatformLibraryResources
-  - MultiPlatformLibraryMvvm/SkyFloatingLabelTextField (0.1.0):
+  - MultiPlatformLibraryMvvm/SkyFloatingLabelTextField (0.3.0):
     - MultiPlatformLibrary
     - MultiPlatformLibraryResources
     - SkyFloatingLabelTextField
@@ -28,7 +28,7 @@ PODS:
 
 DEPENDENCIES:
   - MultiPlatformLibrary (from `../mpp-library`)
-  - MultiPlatformLibraryMvvm (from `https://github.com/icerockdev/moko-mvvm.git`, tag `release/0.2.0`)
+  - MultiPlatformLibraryMvvm (from `https://github.com/icerockdev/moko-mvvm.git`, tag `release/0.3.0`)
   - MultiPlatformLibraryResources (from `https://github.com/icerockdev/moko-resources.git`, tag `release/0.3.0`)
   - MultiPlatformLibraryUnits/Core (from `https://github.com/icerockdev/moko-units.git`, tag `release/0.1.0`)
 
@@ -43,7 +43,7 @@ EXTERNAL SOURCES:
     :path: "../mpp-library"
   MultiPlatformLibraryMvvm:
     :git: https://github.com/icerockdev/moko-mvvm.git
-    :tag: release/0.2.0
+    :tag: release/0.3.0
   MultiPlatformLibraryResources:
     :git: https://github.com/icerockdev/moko-resources.git
     :tag: release/0.3.0
@@ -54,7 +54,7 @@ EXTERNAL SOURCES:
 CHECKOUT OPTIONS:
   MultiPlatformLibraryMvvm:
     :git: https://github.com/icerockdev/moko-mvvm.git
-    :tag: release/0.2.0
+    :tag: release/0.3.0
   MultiPlatformLibraryResources:
     :git: https://github.com/icerockdev/moko-resources.git
     :tag: release/0.3.0
@@ -66,11 +66,11 @@ SPEC CHECKSUMS:
   Alamofire: afc3e7c6db61476cb45cdd23fed06bad03bbc321
   AlamofireImage: 63cfe3baf1370be6c498149687cf6db3e3b00999
   MultiPlatformLibrary: 176fb8ade516666cd47e93de1b71ba0441a541bb
-  MultiPlatformLibraryMvvm: b37e42e96f97f22c13693d085e537ace75e9e19e
+  MultiPlatformLibraryMvvm: 8ac0b6f211a98a67573a1effdcd8d3c3dcd081e7
   MultiPlatformLibraryResources: 5cc246020c1b505ff909b4a0851c216847bb92eb
   MultiPlatformLibraryUnits: 44eda0f9372f8a095225fae2579916208ca2c8d3
   SkyFloatingLabelTextField: 4b46db0ab1ccde0919cded29c656e6b4805eda04
 
-PODFILE CHECKSUM: 2b75fc0bd33e26774326cb72c6c15eac7469b8c9
+PODFILE CHECKSUM: 75761572cc5ae77a240ebff93419bc5cc27a17df
 
 COCOAPODS: 1.8.3

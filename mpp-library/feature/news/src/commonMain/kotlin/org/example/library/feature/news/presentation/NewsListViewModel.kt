@@ -54,7 +54,7 @@ class NewsListViewModel(
     }
 
     private fun loadList() {
-        coroutineScope.launch {
+        viewModelScope.launch {
             try {
                 _state.value = State.Loading()
 
