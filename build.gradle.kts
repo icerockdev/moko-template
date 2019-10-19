@@ -8,8 +8,6 @@ plugins {
 
 allprojects {
     repositories {
-        mavenLocal()
-
         google()
         jcenter()
 
