@@ -2,8 +2,9 @@
  * Copyright 2019 IceRock MAG Inc. Use of this source code is governed by the Apache 2.0 license.
  */
 
-package org.example.library.feature.news.presentation
+package org.example.library.feature.list.presentation
 
+import com.github.aakira.napier.Napier
 import dev.icerock.moko.mvvm.State
 import dev.icerock.moko.mvvm.asState
 import dev.icerock.moko.mvvm.livedata.*
@@ -13,28 +14,21 @@ import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.resources.desc.desc
 import dev.icerock.moko.units.UnitItem
 import kotlinx.coroutines.launch
-import org.example.library.feature.news.model.News
-import org.example.library.feature.news.model.NewsSource
+import org.example.library.feature.list.model.ListSource
 
-class NewsListViewModel(
-    private val newsSource: NewsSource,
+class ListViewModel<T>(
+    private val listSource: ListSource<T>,
     private val strings: Strings,
-    private val unitsFactory: UnitsFactory
+    private val unitsFactory: UnitsFactory<T>
 ) : ViewModel() {
 
-    private val _state: MutableLiveData<State<List<News>, Throwable>> =
+    private val _state: MutableLiveData<State<List<T>, Throwable>> =
         MutableLiveData(initialValue = State.Loading())
 
     val state: LiveData<State<List<UnitItem>, StringDesc>> = _state
         .dataTransform {
             map { news ->
-                news.map { item ->
-                    unitsFactory.createNewsTile(
-                        id = item.id,
-                        title = item.title,
-                        description = item.description?.desc() ?: strings.noDescription.desc()
-                    )
-                }
+                news.map { unitsFactory.createTile(it) }
             }
         }
         .errorTransform {
@@ -49,8 +43,18 @@ class NewsListViewModel(
         loadList()
     }
 
-    fun onRefresh() {
-        loadList()
+    fun onRefresh(completion: () -> Unit) {
+        viewModelScope.launch {
+            try {
+                val items = listSource.getList()
+
+                _state.value = items.asState()
+            } catch (error: Throwable) {
+                Napier.e("can't refresh", throwable = error)
+            } finally {
+                completion()
+            }
+        }
     }
 
     private fun loadList() {
@@ -58,7 +62,7 @@ class NewsListViewModel(
             try {
                 _state.value = State.Loading()
 
-                val items = newsSource.getNewsList()
+                val items = listSource.getList()
 
                 _state.value = items.asState()
             } catch (error: Throwable) {
@@ -67,16 +71,11 @@ class NewsListViewModel(
         }
     }
 
-    interface UnitsFactory {
-        fun createNewsTile(
-            id: Long,
-            title: String,
-            description: StringDesc
-        ): UnitItem
+    interface UnitsFactory<T> {
+        fun createTile(data: T): UnitItem
     }
 
     interface Strings {
         val unknownError: StringResource
-        val noDescription: StringResource
     }
 }

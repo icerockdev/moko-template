@@ -7,9 +7,9 @@ package org.example.app.units
 import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.units.UnitItem
 import org.example.app.TileNews
-import org.example.library.feature.news.presentation.NewsListViewModel
+import org.example.library.SharedFactory
 
-class NewsListUnitsFactory : NewsListViewModel.UnitsFactory {
+class NewsListUnitsFactory : SharedFactory.NewsUnitsFactory {
     override fun createNewsTile(
         id: Long,
         title: String,

@@ -10,43 +10,45 @@ import com.russhwolf.settings.Settings
 import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.resources.desc.desc
+import dev.icerock.moko.units.UnitItem
 import org.example.library.domain.di.DomainFactory
+import org.example.library.domain.entity.News
 import org.example.library.feature.config.di.ConfigFactory
 import org.example.library.feature.config.model.ConfigStore
 import org.example.library.feature.config.presentation.ConfigViewModel
-import org.example.library.feature.news.di.NewsFactory
-import org.example.library.feature.news.model.News
-import org.example.library.feature.news.model.NewsSource
-import org.example.library.feature.news.presentation.NewsListViewModel
+import org.example.library.feature.list.di.ListFactory
+import org.example.library.feature.list.model.ListSource
+import org.example.library.feature.list.presentation.ListViewModel
 
 class SharedFactory(
     settings: Settings,
     antilog: Antilog,
     baseUrl: String,
-    newsUnitsFactory: NewsListViewModel.UnitsFactory
+    newsUnitsFactory: NewsUnitsFactory
 ) {
     private val domainFactory = DomainFactory(
         settings = settings,
         baseUrl = baseUrl
     )
 
-    val newsFactory = NewsFactory(
-        newsSource = object : NewsSource {
-            override suspend fun getNewsList(): List<News> {
-                return domainFactory.newsRepository.getNewsList().map { item ->
-                    News(
-                        id = item.id.toLong(),
-                        title = item.fullName.orEmpty(),
-                        description = item.description
-                    )
-                }
+    val newsFactory: ListFactory<News> = ListFactory(
+        listSource = object : ListSource<News> {
+            override suspend fun getList(): List<News> {
+                return domainFactory.newsRepository.getNewsList()
             }
         },
-        newsListStrings = object : NewsListViewModel.Strings {
+        strings = object : ListViewModel.Strings {
             override val unknownError: StringResource = MR.strings.unknown_error
-            override val noDescription: StringResource = MR.strings.no_description
         },
-        newsUnitsFactory = newsUnitsFactory
+        unitsFactory = object : ListViewModel.UnitsFactory<News> {
+            override fun createTile(data: News): UnitItem {
+                return newsUnitsFactory.createNewsTile(
+                    id = data.id.toLong(),
+                    title = data.fullName.orEmpty(),
+                    description = data.description?.desc() ?: MR.strings.no_description.desc()
+                )
+            }
+        }
     )
 
     val configFactory = ConfigFactory(
@@ -89,5 +91,13 @@ class SharedFactory(
 
     init {
         Napier.base(antilog)
+    }
+
+    interface NewsUnitsFactory {
+        fun createNewsTile(
+            id: Long,
+            title: String,
+            description: StringDesc
+        ): UnitItem
     }
 }

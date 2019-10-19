@@ -15,13 +15,14 @@ class NewsViewController: UIViewController {
     @IBOutlet private var errorView: UIView!
     @IBOutlet private var errorLabel: UILabel!
     
-    private var viewModel: NewsListViewModel!
+    private var viewModel: ListViewModel<News>!
     private var dataSource: FlatUnitTableViewDataSource!
+    private var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel = AppComponent.factory.newsFactory.createNewsListViewModel()
+        viewModel = AppComponent.factory.newsFactory.createListViewModel()
 
         // binding methods from https://github.com/icerockdev/moko-mvvm
         activityIndicator.bindVisibility(liveData: viewModel.state.isLoadingState())
@@ -44,9 +45,19 @@ class NewsViewController: UIViewController {
             self?.dataSource.units = items
             self?.tableView.reloadData()
         }
+        
+        refreshControl = UIRefreshControl()
+        tableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(onRefresh), for: .valueChanged)
     }
     
     @IBAction func onRetryPressed() {
         viewModel.onRetryPressed()
+    }
+    
+    @objc func onRefresh() {
+        viewModel.onRefresh { [weak self] in
+            self?.refreshControl.endRefreshing()
+        }
     }
 }

@@ -30,5 +30,5 @@ include(":mpp-library")
 listOf(
     Modules.MultiPlatform.domain,
     Modules.MultiPlatform.Feature.config,
-    Modules.MultiPlatform.Feature.news
+    Modules.MultiPlatform.Feature.list
 ).forEach { include(it.name) }

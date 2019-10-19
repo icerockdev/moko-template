@@ -29,7 +29,7 @@ val mppLibs = listOf(
 val mppModules = listOf(
     Modules.MultiPlatform.domain,
     Modules.MultiPlatform.Feature.config,
-    Modules.MultiPlatform.Feature.news
+    Modules.MultiPlatform.Feature.list
 )
 
 setupFramework(

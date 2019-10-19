@@ -14,8 +14,8 @@ object Modules {
                 name = ":mpp-library:feature:config",
                 exported = true
             )
-            val news = MultiPlatformModule(
-                name = ":mpp-library:feature:news",
+            val list = MultiPlatformModule(
+                name = ":mpp-library:feature:list",
                 exported = true
             )
         }

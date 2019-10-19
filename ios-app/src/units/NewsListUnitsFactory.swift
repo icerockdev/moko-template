@@ -6,7 +6,7 @@ import UIKit
 import MultiPlatformLibrary
 import MultiPlatformLibraryUnits
 
-class NewsListUnitsFactory: NewsListViewModelUnitsFactory {
+class NewsListUnitsFactory: SharedFactoryNewsUnitsFactory {
     func createNewsTile(
         id: Int64,
         title: String,
