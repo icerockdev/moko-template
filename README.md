@@ -10,6 +10,7 @@ A sample project that helps to start building a Mobile Kotlin Multiplatform appl
 - [Features](#features)
 - [Modules](#modules)
 - [Screenshots](#screenshots)
+- [How to Run](#how-to-run)
 - [Project setup](#project-setup)
 - [Contributing](#contributing)
 - [License](#license)
@@ -65,15 +66,88 @@ The connections between the `feature:list` classes and the `domain` classes impl
 |![android-app](https://user-images.githubusercontent.com/5010169/66911569-f9ba0d00-f03a-11e9-80b0-d4992bf61fbe.png)|![ios-app](https://user-images.githubusercontent.com/5010169/66911572-fa52a380-f03a-11e9-8425-19014e14c7b8.png)|
 |![android-app](https://user-images.githubusercontent.com/5010169/66911571-fa52a380-f03a-11e9-9470-ea3dc05a6dff.png)|![ios-app](https://user-images.githubusercontent.com/5010169/66911574-fa52a380-f03a-11e9-9f67-a1a48865bf97.png)|
 
+## How to Run
+
+Android - just open repository root directory in Android Studio and press `Run`.  
+iOS - run `pod install` in directory `ios-app`. Then open `ios-app/ios-app.xcworkspace` and press `Run` on simulator/device.
+
 ## Project setup
 
 ### Setup your own ApplicationId
 
+*Just like in other native apps*  
 In `android-app/build.gradle.kts` change `org.example.app` in the following line:
 ```kotlin
 applicationId = "org.example.app"
 ```
-In ios-app change `Bundle Identifier` in the Xcode project settings.
+In Xcode project settings change `Bundle Identifier`.
+
+### Setup your own project name
+
+*Just like in other native apps*  
+In `android-app/src/main/res/values/strings.xml` change value of `app_name`.  
+In Xcode project settings change `Display name`.
+
+### Setup your own app icon
+
+*Just like in other native apps*  
+Put your android icon to `android-app/src/main/res` and setup usage in `android-app/src/main/AndroidManifest.xml`.  
+Put your iOS icon to `ios-app/src/Assets.xcassets/AppIcon.appiconset`.
+
+### Create new feature module
+
+Create a file `mpp-library/feature/myfeature/build.gradle.kts` with the following content:
+```kotlin
+plugins {
+    id("com.android.library")
+    id("org.jetbrains.kotlin.multiplatform")
+    id("dev.icerock.mobile.multiplatform")
+}
+
+android {
+    compileSdkVersion(Versions.Android.compileSdk)
+
+    defaultConfig {
+        minSdkVersion(Versions.Android.minSdk)
+        targetSdkVersion(Versions.Android.targetSdk)
+    }
+}
+
+dependencies {
+    mppLibrary(Deps.Libs.MultiPlatform.kotlinStdLib)
+}
+```
+Add module to `buildSrc/src/main/kotlin/Modules.kt`:
+```kotlin
+object Modules {
+    object MultiPlatform {
+        ...
+
+        object Feature {
+            ...
+
+            val myfeature = MultiPlatformModule(
+                name = ":mpp-library:feature:myfeature",
+                exported = true
+            )
+        }
+    }
+}
+```
+Add module to `settings.gradle.kts`:
+```kotlin
+listOf(
+    ...
+    Modules.MultiPlatform.Feature.myfeature
+).forEach { include(it.name) }
+```
+Add dependency to module from the `mpp-library` in `mpp-library/build.gradle.kts`:
+```kotlin
+val mppModules = listOf(
+    ...
+    Modules.MultiPlatform.Feature.myfeature
+)
+```
 
 ## Contributing
 
