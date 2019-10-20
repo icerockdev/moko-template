@@ -32,7 +32,7 @@ A sample project that helps to start building a Mobile Kotlin Multiplatform appl
 
 ## Modules
 ### Legend
-The color describes different types of modules and the shape - the type of an element (class|interface).
+The color describes different modules and the shape - the type of an element (class|interface).
 ![legend](https://user-images.githubusercontent.com/5010169/66910970-cd51c100-f039-11e9-9dfa-775a39b0d748.jpg)
 
 ### Modules scheme
