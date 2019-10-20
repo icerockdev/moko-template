@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">moko-app</string>
-    <string name="no_news">No news</string>
+    <string name="no_data">No data</string>
     <string name="submit_btn">Submit</string>
     <string name="token_hint">API token</string>
     <string name="language_hint">Language code</string>
