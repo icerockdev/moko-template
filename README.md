@@ -16,47 +16,47 @@ A sample project that helps to start building a Mobile Kotlin Multiplatform appl
 
 ## Features
 
-- **Kotlin Multiplatform** - *Don't Repeat Yourself*. Share business logic code written in Kotlin with Android and iOS apps. Truly native UI and perfomance (shared code compiled into native libraries). 
-- **Kotlin Gradle DSL** - Configure project with flexible Kotlin Gradle DSL.
-- **Modularized architecture** - Implement app features independently of each other. Inject dependencies at compile-time into features through the use of `Factory` class.
-- **Parallel build of modules** - Feature modules and `domain` module are independent of each other. This provides caching of build artifacts for each module and results in better compile time.
-- **Dependencies definition in buildSrc** - Simplify dependency management across modules.
-- **Ready to use** - Template project includes all [moko libraries](https://moko.icerock.dev) and demonstrates common use cases for:
-  - ViewModels
-  - LiveData
-  - Resource management
-  - Runtime permissions access
-  - Media access 
-  - UI lists management from shared code 
-  - Network layer generation from OpenAPI
+- **Kotlin Multiplatform**'s motto is *Don't Repeat Yourself*. Share the business logic code written in Kotlin between Android and iOS apps. 100% native UI and performance (shared code compiles into native libraries);
+- **Kotlin Gradle DSL** – Configure project with flexible Kotlin Gradle DSL;
+- **Modular-bazed architecture** – Implement app features independently of each other. Inject dependencies into features at compile-time through the use of the `Factory` class;
+- **Parallel build of modules** – Feature modules and the `domain` module don't depend on each other. This provides caching of build artifacts for each module and results in better compilation time;
+- **Dependencies definition in buildSrc** - Simplify dependency management across modules;
+- **Ready to use** - Template project includes all [moko libraries](https://moko.icerock.dev) and supports most common use cases:
+  - ViewModels;
+  - LiveData;
+  - Resource management;
+  - Runtime permissions access;
+  - Media access;
+  - UI lists management from shared code;
+  - Network layer generation from OpenAPI.
 
 ## Modules
-
-![modules scheme](https://user-images.githubusercontent.com/5010169/66987168-6b04c900-f0ea-11e9-94fa-00709a641ac2.jpg)
-This scheme shows structure of the project:  
-
-- We have two applications which represent View application layer:
-  - `android-app` written in Kotlin uses `Activity` and `Fragment`
-  - `ios-app` written in Swift uses `UIViewController` with Storyboards
-- Both applications depend on `mpp-library` (kotlin multiplatform) which gives access to `ViewModel`'s of every feature through `SharedFactory`. It is responsible for setting up connections `feature` and `domain` modules
-- `mpp-library` consists of modules:
-  - `domain` (kotlin multiplatform) - contains domain entities, repositories, server api classes and `DomainFactory` which creates instances of them all
-  - `feature` (kotlin multiplatform). Every feature contains corresponding ViewModel, Factory, models and interfaces it expects to be injected from the parent module. In this example:
-    - `config` contains auth feature ViewModel, data store interface and `ConfigFactory` which create instances of ViewModel
-    - `news` contains news feature ViewModel, data source interface, list items factory interface, `NewsFactory` which create instances of ViewModel.
-
-### Legend for schemes
-Color describes different modules. Shape - type of an element (class|interface)
+### Legend
+The color describes different types of modules and the shape - the type of an element (class|interface).
 ![legend](https://user-images.githubusercontent.com/5010169/66910970-cd51c100-f039-11e9-9dfa-775a39b0d748.jpg)
 
-### Config module scheme
-![config module scheme](https://user-images.githubusercontent.com/5010169/66987117-545e7200-f0ea-11e9-89c5-e7d1c79c8807.jpg)
-Connections between `feature:config` classes and `domain` classes implemented in `mpp-library` module.
+### Modules scheme
+![modules scheme](https://user-images.githubusercontent.com/5010169/67163239-30629100-f375-11e9-9b10-fbcc3d3ea0bb.jpg)
+This scheme shows the structure of the project:  
 
-### News module scheme
-![news module scheme](https://user-images.githubusercontent.com/5010169/66917411-85d23180-f047-11e9-9e7f-b2f3387fac51.jpg)
-Connections between `feature:news` classes and `domain` classes implemented in `mpp-library` module.  
-`NewsListViewModel.UnitsFactory` interface is implemented on both platforms - Android (`android-app`) and iOS (`ios-app`).
+- We have two applications that represent the View application layer:
+  - `android-app` written in Kotlin uses `Activity` and `Fragment`;
+  - `ios-app` written in Swift uses `UIViewController` with Storyboards.
+- Both applications depend on `mpp-library` (Kotlin Multiplatform) that provides access to `ViewModel`'s of each feature through `SharedFactory`. The library is responsible for setting up connections between the `feature` and `domain` modules.
+- `mpp-library` consists of modules:
+  - `domain` (Kotlin Multiplatform) - contains the domain entities, repositories, server API classes, and `DomainFactory` that creates instances for all of them;
+  - `feature` (Kotlin Multiplatform). Every feature contains corresponding ViewModel, Factory, models, and interfaces it expects to be injected from the parent module. In this example:
+    - `config` contains an config feature's ViewModel, data store interface and `ConfigFactory` that create instances of ViewModel;
+    - `list` contains a items list feature's ViewModel, data source interface, list items factory interface, and `ListFactory` that create instances of ViewModel.
+
+### Config module scheme
+![config module scheme](https://user-images.githubusercontent.com/5010169/67163238-2e98cd80-f375-11e9-8747-1b50be5bdbfb.jpg)
+The connections between the `feature:config` classes and the `domain` classes implemented in the `mpp-library` module.
+
+### List module scheme
+![list module scheme](https://user-images.githubusercontent.com/5010169/67163236-2e003700-f375-11e9-8c79-1b9ec96db26b.jpg)
+The connections between the `feature:list` classes and the `domain` classes implemented in the `mpp-library` module.  
+`SharedFactory.NewsUnitsFactory` interface is implemented on both platforms - Android (`android-app`) and iOS (`ios-app`).
 
 ## Screenshots
 
@@ -69,19 +69,17 @@ Connections between `feature:news` classes and `domain` classes implemented in `
 
 ### Setup your own ApplicationId
 
-In `android-app/build.gradle.kts` change `org.example.app` at line:
+In `android-app/build.gradle.kts` change `org.example.app` in the following line:
 ```kotlin
 applicationId = "org.example.app"
 ```
-In ios-app change `Bundle Identifier` in Xcode project settings.
+In ios-app change `Bundle Identifier` in the Xcode project settings.
 
 ## Contributing
 
-All development (both new features and bug fixes) is performed in `develop` branch. This way `master` sources always contain sources of the most recently released version. Please send PRs with bug fixes to `develop` branch. Fixes to documentation in markdown files are an exception to this rule. They are updated directly in `master`.
+All development of template is performed in the `master` branch. Please send PRs with bug fixes to the `master` branch.
 
-The `develop` branch is pushed to `master` during release.
-
-More detailed guide for contributers see in [contributing guide](CONTRIBUTING.md).
+Please refer to the [contributing guide](CONTRIBUTING.md) for more details.
 
 ## License
 
