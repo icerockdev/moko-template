@@ -19,7 +19,7 @@ object Deps {
     object Libs {
         object Android {
             val kotlinStdLib = AndroidLibrary(
-                name = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
+                name = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.Libs.Android.kotlinStdLib}"
             )
             val appCompat = AndroidLibrary(
                 name = "androidx.appcompat:appcompat:${Versions.Libs.Android.appCompat}"
@@ -41,7 +41,7 @@ object Deps {
         object MultiPlatform {
             val kotlinStdLib = MultiPlatformLibrary(
                 android = Android.kotlinStdLib.name,
-                common = "org.jetbrains.kotlin:kotlin-stdlib-common:${Versions.kotlin}"
+                common = "org.jetbrains.kotlin:kotlin-stdlib-common:${Versions.Libs.MultiPlatform.kotlinStdLib}"
             )
             val ktorClient = MultiPlatformLibrary(
                 android = "io.ktor:ktor-client-android:${Versions.Libs.MultiPlatform.ktorClient}",
