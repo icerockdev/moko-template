@@ -10,7 +10,7 @@ import com.russhwolf.settings.Settings
 import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.resources.desc.desc
-import dev.icerock.moko.units.UnitItem
+import dev.icerock.moko.units.TableUnitItem
 import org.example.library.domain.di.DomainFactory
 import org.example.library.domain.entity.News
 import org.example.library.feature.config.di.ConfigFactory
@@ -41,7 +41,7 @@ class SharedFactory(
             override val unknownError: StringResource = MR.strings.unknown_error
         },
         unitsFactory = object : ListViewModel.UnitsFactory<News> {
-            override fun createTile(data: News): UnitItem {
+            override fun createTile(data: News): TableUnitItem {
                 return newsUnitsFactory.createNewsTile(
                     id = data.id.toLong(),
                     title = data.fullName.orEmpty(),
@@ -98,6 +98,6 @@ class SharedFactory(
             id: Long,
             title: String,
             description: StringDesc
-        ): UnitItem
+        ): TableUnitItem
     }
 }

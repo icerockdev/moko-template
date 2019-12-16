@@ -10,7 +10,7 @@ class NewsListUnitsFactory: SharedFactoryNewsUnitsFactory {
     func createNewsTile(
         id: Int64,
         title: String,
-        description: StringDesc) -> UnitItem {
+        description: StringDesc) -> TableUnitItem {
         // create unit for https://github.com/icerockdev/moko-units
         return UITableViewCellUnit<NewsTableViewCell>(
             data: NewsTableViewCell.CellModel(

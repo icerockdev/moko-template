@@ -12,7 +12,7 @@ import dev.icerock.moko.mvvm.viewmodel.ViewModel
 import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.resources.desc.desc
-import dev.icerock.moko.units.UnitItem
+import dev.icerock.moko.units.TableUnitItem
 import kotlinx.coroutines.launch
 import org.example.library.feature.list.model.ListSource
 
@@ -25,7 +25,7 @@ class ListViewModel<T>(
     private val _state: MutableLiveData<State<List<T>, Throwable>> =
         MutableLiveData(initialValue = State.Loading())
 
-    val state: LiveData<State<List<UnitItem>, StringDesc>> = _state
+    val state: LiveData<State<List<TableUnitItem>, StringDesc>> = _state
         .dataTransform {
             map { news ->
                 news.map { unitsFactory.createTile(it) }
@@ -72,7 +72,7 @@ class ListViewModel<T>(
     }
 
     interface UnitsFactory<T> {
-        fun createTile(data: T): UnitItem
+        fun createTile(data: T): TableUnitItem
     }
 
     interface Strings {
