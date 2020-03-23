@@ -6,12 +6,7 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.multiplatform")
     id("kotlin-android-extensions")
-    id("kotlin-kapt")
     id("dev.icerock.mobile.multiplatform")
-}
-
-androidExtensions {
-    isExperimental = true
 }
 
 android {
@@ -20,10 +15,6 @@ android {
     defaultConfig {
         minSdkVersion(Versions.Android.minSdk)
         targetSdkVersion(Versions.Android.targetSdk)
-    }
-
-    dataBinding {
-        isEnabled = true
     }
 }
 
