@@ -7,8 +7,6 @@ plugins {
 }
 
 repositories {
-    mavenLocal()
-
     jcenter()
     google()
 
