@@ -32,7 +32,8 @@ class ListViewModel<T>(
             }
         }
         .errorTransform {
-            map { it.message?.desc() ?: strings.unknownError.desc() }
+            // new type inferrence require set types oO
+            map<Throwable, StringDesc> { it.message?.desc() ?: strings.unknownError.desc() }
         }
 
     init {

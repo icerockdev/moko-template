@@ -16,7 +16,7 @@ class NewsViewController: UIViewController {
     @IBOutlet private var errorLabel: UILabel!
     
     private var viewModel: ListViewModel<News>!
-    private var dataSource: FlatUnitTableViewDataSource!
+    private var dataSource: TableUnitsSource!
     private var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
@@ -31,18 +31,17 @@ class NewsViewController: UIViewController {
         errorView.bindVisibility(liveData: viewModel.state.isErrorState())
 
         // in/out generics of Kotlin removed in swift, so we should map to valid class
-        let errorText: LiveData<StringDesc> = viewModel.state.error().map { $0 as? StringDesc } as! LiveData<StringDesc>
+        let errorText: LiveData<StringDesc> = viewModel.state.error().map { $0 as? StringDesc ?? StringDesc.Raw(string: "") } as! LiveData<StringDesc>
         errorLabel.bindText(liveData: errorText)
 
         // datasource from https://github.com/icerockdev/moko-units
-        dataSource = FlatUnitTableViewDataSource()
-        dataSource.setup(for: tableView)
+        dataSource = TableUnitsSourceKt.default(for: tableView)
 
         // manual bind to livedata, see https://github.com/icerockdev/moko-mvvm
         viewModel.state.data().addObserver { [weak self] itemsObject in
-            guard let items = itemsObject as? [UITableViewCellUnitProtocol] else { return }
+            guard let items = itemsObject as? [TableUnitItem] else { return }
             
-            self?.dataSource.units = items
+            self?.dataSource.unitItems = items
             self?.tableView.reloadData()
         }
         

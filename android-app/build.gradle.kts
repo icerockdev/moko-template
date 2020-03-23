@@ -61,6 +61,9 @@ dependencies {
     implementation(Deps.Libs.MultiPlatform.napier.android!!)
 
     implementation(project(":mpp-library"))
+
+    // fix of package javax.annotation does not exist import javax.annotation.Generated in DataBinding code
+    compileOnly("javax.annotation:jsr250-api:1.0")
 }
 
 multiplatformUnits {

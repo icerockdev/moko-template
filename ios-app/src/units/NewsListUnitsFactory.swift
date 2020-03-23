@@ -18,6 +18,7 @@ class NewsListUnitsFactory: SharedFactoryNewsUnitsFactory {
                 title: title,
                 description: description.localized()
             ),
+            itemId: id,
             configurator: nil
         )
     }
