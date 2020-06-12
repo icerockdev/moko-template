@@ -22,9 +22,9 @@ class ConfigViewModel(
 ) : ViewModel(), EventsDispatcherOwner<ConfigViewModel.EventsListener> {
 
     val apiTokenField: FormField<String, StringDesc> =
-        FormField(defaultToken, liveBlock(validations::validateToken))
+        FormField(configStore.apiToken ?: defaultToken, liveBlock(validations::validateToken))
     val languageField: FormField<String, StringDesc> =
-        FormField(defaultLanguage, liveBlock(validations::validateLanguage))
+        FormField(configStore.language ?: defaultLanguage, liveBlock(validations::validateLanguage))
 
     private val fields = listOf(apiTokenField, languageField)
 
