@@ -3,49 +3,45 @@
  */
 
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.multiplatform")
-    id("dev.icerock.mobile.multiplatform")
-    id("dev.icerock.mobile.multiplatform-resources")
-}
-
-android {
-    compileSdkVersion(Versions.Android.compileSdk)
-
-    defaultConfig {
-        minSdkVersion(Versions.Android.minSdk)
-        targetSdkVersion(Versions.Android.targetSdk)
-    }
+    plugin(Deps.Plugins.androidLibrary)
+    plugin(Deps.Plugins.kotlinMultiplatform)
+    plugin(Deps.Plugins.mobileMultiplatform)
+    plugin(Deps.Plugins.mokoResources)
+    plugin(Deps.Plugins.iosFramework)
 }
 
 val mppLibs = listOf(
-    Deps.Libs.MultiPlatform.settings,
+    Deps.Libs.MultiPlatform.multiplatformSettings,
     Deps.Libs.MultiPlatform.napier,
     Deps.Libs.MultiPlatform.mokoParcelize,
     Deps.Libs.MultiPlatform.mokoResources,
     Deps.Libs.MultiPlatform.mokoMvvm,
-    Deps.Libs.MultiPlatform.mokoUnits
+    Deps.Libs.MultiPlatform.mokoUnits,
+    Deps.Libs.MultiPlatform.mokoFields
 )
 val mppModules = listOf(
-    Modules.MultiPlatform.domain,
-    Modules.MultiPlatform.Feature.config,
-    Modules.MultiPlatform.Feature.list
-)
-
-setupFramework(
-    exports = mppLibs + mppModules
+    Deps.Modules.domain,
+    Deps.Modules.Feature.config,
+    Deps.Modules.Feature.list
 )
 
 dependencies {
-    mppLibrary(Deps.Libs.MultiPlatform.kotlinStdLib)
-    mppLibrary(Deps.Libs.MultiPlatform.coroutines)
+    commonMainImplementation(Deps.Libs.MultiPlatform.coroutines) {
+        // we should force native-mt version for ktor 1.4.0 on iOS
+        isForce = true
+    }
 
-    androidLibrary(Deps.Libs.Android.lifecycle)
+    androidMainImplementation(Deps.Libs.Android.lifecycle)
 
-    mppLibs.forEach { mppLibrary(it) }
-    mppModules.forEach { mppModule(it) }
+    mppLibs.forEach { commonMainApi(it.common) }
+    mppModules.forEach { commonMainApi(project(it.name)) }
 }
 
 multiplatformResources {
     multiplatformResourcesPackage = "org.example.library"
+}
+
+framework {
+    mppModules.forEach { export(it) }
+    mppLibs.forEach { export(it) }
 }

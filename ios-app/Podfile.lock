@@ -16,7 +16,7 @@ PODS:
   - MultiPlatformLibraryMvvm/SkyFloatingLabelTextField (0.3.0):
     - MultiPlatformLibrary
     - SkyFloatingLabelTextField
-  - MultiPlatformLibraryUnits/Core (0.1.0):
+  - MultiPlatformLibraryUnits/Core (0.4.0):
     - MultiPlatformLibrary
   - SkyFloatingLabelTextField (3.8.0)
 
@@ -24,8 +24,8 @@ DEPENDENCIES:
   - Alamofire (= 4.8.2)
   - AlamofireImage (= 3.5.2)
   - MultiPlatformLibrary (from `../mpp-library`)
-  - MultiPlatformLibraryMvvm (from `https://github.com/icerockdev/moko-mvvm.git`, tag `release/0.6.0`)
-  - MultiPlatformLibraryUnits/Core (from `https://github.com/icerockdev/moko-units.git`, tag `release/0.3.1`)
+  - MultiPlatformLibraryMvvm (from `https://github.com/icerockdev/moko-mvvm.git`, tag `release/0.8.0`)
+  - MultiPlatformLibraryUnits/Core (from `https://github.com/icerockdev/moko-units.git`, tag `release/0.4.0`)
 
 SPEC REPOS:
   trunk:
@@ -38,27 +38,27 @@ EXTERNAL SOURCES:
     :path: "../mpp-library"
   MultiPlatformLibraryMvvm:
     :git: https://github.com/icerockdev/moko-mvvm.git
-    :tag: release/0.6.0
+    :tag: release/0.8.0
   MultiPlatformLibraryUnits:
     :git: https://github.com/icerockdev/moko-units.git
-    :tag: release/0.3.1
+    :tag: release/0.4.0
 
 CHECKOUT OPTIONS:
   MultiPlatformLibraryMvvm:
     :git: https://github.com/icerockdev/moko-mvvm.git
-    :tag: release/0.6.0
+    :tag: release/0.8.0
   MultiPlatformLibraryUnits:
     :git: https://github.com/icerockdev/moko-units.git
-    :tag: release/0.3.1
+    :tag: release/0.4.0
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   AlamofireImage: 63cfe3baf1370be6c498149687cf6db3e3b00999
   MultiPlatformLibrary: 176fb8ade516666cd47e93de1b71ba0441a541bb
   MultiPlatformLibraryMvvm: 999ac3896d8214fd65e0e0a376a2e553bf4515b3
-  MultiPlatformLibraryUnits: f4fe5d26427bb3c996a6d786d9cc7552bc4ae8cb
+  MultiPlatformLibraryUnits: 0d2efb66522f63a8b38d5639d329aeb70cd4e9ba
   SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
 
-PODFILE CHECKSUM: a2270f5be5febe269ba4a274c903de646163596c
+PODFILE CHECKSUM: 0f7b6f18a84d79c0e1a0b739884e1690d63c4cb8
 
-COCOAPODS: 1.9.0
+COCOAPODS: 1.9.3

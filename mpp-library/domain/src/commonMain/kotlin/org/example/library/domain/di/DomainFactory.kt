@@ -29,8 +29,9 @@ class DomainFactory(
     private val keyValueStorage: KeyValueStorage by lazy { KeyValueStorage(settings) }
 
     private val json: Json by lazy {
-        @Suppress("EXPERIMENTAL_API_USAGE")
-        Json.nonstrict
+        Json {
+            ignoreUnknownKeys = true
+        }
     }
 
     private val httpClient: HttpClient by lazy {

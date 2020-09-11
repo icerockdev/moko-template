@@ -3,26 +3,24 @@
  */
 
 plugins {
-    id("com.android.application")
-    id("kotlin-android")
-    id("kotlin-kapt")
-    id("dev.icerock.mobile.multiplatform-units")
+    plugin(Deps.Plugins.androidApplication)
+    plugin(Deps.Plugins.kotlinAndroid)
+    plugin(Deps.Plugins.kotlinKapt)
+    plugin(Deps.Plugins.mokoUnits)
 }
 
 android {
-    compileSdkVersion(Versions.Android.compileSdk)
+    compileSdkVersion(Deps.Android.compileSdk)
 
-    dataBinding {
-        isEnabled = true
-    }
+    buildFeatures.dataBinding = true
 
     dexOptions {
         javaMaxHeapSize = "2g"
     }
 
     defaultConfig {
-        minSdkVersion(Versions.Android.minSdk)
-        targetSdkVersion(Versions.Android.targetSdk)
+        minSdkVersion(Deps.Android.minSdk)
+        targetSdkVersion(Deps.Android.targetSdk)
 
         applicationId = "org.example.app"
 
@@ -52,18 +50,12 @@ android {
 }
 
 dependencies {
-    implementation(Deps.Libs.Android.kotlinStdLib.name)
-
-    implementation(Deps.Libs.Android.appCompat.name)
-    implementation(Deps.Libs.Android.material.name)
-    implementation(Deps.Libs.Android.recyclerView.name)
-
-    implementation(Deps.Libs.MultiPlatform.napier.android!!)
+    implementation(Deps.Libs.Android.appCompat)
+    implementation(Deps.Libs.Android.material)
+    implementation(Deps.Libs.Android.recyclerView)
+    implementation(Deps.Libs.Android.swipeRefreshLayout)
 
     implementation(project(":mpp-library"))
-
-    // fix of package javax.annotation does not exist import javax.annotation.Generated in DataBinding code
-    compileOnly("javax.annotation:jsr250-api:1.0")
 }
 
 multiplatformUnits {
