@@ -31,7 +31,8 @@ class NewsViewController: UIViewController {
         errorView.bindVisibility(liveData: viewModel.state.isErrorState())
 
         // in/out generics of Kotlin removed in swift, so we should map to valid class
-        let errorText: LiveData<StringDesc> = viewModel.state.error().map { $0 as? StringDesc ?? StringDesc.Raw(string: "") } as! LiveData<StringDesc>
+        let errorText: LiveData<StringDesc> = viewModel.state.error()
+            .map { $0 as? StringDesc ?? RawStringDesc(string: "") } as! LiveData<StringDesc>
         errorLabel.bindText(liveData: errorText)
 
         // datasource from https://github.com/icerockdev/moko-units

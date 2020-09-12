@@ -18,6 +18,7 @@ import org.example.library.feature.list.presentation.ListViewModel
 // MvvmActivity for simplify creation of MVVM screen with https://github.com/icerockdev/moko-mvvm
 class NewsActivity : MvvmActivity<ActivityNewsBinding, ListViewModel<News>>() {
     override val layoutId: Int = R.layout.activity_news
+    @Suppress("UNCHECKED_CAST")
     override val viewModelClass = ListViewModel::class.java as Class<ListViewModel<News>>
     override val viewModelVariableId: Int = BR.viewModel
 

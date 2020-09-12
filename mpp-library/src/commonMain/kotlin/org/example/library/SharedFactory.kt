@@ -8,6 +8,7 @@ import com.github.aakira.napier.Antilog
 import com.github.aakira.napier.Napier
 import com.russhwolf.settings.Settings
 import dev.icerock.moko.resources.StringResource
+import dev.icerock.moko.resources.desc.ResourceFormatted
 import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.resources.desc.desc
 import dev.icerock.moko.units.TableUnitItem

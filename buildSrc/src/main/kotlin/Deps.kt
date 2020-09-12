@@ -2,136 +2,196 @@
  * Copyright 2019 IceRock MAG Inc. Use of this source code is governed by the Apache 2.0 license.
  */
 
+
 object Deps {
+    private const val kotlinVersion = "1.4.10"
+
+    private const val materialVersion = "1.2.1"
+    private const val recyclerViewVersion = "1.1.0"
+    private const val swipeRefreshLayoutVersion = "1.1.0"
+    private const val constraintLayoutVersion = "2.0.0"
+    private const val lifecycleVersion = "2.2.0"
+    private const val glideVersion = "4.9.0"
+    private const val androidAppCompatVersion = "1.1.0"
+    private const val espressoCoreVersion = "3.2.0"
+    private const val testRunnerVersion = "1.2.0"
+    private const val testExtJunitVersion = "1.1.1"
+
+    private const val kotlinxSerializationVersion = "1.0.0-RC"
+    private const val kotlinxDateTimeVersion = "0.1.0"
+    private const val coroutinesVersion = "1.3.9-native-mt"
+    private const val ktorClientVersion = "1.4.0"
+
+    private const val detektVersion = "1.12.0"
+
+    private const val mokoGraphicsVersion = "0.4.0"
+    private const val mokoParcelizeVersion = "0.4.0"
+    private const val mokoResourcesVersion = "0.13.1"
+    private const val mokoMvvmVersion = "0.8.0"
+    private const val mokoErrorsVersion = "0.3.0"
+    private const val mokoNetworkVersion = "0.8.0"
+    private const val mokoUnitsVersion = "0.4.1"
+    private const val mokoPermissionsVersion = "0.6.0"
+    private const val mokoMediaVersion = "0.5.0"
+    private const val mokoFieldsVersion = "0.5.0"
+
+    private const val multiplatformSettingsVersion = "0.6.1"
+    private const val napierVersion = "1.4.1"
+
+    object Android {
+        const val compileSdk = 29
+        const val targetSdk = 29
+        const val minSdk = 16
+    }
+
     object Plugins {
-        const val kotlinSerialization =
-            "org.jetbrains.kotlin:kotlin-serialization:${Versions.Plugins.serialization}"
-        const val androidExtensions =
-            "org.jetbrains.kotlin:kotlin-android-extensions:${Versions.Plugins.androidExtensions}"
-        const val mokoResources =
-            "dev.icerock.moko:resources-generator:${Versions.Plugins.mokoResources}"
-        const val mokoNetwork =
-            "dev.icerock.moko:network-generator:${Versions.Plugins.mokoNetwork}"
-        const val mokoUnits =
-            "dev.icerock.moko:units-generator:${Versions.Plugins.mokoUnits}"
+        val androidApplication = GradlePlugin(id = "com.android.application")
+        val androidLibrary = GradlePlugin(id = "com.android.library")
+        val kotlinMultiplatform = GradlePlugin(
+            id = "org.jetbrains.kotlin.multiplatform",
+            module = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        )
+        val kotlinKapt = GradlePlugin(id = "kotlin-kapt")
+        val kotlinAndroid = GradlePlugin(id = "kotlin-android")
+        val kotlinAndroidExtensions = GradlePlugin(id = "kotlin-android-extensions")
+        val kotlinSerialization = GradlePlugin(
+            id = "org.jetbrains.kotlin.plugin.serialization",
+            module = "org.jetbrains.kotlin:kotlin-serialization:$kotlinVersion"
+        )
+
+        val mobileMultiplatform = GradlePlugin(id = "dev.icerock.mobile.multiplatform")
+        val iosFramework = GradlePlugin(id = "dev.icerock.mobile.multiplatform.ios-framework")
+
+        val mokoNetwork = GradlePlugin(
+            id = "dev.icerock.mobile.multiplatform-network-generator",
+            module = "dev.icerock.moko:network-generator:$mokoNetworkVersion"
+        )
+        val mokoResources = GradlePlugin(
+            id = "dev.icerock.mobile.multiplatform-resources",
+            module = "dev.icerock.moko:resources-generator:$mokoResourcesVersion"
+        )
+        val mokoUnits = GradlePlugin(
+            id = "dev.icerock.mobile.multiplatform-units",
+            module = "dev.icerock.moko:units-generator:$mokoUnitsVersion"
+        )
+
+        val detekt = GradlePlugin(
+            id = "io.gitlab.arturbosch.detekt",
+            version = detektVersion
+        )
     }
 
     object Libs {
         object Android {
-            val kotlinStdLib = AndroidLibrary(
-                name = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.Libs.Android.kotlinStdLib}"
-            )
-            val appCompat = AndroidLibrary(
-                name = "androidx.appcompat:appcompat:${Versions.Libs.Android.appCompat}"
-            )
-            val material = AndroidLibrary(
-                name = "com.google.android.material:material:${Versions.Libs.Android.material}"
-            )
-            val recyclerView = AndroidLibrary(
-                name = "androidx.recyclerview:recyclerview:${Versions.Libs.Android.recyclerView}"
-            )
-            val constraintLayout = AndroidLibrary(
-                name = "androidx.constraintlayout:constraintlayout:${Versions.Libs.Android.constraintLayout}"
-            )
-            val lifecycle = AndroidLibrary(
-                name = "androidx.lifecycle:lifecycle-extensions:${Versions.Libs.Android.lifecycle}"
-            )
+            const val appCompat =
+                "androidx.appcompat:appcompat:$androidAppCompatVersion"
+            const val material =
+                "com.google.android.material:material:$materialVersion"
+            const val recyclerView =
+                "androidx.recyclerview:recyclerview:$recyclerViewVersion"
+            const val swipeRefreshLayout =
+                "androidx.swiperefreshlayout:swiperefreshlayout:$swipeRefreshLayoutVersion"
+            const val constraintLayout =
+                "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+            val glide =
+                "com.github.bumptech.glide:glide:$glideVersion"
+            val lifecycle =
+                "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
+            val ktorClientOkHttp =
+                "io.ktor:ktor-client-okhttp:$ktorClientVersion"
+
+            object Tests {
+                const val espressoCore =
+                    "androidx.test.espresso:espresso-core:$espressoCoreVersion"
+                const val kotlinTestJUnit =
+                    "org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion"
+                const val testCore =
+                    "androidx.test:core:1.3.0"
+                const val robolectric =
+                    "org.robolectric:robolectric:4.3"
+                const val testRunner =
+                    "androidx.test:runner:$testRunnerVersion"
+                const val testRules =
+                    "androidx.test:rules:$testRunnerVersion"
+                const val testExtJunit =
+                    "androidx.test.ext:junit:$testExtJunitVersion"
+            }
         }
 
         object MultiPlatform {
-            val kotlinStdLib = MultiPlatformLibrary(
-                android = Android.kotlinStdLib.name,
-                common = "org.jetbrains.kotlin:kotlin-stdlib-common:${Versions.Libs.MultiPlatform.kotlinStdLib}"
+            const val kotlinSerialization =
+                "org.jetbrains.kotlinx:kotlinx-serialization-core:$kotlinxSerializationVersion"
+            const val kotlinxDateTime =
+                "org.jetbrains.kotlinx:kotlinx-datetime:$kotlinxDateTimeVersion"
+            const val coroutines =
+                "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
+            const val ktorClient =
+                "io.ktor:ktor-client-core:$ktorClientVersion"
+            const val ktorClientLogging =
+                "io.ktor:ktor-client-logging:$ktorClientVersion"
+            val mokoResources =
+                "dev.icerock.moko:resources:$mokoResourcesVersion".mpl
+            val mokoParcelize =
+                "dev.icerock.moko:parcelize:$mokoParcelizeVersion".mpl
+            val mokoGraphics =
+                "dev.icerock.moko:graphics:$mokoGraphicsVersion".mpl
+            val mokoMvvm =
+                "dev.icerock.moko:mvvm:$mokoMvvmVersion".mpl
+            val mokoErrors =
+                "dev.icerock.moko:errors:$mokoErrorsVersion".mpl
+            val mokoNetwork =
+                "dev.icerock.moko:network:$mokoNetworkVersion".mpl
+            val mokoNetworkErrors =
+                "dev.icerock.moko:network-errors:$mokoNetworkVersion".mpl
+            val mokoPermissions =
+                "dev.icerock.moko:permissions:$mokoPermissionsVersion".mpl
+            val mokoMedia =
+                "dev.icerock.moko:media:$mokoMediaVersion".mpl
+            val mokoUnits =
+                "dev.icerock.moko:units:$mokoUnitsVersion".mpl
+            val mokoFields =
+                "dev.icerock.moko:fields:$mokoFieldsVersion".mpl
+            val multiplatformSettings =
+                "com.russhwolf:multiplatform-settings:$multiplatformSettingsVersion".mpl
+            val napier =
+                "com.github.aakira:napier:$napierVersion".mpl
+
+            object Tests {
+                const val kotlinTest =
+                    "org.jetbrains.kotlin:kotlin-test-common:$kotlinVersion"
+                const val kotlinTestAnnotations =
+                    "org.jetbrains.kotlin:kotlin-test-annotations-common:$kotlinVersion"
+            }
+        }
+
+        object Detekt {
+            const val detektFormatting =
+                "io.gitlab.arturbosch.detekt:detekt-formatting:$detektVersion"
+        }
+    }
+
+    object Modules {
+        val domain = MultiPlatformModule(
+            name = ":mpp-library:domain",
+            exported = true
+        )
+
+        object Feature {
+            val config = MultiPlatformModule(
+                name = ":mpp-library:feature:config",
+                exported = true
             )
-            val ktorClient = MultiPlatformLibrary(
-                android = "io.ktor:ktor-client-android:${Versions.Libs.MultiPlatform.ktorClient}",
-                common = "io.ktor:ktor-client-core:${Versions.Libs.MultiPlatform.ktorClient}",
-                ios = "io.ktor:ktor-client-ios:${Versions.Libs.MultiPlatform.ktorClient}"
-            )
-            val ktorClientLogging = MultiPlatformLibrary(
-                android = "io.ktor:ktor-client-logging-jvm:${Versions.Libs.MultiPlatform.ktorClientLogging}",
-                common = "io.ktor:ktor-client-logging:${Versions.Libs.MultiPlatform.ktorClientLogging}",
-                ios = "io.ktor:ktor-client-logging-native:${Versions.Libs.MultiPlatform.ktorClientLogging}"
-            )
-            val coroutines = MultiPlatformLibrary(
-                android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.Libs.MultiPlatform.coroutines}",
-                common = "org.jetbrains.kotlinx:kotlinx-coroutines-core-common:${Versions.Libs.MultiPlatform.coroutines}",
-                ios = "org.jetbrains.kotlinx:kotlinx-coroutines-core-native:${Versions.Libs.MultiPlatform.coroutines}"
-            )
-            val serialization = MultiPlatformLibrary(
-                android = "org.jetbrains.kotlinx:kotlinx-serialization-runtime:${Versions.Libs.MultiPlatform.serialization}",
-                common = "org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:${Versions.Libs.MultiPlatform.serialization}",
-                ios = "org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:${Versions.Libs.MultiPlatform.serialization}"
-            )
-            val mokoParcelize = MultiPlatformLibrary(
-                common = "dev.icerock.moko:parcelize:${Versions.Libs.MultiPlatform.mokoParcelize}",
-                iosX64 = "dev.icerock.moko:parcelize-iosx64:${Versions.Libs.MultiPlatform.mokoParcelize}",
-                iosArm64 = "dev.icerock.moko:parcelize-iosarm64:${Versions.Libs.MultiPlatform.mokoParcelize}"
-            )
-            val mokoGraphics = MultiPlatformLibrary(
-                common = "dev.icerock.moko:graphics:${Versions.Libs.MultiPlatform.mokoGraphics}",
-                iosX64 = "dev.icerock.moko:graphics-iosx64:${Versions.Libs.MultiPlatform.mokoGraphics}",
-                iosArm64 = "dev.icerock.moko:graphics-iosarm64:${Versions.Libs.MultiPlatform.mokoGraphics}"
-            )
-            val mokoTime = MultiPlatformLibrary(
-                common = "dev.icerock.moko:time:${Versions.Libs.MultiPlatform.mokoTime}",
-                iosX64 = "dev.icerock.moko:time-iosx64:${Versions.Libs.MultiPlatform.mokoTime}",
-                iosArm64 = "dev.icerock.moko:time-iosarm64:${Versions.Libs.MultiPlatform.mokoTime}"
-            )
-            val mokoMvvm = MultiPlatformLibrary(
-                common = "dev.icerock.moko:mvvm:${Versions.Libs.MultiPlatform.mokoMvvm}",
-                iosX64 = "dev.icerock.moko:mvvm-iosx64:${Versions.Libs.MultiPlatform.mokoMvvm}",
-                iosArm64 = "dev.icerock.moko:mvvm-iosarm64:${Versions.Libs.MultiPlatform.mokoMvvm}"
-            )
-            val mokoResources = MultiPlatformLibrary(
-                common = "dev.icerock.moko:resources:${Versions.Libs.MultiPlatform.mokoResources}",
-                iosX64 = "dev.icerock.moko:resources-iosx64:${Versions.Libs.MultiPlatform.mokoResources}",
-                iosArm64 = "dev.icerock.moko:resources-iosarm64:${Versions.Libs.MultiPlatform.mokoResources}"
-            )
-            val mokoPermissions = MultiPlatformLibrary(
-                common = "dev.icerock.moko:permissions:${Versions.Libs.MultiPlatform.mokoPermissions}",
-                iosX64 = "dev.icerock.moko:permissions-iosx64:${Versions.Libs.MultiPlatform.mokoPermissions}",
-                iosArm64 = "dev.icerock.moko:permissions-iosarm64:${Versions.Libs.MultiPlatform.mokoPermissions}"
-            )
-            val mokoMedia = MultiPlatformLibrary(
-                common = "dev.icerock.moko:media:${Versions.Libs.MultiPlatform.mokoMedia}",
-                iosX64 = "dev.icerock.moko:media-iosx64:${Versions.Libs.MultiPlatform.mokoMedia}",
-                iosArm64 = "dev.icerock.moko:media-iosarm64:${Versions.Libs.MultiPlatform.mokoMedia}"
-            )
-            val mokoNetwork = MultiPlatformLibrary(
-                common = "dev.icerock.moko:network:${Versions.Libs.MultiPlatform.mokoNetwork}",
-                iosX64 = "dev.icerock.moko:network-iosx64:${Versions.Libs.MultiPlatform.mokoNetwork}",
-                iosArm64 = "dev.icerock.moko:network-iosarm64:${Versions.Libs.MultiPlatform.mokoNetwork}"
-            )
-            val mokoUnits = MultiPlatformLibrary(
-                common = "dev.icerock.moko:units:${Versions.Libs.MultiPlatform.mokoUnits}",
-                iosX64 = "dev.icerock.moko:units-iosx64:${Versions.Libs.MultiPlatform.mokoUnits}",
-                iosArm64 = "dev.icerock.moko:units-iosarm64:${Versions.Libs.MultiPlatform.mokoUnits}"
-            )
-            val mokoFields = MultiPlatformLibrary(
-                common = "dev.icerock.moko:fields:${Versions.Libs.MultiPlatform.mokoFields}",
-                iosX64 = "dev.icerock.moko:fields-iosx64:${Versions.Libs.MultiPlatform.mokoFields}",
-                iosArm64 = "dev.icerock.moko:fields-iosarm64:${Versions.Libs.MultiPlatform.mokoFields}"
-            )
-            val settings = MultiPlatformLibrary(
-                common = "com.russhwolf:multiplatform-settings:${Versions.Libs.MultiPlatform.settings}",
-                iosX64 = "com.russhwolf:multiplatform-settings-iosx64:${Versions.Libs.MultiPlatform.settings}",
-                iosArm64 = "com.russhwolf:multiplatform-settings-iosarm64:${Versions.Libs.MultiPlatform.settings}"
-            )
-            val napier = MultiPlatformLibrary(
-                android = "com.github.aakira:napier-android:${Versions.Libs.MultiPlatform.napier}",
-                common = "com.github.aakira:napier:${Versions.Libs.MultiPlatform.napier}",
-                iosX64 = "com.github.aakira:napier-iosX64:${Versions.Libs.MultiPlatform.napier}",
-                iosArm64 = "com.github.aakira:napier-iosArm64:${Versions.Libs.MultiPlatform.napier}"
+            val list = MultiPlatformModule(
+                name = ":mpp-library:feature:list",
+                exported = true
             )
         }
     }
 
-    val plugins: Map<String, String> = mapOf(
-        "kotlin-android-extensions" to Plugins.androidExtensions,
-        "kotlinx-serialization" to Plugins.kotlinSerialization,
-        "dev.icerock.mobile.multiplatform-resources" to Plugins.mokoResources,
-        "dev.icerock.mobile.multiplatform-network-generator" to Plugins.mokoNetwork,
-        "dev.icerock.mobile.multiplatform-units" to Plugins.mokoUnits
-    )
+    private val String.mpl: MultiPlatformLibrary
+        get() = MultiPlatformLibrary(
+            common = this,
+            iosX64 = this.replace(Regex("(.*):(.*):(.*)"), "$1:$2-iosx64:$3"),
+            iosArm64 = this.replace(Regex("(.*):(.*):(.*)"), "$1:$2-iosarm64:$3")
+        )
 }
