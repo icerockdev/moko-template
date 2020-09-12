@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@{title}"
-            android:textAppearance="@android:style/TextAppearance.Material.Title"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
             tools:text="Test title"/>
 
         <TextView
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@{description}"
-            android:textAppearance="@android:style/TextAppearance.Material.Body1"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
             tools:text="Description with multiline\ntext for some news"/>
     </LinearLayout>
 </layout>

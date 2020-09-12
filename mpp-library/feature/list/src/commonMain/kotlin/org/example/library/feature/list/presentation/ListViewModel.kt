@@ -7,7 +7,11 @@ package org.example.library.feature.list.presentation
 import com.github.aakira.napier.Napier
 import dev.icerock.moko.mvvm.State
 import dev.icerock.moko.mvvm.asState
-import dev.icerock.moko.mvvm.livedata.*
+import dev.icerock.moko.mvvm.livedata.LiveData
+import dev.icerock.moko.mvvm.livedata.MutableLiveData
+import dev.icerock.moko.mvvm.livedata.dataTransform
+import dev.icerock.moko.mvvm.livedata.errorTransform
+import dev.icerock.moko.mvvm.livedata.map
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
 import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.desc.StringDesc
@@ -46,6 +50,7 @@ class ListViewModel<T>(
 
     fun onRefresh(completion: () -> Unit) {
         viewModelScope.launch {
+            @Suppress("TooGenericExceptionCaught") // ktor on ios fail with Throwable when no network
             try {
                 val items = listSource.getList()
 
@@ -60,6 +65,7 @@ class ListViewModel<T>(
 
     private fun loadList() {
         viewModelScope.launch {
+            @Suppress("TooGenericExceptionCaught") // ktor on ios fail with Throwable when no network
             try {
                 _state.value = State.Loading()
 
