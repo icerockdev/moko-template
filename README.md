@@ -1,5 +1,5 @@
 ![moko-template](https://user-images.githubusercontent.com/5010169/66987007-1bbe9880-f0ea-11e9-8c3c-46b25926794b.png)  
-[![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0) ![kotlin-version](https://img.shields.io/badge/kotlin-1.3.70-orange)
+[![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0) ![kotlin-version](https://img.shields.io/badge/kotlin-1.4.10-orange)
 
 # Mobile Kotlin multiplatform project template
 
@@ -99,28 +99,17 @@ Put your iOS icon to `ios-app/src/Assets.xcassets/AppIcon.appiconset`.
 Create a file `mpp-library/feature/myfeature/build.gradle.kts` with the following content:
 ```kotlin
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.multiplatform")
-    id("dev.icerock.mobile.multiplatform")
-}
-
-android {
-    compileSdkVersion(Versions.Android.compileSdk)
-
-    defaultConfig {
-        minSdkVersion(Versions.Android.minSdk)
-        targetSdkVersion(Versions.Android.targetSdk)
-    }
-}
-
-dependencies {
-    mppLibrary(Deps.Libs.MultiPlatform.kotlinStdLib)
+    plugin(Deps.Plugins.androidLibrary)
+    plugin(Deps.Plugins.kotlinMultiplatform)
+    plugin(Deps.Plugins.mobileMultiplatform)
 }
 ```
-Add module to `buildSrc/src/main/kotlin/Modules.kt`:
+Add module to `buildSrc/src/main/kotlin/Deps.kt`:
 ```kotlin
-object Modules {
-    object MultiPlatform {
+object Deps {
+    ...
+
+    object Modules {
         ...
 
         object Feature {
@@ -136,10 +125,7 @@ object Modules {
 ```
 Add module to `settings.gradle.kts`:
 ```kotlin
-listOf(
-    ...
-    Modules.MultiPlatform.Feature.myfeature
-).forEach { include(it.name) }
+include(":mpp-library:feature:myfeature")
 ```
 Add dependency to module from the `mpp-library` in `mpp-library/build.gradle.kts`:
 ```kotlin
