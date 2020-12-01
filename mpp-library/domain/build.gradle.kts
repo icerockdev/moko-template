@@ -9,6 +9,7 @@ plugins {
     plugin(Deps.Plugins.kotlinSerialization)
     plugin(Deps.Plugins.mobileMultiplatform)
     plugin(Deps.Plugins.mokoNetwork)
+    plugin(Deps.Plugins.sqlDelight)
 }
 
 dependencies {
@@ -22,9 +23,17 @@ dependencies {
 
     commonMainImplementation(Deps.Libs.MultiPlatform.multiplatformSettings.common)
     commonMainImplementation(Deps.Libs.MultiPlatform.napier.common)
+
+    mppLibrary(Deps.Libs.MultiPlatform.sqlDelight)
 }
 
 openApiGenerate {
     inputSpec.set(file("src/openapi.yml").path)
     generatorName.set("kotlin-ktor-client")
+}
+
+sqldelight {
+    database("AppDatabase") {
+        packageName = "org.example.sql"
+    }
 }

@@ -37,6 +37,7 @@ object Deps {
 
     private const val multiplatformSettingsVersion = "0.6.1"
     private const val napierVersion = "1.4.1"
+    private const val sqlDelightVersion = "1.4.4"
 
     object Android {
         const val compileSdk = 29
@@ -78,6 +79,11 @@ object Deps {
         val detekt = GradlePlugin(
             id = "io.gitlab.arturbosch.detekt",
             version = detektVersion
+        )
+
+        val sqlDelight = GradlePlugin(
+            id = "com.squareup.sqldelight",
+            module = "com.squareup.sqldelight:gradle-plugin:$sqlDelightVersion"
         )
     }
 
@@ -155,6 +161,11 @@ object Deps {
                 "com.russhwolf:multiplatform-settings:$multiplatformSettingsVersion".mpl
             val napier =
                 "com.github.aakira:napier:$napierVersion".mpl
+            val sqlDelight = MultiPlatformLibrary(
+                common = "com.squareup.sqldelight:runtime:$sqlDelightVersion",
+                android = "com.squareup.sqldelight:android-driver:$sqlDelightVersion",
+                ios = "com.squareup.sqldelight:native-driver:$sqlDelightVersion"
+            )
 
             object Tests {
                 const val kotlinTest =

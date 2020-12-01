@@ -10,6 +10,7 @@ buildscript {
     repositories {
         jcenter()
         google()
+        mavenCentral()
 
         maven { url = uri("https://dl.bintray.com/kotlin/kotlin") }
         maven { url = uri("https://kotlin.bintray.com/kotlinx") }
@@ -21,6 +22,7 @@ buildscript {
         plugin(Deps.Plugins.mokoNetwork)
         plugin(Deps.Plugins.mokoUnits)
         plugin(Deps.Plugins.kotlinSerialization)
+        plugin(Deps.Plugins.sqlDelight)
     }
 }
 

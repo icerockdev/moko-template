@@ -12,6 +12,7 @@ import dev.icerock.moko.resources.desc.ResourceFormatted
 import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.resources.desc.desc
 import dev.icerock.moko.units.TableUnitItem
+import org.example.library.domain.di.DatabaseDriverFactory
 import org.example.library.domain.di.DomainFactory
 import org.example.library.domain.entity.News
 import org.example.library.feature.config.di.ConfigFactory
@@ -25,11 +26,13 @@ class SharedFactory(
     settings: Settings,
     antilog: Antilog,
     baseUrl: String,
-    newsUnitsFactory: NewsUnitsFactory
+    newsUnitsFactory: NewsUnitsFactory,
+    databaseDriverFactory: DatabaseDriverFactory
 ) {
     private val domainFactory = DomainFactory(
         settings = settings,
-        baseUrl = baseUrl
+        baseUrl = baseUrl,
+        databaseDriverFactory = databaseDriverFactory
     )
 
     val newsFactory: ListFactory<News> = ListFactory(
@@ -92,6 +95,9 @@ class SharedFactory(
 
     init {
         Napier.base(antilog)
+
+        // just for test
+        domainFactory.newsRepository.testDataBase()
     }
 
     interface NewsUnitsFactory {

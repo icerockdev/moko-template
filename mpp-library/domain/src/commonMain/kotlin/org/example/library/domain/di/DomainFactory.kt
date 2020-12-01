@@ -6,6 +6,7 @@ package org.example.library.domain.di
 
 import com.github.aakira.napier.Napier
 import com.russhwolf.settings.Settings
+import com.squareup.sqldelight.db.SqlDriver
 import dev.icerock.moko.network.exceptionfactory.HttpExceptionFactory
 import dev.icerock.moko.network.exceptionfactory.parser.ErrorExceptionParser
 import dev.icerock.moko.network.exceptionfactory.parser.ValidationExceptionParser
@@ -21,12 +22,16 @@ import kotlinx.serialization.json.Json
 import org.example.library.domain.repository.ConfigRepository
 import org.example.library.domain.repository.NewsRepository
 import org.example.library.domain.storage.KeyValueStorage
+import org.example.sql.AppDatabase
 
 class DomainFactory(
     private val settings: Settings,
-    private val baseUrl: String
+    private val baseUrl: String,
+    private val databaseDriverFactory: DatabaseDriverFactory
 ) {
     private val keyValueStorage: KeyValueStorage by lazy { KeyValueStorage(settings) }
+    private val sqlDriver: SqlDriver by lazy { databaseDriverFactory.createDriver() }
+    private val appDatabase: AppDatabase by lazy { AppDatabase(sqlDriver) }
 
     private val json: Json by lazy {
         Json {
@@ -75,7 +80,8 @@ class DomainFactory(
     val newsRepository: NewsRepository by lazy {
         NewsRepository(
             newsApi = newsApi,
-            keyValueStorage = keyValueStorage
+            keyValueStorage = keyValueStorage,
+            appDatabase = appDatabase
         )
     }
 

@@ -1,0 +1,14 @@
+CREATE TABLE Language (
+    id INTEGER NOT NULL PRIMARY KEY,
+    name TEXT NOT NULL
+);
+
+deleteAllLanguages:
+DELETE FROM Language;
+
+selectAllLanguages:
+SELECT * FROM Language;
+
+insertLanguage:
+INSERT INTO Language(id, name)
+VALUES(?, ?);

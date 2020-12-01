@@ -23,7 +23,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             settings: AppleSettings(delegate: UserDefaults.standard),
             antilog: DebugAntilog(defaultTag: "MPP"),
             baseUrl: "https://newsapi.org/v2/",
-            newsUnitsFactory: NewsListUnitsFactory()
+            newsUnitsFactory: NewsListUnitsFactory(),
+            databaseDriverFactory: DatabaseDriverFactory()
         )
         return true
     }

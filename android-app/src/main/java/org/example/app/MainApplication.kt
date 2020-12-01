@@ -10,6 +10,7 @@ import com.github.aakira.napier.DebugAntilog
 import com.russhwolf.settings.AndroidSettings
 import org.example.app.units.NewsListUnitsFactory
 import org.example.library.SharedFactory
+import org.example.library.domain.di.DatabaseDriverFactory
 
 class MainApplication : Application() {
     override fun onCreate() {
@@ -26,7 +27,8 @@ class MainApplication : Application() {
             baseUrl = BuildConfig.BASE_URL,
             settings = AndroidSettings(getSharedPreferences("app", Context.MODE_PRIVATE)),
             antilog = DebugAntilog(),
-            newsUnitsFactory = NewsListUnitsFactory()
+            newsUnitsFactory = NewsListUnitsFactory(),
+            databaseDriverFactory = DatabaseDriverFactory(applicationContext)
         )
     }
 }

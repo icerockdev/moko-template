@@ -45,3 +45,10 @@ framework {
     mppModules.forEach { export(it) }
     mppLibs.forEach { export(it) }
 }
+
+// https://github.com/cashapp/sqldelight/issues/1442
+kotlin.targets.withType<org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget> {
+    binaries.all {
+        linkerOpts.add("-lsqlite3")
+    }
+}
