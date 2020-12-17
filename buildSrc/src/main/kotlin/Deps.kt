@@ -4,8 +4,6 @@
 
 
 object Deps {
-    private const val kotlinVersion = "1.4.10"
-
     private const val materialVersion = "1.2.1"
     private const val recyclerViewVersion = "1.1.0"
     private const val swipeRefreshLayoutVersion = "1.1.0"
@@ -17,17 +15,21 @@ object Deps {
     private const val testRunnerVersion = "1.2.0"
     private const val testExtJunitVersion = "1.1.1"
 
+    // should be as kotlin version! see buildSrc/build.gradle.kts
+    private const val kotlinTestVersion = "1.4.21"
+    // should be as kotlin version! see buildSrc/build.gradle.kts
+    private const val kotlinxSerializationPluginVersion = "1.4.21"
     private const val kotlinxSerializationVersion = "1.0.0-RC"
     private const val kotlinxDateTimeVersion = "0.1.0"
-    private const val coroutinesVersion = "1.3.9-native-mt"
+    private const val coroutinesVersion = "1.4.2-native-mt"
     private const val ktorClientVersion = "1.4.0"
 
     private const val detektVersion = "1.12.0"
 
-    private const val mokoGraphicsVersion = "0.4.0"
-    private const val mokoParcelizeVersion = "0.4.0"
-    private const val mokoResourcesVersion = "0.13.1"
-    private const val mokoMvvmVersion = "0.8.0"
+    private const val mokoGraphicsVersion = "0.5.0"
+    private const val mokoParcelizeVersion = "0.5.0"
+    private const val mokoResourcesVersion = "0.13.2"
+    private const val mokoMvvmVersion = "0.8.1"
     private const val mokoErrorsVersion = "0.3.0"
     private const val mokoNetworkVersion = "0.8.0"
     private const val mokoUnitsVersion = "0.4.1"
@@ -40,24 +42,21 @@ object Deps {
     private const val sqlDelightVersion = "1.4.4"
 
     object Android {
-        const val compileSdk = 29
-        const val targetSdk = 29
+        const val compileSdk = 30
+        const val targetSdk = 30
         const val minSdk = 16
     }
 
     object Plugins {
         val androidApplication = GradlePlugin(id = "com.android.application")
         val androidLibrary = GradlePlugin(id = "com.android.library")
-        val kotlinMultiplatform = GradlePlugin(
-            id = "org.jetbrains.kotlin.multiplatform",
-            module = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
-        )
+        val kotlinMultiplatform = GradlePlugin(id = "org.jetbrains.kotlin.multiplatform")
         val kotlinKapt = GradlePlugin(id = "kotlin-kapt")
         val kotlinAndroid = GradlePlugin(id = "kotlin-android")
         val kotlinAndroidExtensions = GradlePlugin(id = "kotlin-android-extensions")
         val kotlinSerialization = GradlePlugin(
             id = "org.jetbrains.kotlin.plugin.serialization",
-            module = "org.jetbrains.kotlin:kotlin-serialization:$kotlinVersion"
+            module = "org.jetbrains.kotlin:kotlin-serialization:$kotlinxSerializationPluginVersion"
         )
 
         val mobileMultiplatform = GradlePlugin(id = "dev.icerock.mobile.multiplatform")
@@ -110,7 +109,7 @@ object Deps {
                 const val espressoCore =
                     "androidx.test.espresso:espresso-core:$espressoCoreVersion"
                 const val kotlinTestJUnit =
-                    "org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion"
+                    "org.jetbrains.kotlin:kotlin-test-junit:$kotlinTestVersion"
                 const val testCore =
                     "androidx.test:core:1.3.0"
                 const val robolectric =
@@ -135,43 +134,45 @@ object Deps {
                 "io.ktor:ktor-client-core:$ktorClientVersion"
             const val ktorClientLogging =
                 "io.ktor:ktor-client-logging:$ktorClientVersion"
-            val mokoResources =
-                "dev.icerock.moko:resources:$mokoResourcesVersion".mpl
-            val mokoParcelize =
-                "dev.icerock.moko:parcelize:$mokoParcelizeVersion".mpl
-            val mokoGraphics =
-                "dev.icerock.moko:graphics:$mokoGraphicsVersion".mpl
-            val mokoMvvm =
-                "dev.icerock.moko:mvvm:$mokoMvvmVersion".mpl
-            val mokoErrors =
-                "dev.icerock.moko:errors:$mokoErrorsVersion".mpl
-            val mokoNetwork =
-                "dev.icerock.moko:network:$mokoNetworkVersion".mpl
-            val mokoNetworkErrors =
-                "dev.icerock.moko:network-errors:$mokoNetworkVersion".mpl
-            val mokoPermissions =
-                "dev.icerock.moko:permissions:$mokoPermissionsVersion".mpl
-            val mokoMedia =
-                "dev.icerock.moko:media:$mokoMediaVersion".mpl
-            val mokoUnits =
-                "dev.icerock.moko:units:$mokoUnitsVersion".mpl
-            val mokoFields =
-                "dev.icerock.moko:fields:$mokoFieldsVersion".mpl
+            val mokoResources = "dev.icerock.moko:resources:$mokoResourcesVersion"
+                .defaultMPL(ios = true)
+            val mokoParcelize = "dev.icerock.moko:parcelize:$mokoParcelizeVersion"
+                .defaultMPL(ios = true)
+            val mokoGraphics = "dev.icerock.moko:graphics:$mokoGraphicsVersion"
+                .defaultMPL(ios = true)
+            val mokoMvvm = "dev.icerock.moko:mvvm:$mokoMvvmVersion"
+                .defaultMPL(ios = true)
+            val mokoErrors = "dev.icerock.moko:errors:$mokoErrorsVersion"
+                .defaultMPL(ios = true)
+            val mokoNetwork = "dev.icerock.moko:network:$mokoNetworkVersion"
+                .defaultMPL(ios = true)
+            val mokoNetworkErrors = "dev.icerock.moko:network-errors:$mokoNetworkVersion"
+                .defaultMPL(ios = true)
+            val mokoPermissions = "dev.icerock.moko:permissions:$mokoPermissionsVersion"
+                .defaultMPL(ios = true)
+            val mokoMedia = "dev.icerock.moko:media:$mokoMediaVersion"
+                .defaultMPL(ios = true)
+            val mokoUnits = "dev.icerock.moko:units:$mokoUnitsVersion"
+                .defaultMPL(ios = true)
+            val mokoFields = "dev.icerock.moko:fields:$mokoFieldsVersion"
+                .defaultMPL(ios = true)
             val multiplatformSettings =
-                "com.russhwolf:multiplatform-settings:$multiplatformSettingsVersion".mpl
-            val napier =
-                "com.github.aakira:napier:$napierVersion".mpl
+                "com.russhwolf:multiplatform-settings:$multiplatformSettingsVersion"
+                .defaultMPL(ios = true)
+            val napier = "com.github.aakira:napier:$napierVersion"
+                .defaultMPL(ios = true)
             val sqlDelight = MultiPlatformLibrary(
                 common = "com.squareup.sqldelight:runtime:$sqlDelightVersion",
                 android = "com.squareup.sqldelight:android-driver:$sqlDelightVersion",
-                ios = "com.squareup.sqldelight:native-driver:$sqlDelightVersion"
+                iosX64 = "com.squareup.sqldelight:native-driver:$sqlDelightVersion",
+                iosArm64 = "com.squareup.sqldelight:native-driver:$sqlDelightVersion"
             )
 
             object Tests {
                 const val kotlinTest =
-                    "org.jetbrains.kotlin:kotlin-test-common:$kotlinVersion"
+                    "org.jetbrains.kotlin:kotlin-test-common:$kotlinTestVersion"
                 const val kotlinTestAnnotations =
-                    "org.jetbrains.kotlin:kotlin-test-annotations-common:$kotlinVersion"
+                    "org.jetbrains.kotlin:kotlin-test-annotations-common:$kotlinTestVersion"
             }
         }
 
@@ -198,11 +199,4 @@ object Deps {
             )
         }
     }
-
-    private val String.mpl: MultiPlatformLibrary
-        get() = MultiPlatformLibrary(
-            common = this,
-            iosX64 = this.replace(Regex("(.*):(.*):(.*)"), "$1:$2-iosx64:$3"),
-            iosArm64 = this.replace(Regex("(.*):(.*):(.*)"), "$1:$2-iosarm64:$3")
-        )
 }

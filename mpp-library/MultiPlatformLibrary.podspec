@@ -11,6 +11,8 @@ Pod::Spec.new do |spec|
     spec.libraries                = "c++"
     spec.module_name              = "#{spec.name}_umbrella"
 
+    spec.ios.deployment_target  = '11.0'
+
     spec.pod_target_xcconfig = {
         'MPP_LIBRARY_NAME' => 'MultiPlatformLibrary',
         'GRADLE_TASK[sdk=iphonesimulator*][config=*ebug]' => 'syncMultiPlatformLibraryDebugFrameworkIosX64',
