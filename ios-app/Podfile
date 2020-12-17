@@ -22,8 +22,6 @@ end
 
 target 'ios-app' do
   pod 'MultiPlatformLibrary', :path => '../mpp-library'
-  pod 'MultiPlatformLibraryMvvm', :git => 'https://github.com/icerockdev/moko-mvvm.git', :tag => 'release/0.8.0'
+  pod 'MultiPlatformLibraryMvvm', :git => 'https://github.com/icerockdev/moko-mvvm.git', :tag => 'release/0.8.1'
   pod 'MultiPlatformLibraryUnits/Core', :git => 'https://github.com/icerockdev/moko-units.git', :tag => 'release/0.4.1'
-  pod 'AlamofireImage', '3.5.2'
-  pod 'Alamofire', '4.8.2'
 end
