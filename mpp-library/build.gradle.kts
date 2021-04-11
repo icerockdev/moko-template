@@ -26,10 +26,7 @@ val mppModules = listOf(
 )
 
 dependencies {
-    commonMainImplementation(Deps.Libs.MultiPlatform.coroutines) {
-        // we should force native-mt version for ktor 1.4.0 on iOS
-        isForce = true
-    }
+    commonMainImplementation(Deps.Libs.MultiPlatform.coroutines)
 
     androidMainImplementation(Deps.Libs.Android.lifecycle)
 

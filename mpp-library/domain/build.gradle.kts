@@ -5,7 +5,7 @@
 plugins {
     plugin(Deps.Plugins.androidLibrary)
     plugin(Deps.Plugins.kotlinMultiplatform)
-    plugin(Deps.Plugins.kotlinAndroidExtensions)
+    plugin(Deps.Plugins.kotlinParcelize)
     plugin(Deps.Plugins.kotlinSerialization)
     plugin(Deps.Plugins.mobileMultiplatform)
     plugin(Deps.Plugins.mokoNetwork)
@@ -24,7 +24,8 @@ dependencies {
     commonMainImplementation(Deps.Libs.MultiPlatform.napier.common)
 }
 
-openApiGenerate {
-    inputSpec.set(file("src/openapi.yml").path)
-    generatorName.set("kotlin-ktor-client")
+mokoNetwork {
+    spec("news") {
+        inputSpec = file("src/openapi.yml")
+    }
 }

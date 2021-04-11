@@ -16,28 +16,28 @@ object Deps {
     private const val testExtJunitVersion = "1.1.1"
 
     // should be as kotlin version! see buildSrc/build.gradle.kts
-    private const val kotlinTestVersion = "1.4.21"
+    private const val kotlinTestVersion = "1.4.31"
     // should be as kotlin version! see buildSrc/build.gradle.kts
-    private const val kotlinxSerializationPluginVersion = "1.4.21"
-    private const val kotlinxSerializationVersion = "1.0.0-RC"
-    private const val kotlinxDateTimeVersion = "0.1.0"
-    private const val coroutinesVersion = "1.4.2-native-mt"
-    private const val ktorClientVersion = "1.4.0"
+    private const val kotlinxSerializationPluginVersion = "1.4.31"
+    private const val kotlinxSerializationVersion = "1.1.0"
+    private const val kotlinxDateTimeVersion = "0.1.1"
+    private const val coroutinesVersion = "1.4.3-native-mt"
+    private const val ktorClientVersion = "1.5.3"
 
-    private const val detektVersion = "1.12.0"
+    private const val detektVersion = "1.15.0"
 
-    private const val mokoGraphicsVersion = "0.5.0"
-    private const val mokoParcelizeVersion = "0.5.0"
-    private const val mokoResourcesVersion = "0.13.2"
-    private const val mokoMvvmVersion = "0.8.1"
-    private const val mokoErrorsVersion = "0.3.0"
-    private const val mokoNetworkVersion = "0.8.0"
-    private const val mokoUnitsVersion = "0.4.1"
-    private const val mokoPermissionsVersion = "0.6.0"
-    private const val mokoMediaVersion = "0.5.0"
-    private const val mokoFieldsVersion = "0.5.0"
+    private const val mokoGraphicsVersion = "0.6.1"
+    private const val mokoParcelizeVersion = "0.6.1"
+    private const val mokoResourcesVersion = "0.15.1"
+    private const val mokoMvvmVersion = "0.10.0"
+    private const val mokoErrorsVersion = "0.3.2"
+    private const val mokoNetworkVersion = "0.14.0"
+    private const val mokoUnitsVersion = "0.4.2"
+    private const val mokoPermissionsVersion = "0.9.0"
+    private const val mokoMediaVersion = "0.7.0"
+    private const val mokoFieldsVersion = "0.7.1"
 
-    private const val multiplatformSettingsVersion = "0.6.1"
+    private const val multiplatformSettingsVersion = "0.7.4"
     private const val napierVersion = "1.4.1"
 
     object Android {
@@ -52,7 +52,7 @@ object Deps {
         val kotlinMultiplatform = GradlePlugin(id = "org.jetbrains.kotlin.multiplatform")
         val kotlinKapt = GradlePlugin(id = "kotlin-kapt")
         val kotlinAndroid = GradlePlugin(id = "kotlin-android")
-        val kotlinAndroidExtensions = GradlePlugin(id = "kotlin-android-extensions")
+        val kotlinParcelize = GradlePlugin(id = "kotlin-parcelize")
         val kotlinSerialization = GradlePlugin(
             id = "org.jetbrains.kotlin.plugin.serialization",
             module = "org.jetbrains.kotlin:kotlin-serialization:$kotlinxSerializationPluginVersion"

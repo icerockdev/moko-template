@@ -8,13 +8,15 @@ plugins {
 
 buildscript {
     repositories {
-        jcenter()
+        mavenCentral()
         google()
+        gradlePluginPortal()
 
-        maven { url = uri("https://dl.bintray.com/kotlin/kotlin") }
-        maven { url = uri("https://kotlin.bintray.com/kotlinx") }
-        maven { url = uri("https://plugins.gradle.org/m2/") }
-        maven { url = uri("https://dl.bintray.com/icerockdev/plugins") }
+        jcenter {
+            content {
+                includeGroup("org.jetbrains.trove4j")
+            }
+        }
     }
     dependencies {
         plugin(Deps.Plugins.mokoResources)
@@ -26,14 +28,17 @@ buildscript {
 
 allprojects {
     repositories {
+        mavenCentral()
         google()
-        jcenter()
 
-        maven { url = uri("https://kotlin.bintray.com/kotlin") }
-        maven { url = uri("https://kotlin.bintray.com/kotlinx") }
-        maven { url = uri("https://dl.bintray.com/icerockdev/moko") }
-        maven { url = uri("https://kotlin.bintray.com/ktor") }
         maven { url = uri("https://dl.bintray.com/aakira/maven") }
+
+        jcenter {
+            content {
+                includeGroup("org.jetbrains.trove4j")
+                includeGroup("org.jetbrains.kotlinx")
+            }
+        }
     }
 
     apply(plugin = Deps.Plugins.detekt.id)
@@ -54,6 +59,12 @@ allprojects {
                 minSdkVersion(Deps.Android.minSdk)
                 targetSdkVersion(Deps.Android.targetSdk)
             }
+        }
+    }
+
+    configurations.configureEach {
+        resolutionStrategy {
+            force(Deps.Libs.MultiPlatform.coroutines)
         }
     }
 }
