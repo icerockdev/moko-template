@@ -32,10 +32,11 @@ object Deps {
     private const val mokoMvvmVersion = "0.10.0"
     private const val mokoErrorsVersion = "0.3.2"
     private const val mokoNetworkVersion = "0.14.0"
-    private const val mokoUnitsVersion = "0.4.2"
+    private const val mokoUnitsVersion = "0.5.0"
     private const val mokoPermissionsVersion = "0.9.0"
     private const val mokoMediaVersion = "0.7.0"
     private const val mokoFieldsVersion = "0.7.1"
+    private const val mokoTestVersion = "0.2.1"
 
     private const val multiplatformSettingsVersion = "0.7.4"
     private const val napierVersion = "1.4.1"
@@ -161,6 +162,11 @@ object Deps {
                     "org.jetbrains.kotlin:kotlin-test-common:$kotlinTestVersion"
                 const val kotlinTestAnnotations =
                     "org.jetbrains.kotlin:kotlin-test-annotations-common:$kotlinTestVersion"
+                const val mokoMvvmTest = "dev.icerock.moko:mvvm-test:$mokoMvvmVersion"
+                const val mokoTest = "dev.icerock.moko:test:$mokoTestVersion"
+                const val multiplatformSettingsTest =
+                    "com.russhwolf:multiplatform-settings-test:$multiplatformSettingsVersion"
+                const val ktorClientMock = "io.ktor:ktor-client-mock:$ktorClientVersion"
             }
         }
 
