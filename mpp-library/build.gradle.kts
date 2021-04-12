@@ -27,6 +27,7 @@ val mppModules = listOf(
 
 dependencies {
     commonMainImplementation(Deps.Libs.MultiPlatform.coroutines)
+    commonMainImplementation(Deps.Libs.MultiPlatform.ktorClient)
 
     androidMainImplementation(Deps.Libs.Android.lifecycle)
 
@@ -35,6 +36,7 @@ dependencies {
 
     commonTestImplementation(Deps.Libs.MultiPlatform.Tests.mokoTest)
     commonTestImplementation(Deps.Libs.MultiPlatform.Tests.mokoMvvmTest)
+    commonTestImplementation(Deps.Libs.MultiPlatform.Tests.mokoUnitsTest)
     commonTestImplementation(Deps.Libs.MultiPlatform.Tests.multiplatformSettingsTest)
     commonTestImplementation(Deps.Libs.MultiPlatform.Tests.ktorClientMock)
 }

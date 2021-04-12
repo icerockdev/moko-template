@@ -164,6 +164,7 @@ object Deps {
                     "org.jetbrains.kotlin:kotlin-test-annotations-common:$kotlinTestVersion"
                 const val mokoMvvmTest = "dev.icerock.moko:mvvm-test:$mokoMvvmVersion"
                 const val mokoTest = "dev.icerock.moko:test:$mokoTestVersion"
+                const val mokoUnitsTest = "dev.icerock.moko:units-test:$mokoUnitsVersion"
                 const val multiplatformSettingsTest =
                     "com.russhwolf:multiplatform-settings-test:$multiplatformSettingsVersion"
                 const val ktorClientMock = "io.ktor:ktor-client-mock:$ktorClientVersion"

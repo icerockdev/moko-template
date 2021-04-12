@@ -6,18 +6,18 @@ package org.example.library
 
 import com.russhwolf.settings.MockSettings
 import com.russhwolf.settings.Settings
+import io.ktor.client.engine.mock.MockEngine
+import io.ktor.client.engine.mock.MockRequestHandler
 
 internal fun createSharedFactory(
-    settings: Settings = MockSettings()
+    settings: Settings = MockSettings(),
+    mock: MockRequestHandler
 ): SharedFactory {
     return SharedFactory(
         settings = settings,
         antilog = TestAntilog(),
         baseUrl = "https://localhost",
-        newsUnitsFactory =
+        newsUnitsFactory = TestUnitFactory(),
+        httpClientEngine = MockEngine(mock)
     )
-}
-
-class TestUnitFactory : NewsUnitsFactory {
-
 }

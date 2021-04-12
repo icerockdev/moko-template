@@ -11,6 +11,7 @@ import dev.icerock.moko.mvvm.test.TestViewModelScope
 import dev.icerock.moko.mvvm.test.createTestEventsDispatcher
 import dev.icerock.moko.test.AndroidArchitectureInstantTaskExecutorRule
 import dev.icerock.moko.test.TestRule
+import io.ktor.client.engine.mock.respondBadRequest
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import org.example.library.SharedFactory
@@ -26,26 +27,22 @@ class ConfigViewModelTests {
     val instantTaskExecutorRule = AndroidArchitectureInstantTaskExecutorRule()
 
     private lateinit var settings: MockSettings
+    private lateinit var listener: ConfigViewModel.EventsListener
     private lateinit var listenerEvents: List<String>
-    private lateinit var viewModel: ConfigViewModel
 
     @BeforeTest
     fun setup() {
         TestViewModelScope.setupViewModelScope(CoroutineScope(Dispatchers.Unconfined))
 
         val events = mutableListOf<String>()
-        val listener = object : ConfigViewModel.EventsListener {
+
+        listener = object : ConfigViewModel.EventsListener {
             override fun routeToNews() {
                 events.add("routeToNews")
             }
         }
-
         settings = MockSettings()
         listenerEvents = events
-        viewModel = createConfigViewModel(
-            settings = settings,
-            eventsDispatcher = createTestEventsDispatcher(listener)
-        )
     }
 
     @AfterTest
@@ -55,6 +52,11 @@ class ConfigViewModelTests {
 
     @Test
     fun `test default fields`() {
+        val viewModel = createConfigViewModel(
+            settings = settings,
+            eventsDispatcher = createTestEventsDispatcher(listener)
+        )
+
         assertEquals(
             expected = "ed155d0a445e4b4fbd878fe1f3bc1b7f",
             actual = viewModel.apiTokenField.value()
@@ -65,11 +67,33 @@ class ConfigViewModelTests {
         )
     }
 
+    @Test
+    fun `test saved fields`() {
+        settings.putString("pref_token", "test")
+        settings.putString("pref_language", "ru")
+
+        val viewModel = createConfigViewModel(
+            settings = settings,
+            eventsDispatcher = createTestEventsDispatcher(listener)
+        )
+
+        assertEquals(
+            expected = "test",
+            actual = viewModel.apiTokenField.value()
+        )
+        assertEquals(
+            expected = "ru",
+            actual = viewModel.languageField.value()
+        )
+    }
+
     private fun createConfigViewModel(
         settings: Settings,
         eventsDispatcher: EventsDispatcher<ConfigViewModel.EventsListener>
     ): ConfigViewModel {
-        val factory: SharedFactory = createSharedFactory(settings)
+        val factory: SharedFactory = createSharedFactory(settings) {
+            respondBadRequest()
+        }
         return factory.configFactory.createConfigViewModel(eventsDispatcher)
     }
 }
