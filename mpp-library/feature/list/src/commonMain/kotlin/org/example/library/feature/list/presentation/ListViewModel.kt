@@ -27,7 +27,7 @@ class ListViewModel<T>(
 ) : ViewModel() {
 
     private val _state: MutableLiveData<State<List<T>, Throwable>> =
-        MutableLiveData(initialValue = State.Loading())
+        MutableLiveData(initialValue = State.Empty())
 
     val state: LiveData<State<List<TableUnitItem>, StringDesc>> = _state
         .dataTransform {
@@ -40,7 +40,7 @@ class ListViewModel<T>(
             map<Throwable, StringDesc> { it.message?.desc() ?: strings.unknownError.desc() }
         }
 
-    init {
+    fun onCreated() {
         loadList()
     }
 
