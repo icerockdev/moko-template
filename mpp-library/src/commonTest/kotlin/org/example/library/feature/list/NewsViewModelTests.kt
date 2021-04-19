@@ -6,7 +6,7 @@ package org.example.library.feature.list
 
 import com.russhwolf.settings.MockSettings
 import com.russhwolf.settings.Settings
-import dev.icerock.moko.mvvm.State
+import dev.icerock.moko.mvvm.ResourceState
 import dev.icerock.moko.mvvm.test.TestViewModelScopeRule
 import dev.icerock.moko.resources.desc.desc
 import dev.icerock.moko.test.cases.InstantTaskRule
@@ -43,14 +43,14 @@ class NewsViewModelTests : TestCases() {
     fun `load news items`() {
         val viewModel = createViewModel(settings)
 
-        assertTrue(viewModel.state.value is State.Empty)
+        assertTrue(viewModel.state.value is ResourceState.Empty)
 
         viewModel.onCreated()
 
         testViewModelScopeRule.coroutineScope.waitChildrenCompletion()
 
         val dataState = viewModel.state.value
-        assertTrue(dataState is State.Data, "state not data - $dataState")
+        assertTrue(dataState is ResourceState.Success, "state not data - $dataState")
         val items = listOf<TableUnitItem>(
             NewsTableUnit(
                 id = "https://nypost.com/2021/04/16/trump-takes-jab-at-bidens-lunacy-of-jj-vaccination-pause/".hashCode()

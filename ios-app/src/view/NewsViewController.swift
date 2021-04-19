@@ -23,6 +23,7 @@ class NewsViewController: UIViewController {
         super.viewDidLoad()
         
         viewModel = AppComponent.factory.newsFactory.createListViewModel()
+        viewModel.onCreated()
 
         // binding methods from https://github.com/icerockdev/moko-mvvm
         activityIndicator.bindVisibility(liveData: viewModel.state.isLoadingState())

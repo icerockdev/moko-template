@@ -25,7 +25,7 @@ class NewsActivity : MvvmActivity<ActivityNewsBinding, ListViewModel<News>>() {
     // createViewModelFactory is extension from https://github.com/icerockdev/moko-mvvm
     // ViewModel not recreating at configuration changes
     override fun viewModelFactory(): ViewModelProvider.Factory = createViewModelFactory {
-        AppComponent.factory.newsFactory.createListViewModel()
+        AppComponent.factory.newsFactory.createListViewModel().apply { onCreated() }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
