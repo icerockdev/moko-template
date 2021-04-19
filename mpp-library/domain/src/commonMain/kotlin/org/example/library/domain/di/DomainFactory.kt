@@ -38,6 +38,10 @@ class DomainFactory(
     }
 
     private val httpClient: HttpClient by lazy {
+        // resolve class properties into local variables to pass them into freeze lambda
+        val json: Json = json
+        val keyValueStorage: KeyValueStorage = keyValueStorage
+
         val config: HttpClientConfig<*>.() -> Unit = {
             install(ExceptionFeature) {
                 exceptionFactory = HttpExceptionFactory(

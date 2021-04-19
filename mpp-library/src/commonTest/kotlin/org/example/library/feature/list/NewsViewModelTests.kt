@@ -15,21 +15,25 @@ import dev.icerock.moko.units.TableUnitItem
 import io.ktor.client.engine.mock.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import org.example.library.*
+import org.example.library.NewsTableUnit
+import org.example.library.SharedFactory
 import org.example.library.createSharedFactory
 import org.example.library.domain.entity.News
 import org.example.library.feature.list.presentation.ListViewModel
+import org.example.library.waitChildrenCompletion
 import kotlin.test.*
 
 class NewsViewModelTests {
     @get:TestRule
     val instantTaskExecutorRule = AndroidArchitectureInstantTaskExecutorRule()
 
+    private lateinit var coroutineScope: CoroutineScope
     private lateinit var settings: MockSettings
 
     @BeforeTest
     fun setup() {
-        TestViewModelScope.setupViewModelScope(CoroutineScope(Dispatchers.Undispatched))
+        coroutineScope = CoroutineScope(Dispatchers.Unconfined)
+        TestViewModelScope.setupViewModelScope(coroutineScope)
 
         settings = MockSettings()
     }
@@ -46,6 +50,8 @@ class NewsViewModelTests {
         assertTrue(viewModel.state.value is State.Empty)
 
         viewModel.onCreated()
+
+        coroutineScope.waitChildrenCompletion()
 
         val dataState = viewModel.state.value
         assertTrue(dataState is State.Data, "state not data - $dataState")
@@ -70,7 +76,7 @@ class NewsViewModelTests {
         settings: Settings
     ): ListViewModel<News> {
         val factory: SharedFactory = createSharedFactory(settings) { request ->
-            if (request.url.encodedPath == "v2/top-headlines") {
+            if (request.url.encodedPath == "top-headlines") {
                 respondOk(newsResponseMock)
             } else {
                 respondBadRequest()
