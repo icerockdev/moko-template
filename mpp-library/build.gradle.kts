@@ -15,7 +15,9 @@ val mppLibs = listOf(
     Deps.Libs.MultiPlatform.napier,
     Deps.Libs.MultiPlatform.mokoParcelize,
     Deps.Libs.MultiPlatform.mokoResources,
-    Deps.Libs.MultiPlatform.mokoMvvm,
+    Deps.Libs.MultiPlatform.mokoMvvmCore,
+    Deps.Libs.MultiPlatform.mokoMvvmLiveData,
+    Deps.Libs.MultiPlatform.mokoMvvmState,
     Deps.Libs.MultiPlatform.mokoUnits,
     Deps.Libs.MultiPlatform.mokoFields
 )

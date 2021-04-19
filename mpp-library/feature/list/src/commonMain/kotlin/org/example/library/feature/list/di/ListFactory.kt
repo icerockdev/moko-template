@@ -17,6 +17,6 @@ class ListFactory<T>(
             listSource = listSource,
             strings = strings,
             unitsFactory = unitsFactory
-        )
+        ).apply { onCreated() }
     }
 }

@@ -99,6 +99,7 @@ object Deps {
                 "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
             val ktorClientOkHttp =
                 "io.ktor:ktor-client-okhttp:$ktorClientVersion"
+            val mokoMvvmDataBinding = "dev.icerock.moko:mvvm-databinding:$mokoMvvmVersion"
 
             object Tests {
                 const val espressoCore =
@@ -135,7 +136,11 @@ object Deps {
                 .defaultMPL(ios = true)
             val mokoGraphics = "dev.icerock.moko:graphics:$mokoGraphicsVersion"
                 .defaultMPL(ios = true)
-            val mokoMvvm = "dev.icerock.moko:mvvm:$mokoMvvmVersion"
+            val mokoMvvmCore = "dev.icerock.moko:mvvm-core:$mokoMvvmVersion"
+                .defaultMPL(ios = true)
+            val mokoMvvmLiveData = "dev.icerock.moko:mvvm-livedata:$mokoMvvmVersion"
+                .defaultMPL(ios = true)
+            val mokoMvvmState = "dev.icerock.moko:mvvm-state:$mokoMvvmVersion"
                 .defaultMPL(ios = true)
             val mokoErrors = "dev.icerock.moko:errors:$mokoErrorsVersion"
                 .defaultMPL(ios = true)

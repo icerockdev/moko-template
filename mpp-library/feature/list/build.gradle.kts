@@ -15,7 +15,8 @@ dependencies {
     androidMainImplementation(Deps.Libs.Android.lifecycle)
     androidMainImplementation(Deps.Libs.Android.recyclerView)
 
-    commonMainImplementation(Deps.Libs.MultiPlatform.mokoMvvm.common)
+    commonMainImplementation(Deps.Libs.MultiPlatform.mokoMvvmLiveData.common)
+    commonMainImplementation(Deps.Libs.MultiPlatform.mokoMvvmState.common)
     commonMainImplementation(Deps.Libs.MultiPlatform.mokoResources.common)
     commonMainImplementation(Deps.Libs.MultiPlatform.mokoUnits.common)
 

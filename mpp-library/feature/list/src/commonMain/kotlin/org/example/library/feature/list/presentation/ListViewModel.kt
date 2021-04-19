@@ -5,7 +5,7 @@
 package org.example.library.feature.list.presentation
 
 import com.github.aakira.napier.Napier
-import dev.icerock.moko.mvvm.State
+import dev.icerock.moko.mvvm.ResourceState
 import dev.icerock.moko.mvvm.asState
 import dev.icerock.moko.mvvm.livedata.LiveData
 import dev.icerock.moko.mvvm.livedata.MutableLiveData
@@ -26,10 +26,10 @@ class ListViewModel<T>(
     private val unitsFactory: UnitsFactory<T>
 ) : ViewModel() {
 
-    private val _state: MutableLiveData<State<List<T>, Throwable>> =
-        MutableLiveData(initialValue = State.Empty())
+    private val _state: MutableLiveData<ResourceState<List<T>, Throwable>> =
+        MutableLiveData(initialValue = ResourceState.Empty())
 
-    val state: LiveData<State<List<TableUnitItem>, StringDesc>> = _state
+    val state: LiveData<ResourceState<List<TableUnitItem>, StringDesc>> = _state
         .dataTransform {
             map { news ->
                 news.map { unitsFactory.createTile(it) }
@@ -37,7 +37,7 @@ class ListViewModel<T>(
         }
         .errorTransform {
             // new type inferrence require set types oO
-            map<Throwable, StringDesc> { it.message?.desc() ?: strings.unknownError.desc() }
+            map { it.message?.desc() ?: strings.unknownError.desc() }
         }
 
     fun onCreated() {
@@ -55,7 +55,7 @@ class ListViewModel<T>(
                 val items = listSource.getList()
 
                 _state.value = items.asState()
-            } catch (error: Throwable) {
+            } catch (error: Exception) {
                 Napier.e("can't refresh", throwable = error)
             } finally {
                 completion()
@@ -64,16 +64,16 @@ class ListViewModel<T>(
     }
 
     private fun loadList() {
+        _state.value = ResourceState.Loading()
+
         viewModelScope.launch {
             @Suppress("TooGenericExceptionCaught") // ktor on ios fail with Throwable when no network
             try {
-                _state.value = State.Loading()
-
                 val items = listSource.getList()
 
                 _state.value = items.asState()
-            } catch (error: Throwable) {
-                _state.value = State.Error(error)
+            } catch (error: Exception) {
+                _state.value = ResourceState.Failed(error)
             }
         }
     }
