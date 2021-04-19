@@ -13,6 +13,8 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
+      - name: Build K/N cache
+        run: ./gradlew :mpp-library:runCommonizer
       - name: Build and test
         run: ./gradlew build syncMultiPlatformLibraryDebugFrameworkIosX64 -x linkMultiPlatformLibraryDebugFrameworkIosArm64 -x linkMultiPlatformLibraryReleaseFrameworkIosArm64 -x linkMultiPlatformLibraryReleaseFrameworkIosX64
       - name: Install pods
