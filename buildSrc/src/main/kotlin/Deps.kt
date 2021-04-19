@@ -36,7 +36,7 @@ object Deps {
     private const val mokoPermissionsVersion = "0.9.0"
     private const val mokoMediaVersion = "0.7.0"
     private const val mokoFieldsVersion = "0.7.1"
-    private const val mokoTestVersion = "0.2.1"
+    private const val mokoTestVersion = "0.3.0"
 
     private const val multiplatformSettingsVersion = "0.7.4"
     private const val napierVersion = "1.4.1"
@@ -163,7 +163,7 @@ object Deps {
                 const val kotlinTestAnnotations =
                     "org.jetbrains.kotlin:kotlin-test-annotations-common:$kotlinTestVersion"
                 const val mokoMvvmTest = "dev.icerock.moko:mvvm-test:$mokoMvvmVersion"
-                const val mokoTest = "dev.icerock.moko:test:$mokoTestVersion"
+                const val mokoTestCore = "dev.icerock.moko:test-core:$mokoTestVersion"
                 const val mokoUnitsTest = "dev.icerock.moko:units-test:$mokoUnitsVersion"
                 const val multiplatformSettingsTest =
                     "com.russhwolf:multiplatform-settings-test:$multiplatformSettingsVersion"

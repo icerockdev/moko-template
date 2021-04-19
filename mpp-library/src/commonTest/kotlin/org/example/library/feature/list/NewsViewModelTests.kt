@@ -7,40 +7,36 @@ package org.example.library.feature.list
 import com.russhwolf.settings.MockSettings
 import com.russhwolf.settings.Settings
 import dev.icerock.moko.mvvm.State
-import dev.icerock.moko.mvvm.test.TestViewModelScope
+import dev.icerock.moko.mvvm.test.TestViewModelScopeRule
 import dev.icerock.moko.resources.desc.desc
-import dev.icerock.moko.test.AndroidArchitectureInstantTaskExecutorRule
-import dev.icerock.moko.test.TestRule
+import dev.icerock.moko.test.cases.InstantTaskRule
+import dev.icerock.moko.test.cases.TestCases
+import dev.icerock.moko.test.waitChildrenCompletion
 import dev.icerock.moko.units.TableUnitItem
 import io.ktor.client.engine.mock.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import org.example.library.NewsTableUnit
 import org.example.library.SharedFactory
 import org.example.library.createSharedFactory
 import org.example.library.domain.entity.News
 import org.example.library.feature.list.presentation.ListViewModel
-import org.example.library.waitChildrenCompletion
-import kotlin.test.*
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
-class NewsViewModelTests {
-    @get:TestRule
-    val instantTaskExecutorRule = AndroidArchitectureInstantTaskExecutorRule()
+class NewsViewModelTests : TestCases() {
+    private val testViewModelScopeRule = TestViewModelScopeRule()
 
-    private lateinit var coroutineScope: CoroutineScope
+    override val rules: List<Rule> = listOf(
+        InstantTaskRule(),
+        testViewModelScopeRule
+    )
+
     private lateinit var settings: MockSettings
 
     @BeforeTest
     fun setup() {
-        coroutineScope = CoroutineScope(Dispatchers.Unconfined)
-        TestViewModelScope.setupViewModelScope(coroutineScope)
-
         settings = MockSettings()
-    }
-
-    @AfterTest
-    fun tearDown() {
-        TestViewModelScope.resetViewModelScope()
     }
 
     @Test
@@ -51,7 +47,7 @@ class NewsViewModelTests {
 
         viewModel.onCreated()
 
-        coroutineScope.waitChildrenCompletion()
+        testViewModelScopeRule.coroutineScope.waitChildrenCompletion()
 
         val dataState = viewModel.state.value
         assertTrue(dataState is State.Data, "state not data - $dataState")

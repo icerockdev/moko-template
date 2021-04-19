@@ -34,7 +34,7 @@ dependencies {
     mppLibs.forEach { commonMainApi(it.common) }
     mppModules.forEach { commonMainApi(project(it.name)) }
 
-    commonTestImplementation(Deps.Libs.MultiPlatform.Tests.mokoTest)
+    commonTestImplementation(Deps.Libs.MultiPlatform.Tests.mokoTestCore)
     commonTestImplementation(Deps.Libs.MultiPlatform.Tests.mokoMvvmTest)
     commonTestImplementation(Deps.Libs.MultiPlatform.Tests.mokoUnitsTest)
     commonTestImplementation(Deps.Libs.MultiPlatform.Tests.multiplatformSettingsTest)

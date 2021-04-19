@@ -7,24 +7,23 @@ package org.example.library.feature.config
 import com.russhwolf.settings.MockSettings
 import com.russhwolf.settings.Settings
 import dev.icerock.moko.mvvm.dispatcher.EventsDispatcher
-import dev.icerock.moko.mvvm.test.TestViewModelScope
+import dev.icerock.moko.mvvm.test.TestViewModelScopeRule
 import dev.icerock.moko.mvvm.test.createTestEventsDispatcher
-import dev.icerock.moko.test.AndroidArchitectureInstantTaskExecutorRule
-import dev.icerock.moko.test.TestRule
-import io.ktor.client.engine.mock.respondBadRequest
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
+import dev.icerock.moko.test.cases.InstantTaskRule
+import dev.icerock.moko.test.cases.TestCases
+import io.ktor.client.engine.mock.*
 import org.example.library.SharedFactory
 import org.example.library.createSharedFactory
 import org.example.library.feature.config.presentation.ConfigViewModel
-import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class ConfigViewModelTests {
-    @get:TestRule
-    val instantTaskExecutorRule = AndroidArchitectureInstantTaskExecutorRule()
+class ConfigViewModelTests : TestCases() {
+    override val rules: List<Rule> = listOf(
+        InstantTaskRule(),
+        TestViewModelScopeRule()
+    )
 
     private lateinit var settings: MockSettings
     private lateinit var listener: ConfigViewModel.EventsListener
@@ -32,8 +31,6 @@ class ConfigViewModelTests {
 
     @BeforeTest
     fun setup() {
-        TestViewModelScope.setupViewModelScope(CoroutineScope(Dispatchers.Unconfined))
-
         val events = mutableListOf<String>()
 
         listener = object : ConfigViewModel.EventsListener {
@@ -43,11 +40,6 @@ class ConfigViewModelTests {
         }
         settings = MockSettings()
         listenerEvents = events
-    }
-
-    @AfterTest
-    fun tearDown() {
-        TestViewModelScope.resetViewModelScope()
     }
 
     @Test
