@@ -50,7 +50,7 @@
             android:layout_gravity="center"
             android:padding="16dp"
             android:orientation="vertical"
-            app:visibleOrGone="@{viewModel.state.ld.isError}">
+            app:visibleOrGone="@{viewModel.state.ld.isFailed}">
 
             <TextView
                 android:layout_width="match_parent"

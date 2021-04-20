@@ -12,6 +12,7 @@ import dev.icerock.moko.resources.desc.ResourceFormatted
 import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.resources.desc.desc
 import dev.icerock.moko.units.TableUnitItem
+import io.ktor.client.engine.HttpClientEngine
 import org.example.library.domain.di.DomainFactory
 import org.example.library.domain.entity.News
 import org.example.library.feature.config.di.ConfigFactory
@@ -25,11 +26,27 @@ class SharedFactory(
     settings: Settings,
     antilog: Antilog,
     baseUrl: String,
-    newsUnitsFactory: NewsUnitsFactory
+    newsUnitsFactory: NewsUnitsFactory,
+    httpClientEngine: HttpClientEngine?
 ) {
+    // special for iOS call side we not use argument with default value
+    constructor(
+        settings: Settings,
+        antilog: Antilog,
+        baseUrl: String,
+        newsUnitsFactory: NewsUnitsFactory
+    ) : this(
+        settings = settings,
+        antilog = antilog,
+        baseUrl = baseUrl,
+        newsUnitsFactory = newsUnitsFactory,
+        httpClientEngine = null
+    )
+
     private val domainFactory = DomainFactory(
         settings = settings,
-        baseUrl = baseUrl
+        baseUrl = baseUrl,
+        httpClientEngine = httpClientEngine
     )
 
     val newsFactory: ListFactory<News> = ListFactory(

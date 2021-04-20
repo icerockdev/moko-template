@@ -4,7 +4,7 @@ on:
   pull_request
 
 jobs:
-  build:
+  test:
     runs-on: macOS-latest
 
     steps:
@@ -13,5 +13,17 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-      - name: Check
-        run: ./gradlew detekt build check
+      - name: Build K/N cache
+        run: ./gradlew :mpp-library:runCommonizer
+      - name: Build and test
+        run: ./gradlew build syncMultiPlatformLibraryDebugFrameworkIosX64 -x linkMultiPlatformLibraryDebugFrameworkIosArm64 -x linkMultiPlatformLibraryReleaseFrameworkIosArm64 -x linkMultiPlatformLibraryReleaseFrameworkIosX64
+      - name: Install pods
+        run: cd ios-app && pod install
+      - name: build ios sample
+        run: cd ios-app && xcodebuild -scheme ios-app -workspace ios-app.xcworkspace -configuration Debug -sdk iphonesimulator -arch x86_64 build CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO | xcpretty
+      - name: Publish Test Report
+        uses: mikepenz/action-junit-report@v2
+        if: ${{ always() }}
+        with:
+          report_paths: '**/build/test-results/**/TEST-*.xml'
+          github_token: ${{ secrets.GITHUB_TOKEN }}

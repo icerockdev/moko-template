@@ -54,6 +54,7 @@ dependencies {
     implementation(Deps.Libs.Android.material)
     implementation(Deps.Libs.Android.recyclerView)
     implementation(Deps.Libs.Android.swipeRefreshLayout)
+    implementation(Deps.Libs.Android.mokoMvvmDataBinding)
 
     implementation(project(":mpp-library"))
 }

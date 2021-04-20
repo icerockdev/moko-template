@@ -15,7 +15,9 @@ val mppLibs = listOf(
     Deps.Libs.MultiPlatform.napier,
     Deps.Libs.MultiPlatform.mokoParcelize,
     Deps.Libs.MultiPlatform.mokoResources,
-    Deps.Libs.MultiPlatform.mokoMvvm,
+    Deps.Libs.MultiPlatform.mokoMvvmCore,
+    Deps.Libs.MultiPlatform.mokoMvvmLiveData,
+    Deps.Libs.MultiPlatform.mokoMvvmState,
     Deps.Libs.MultiPlatform.mokoUnits,
     Deps.Libs.MultiPlatform.mokoFields
 )
@@ -26,15 +28,19 @@ val mppModules = listOf(
 )
 
 dependencies {
-    commonMainImplementation(Deps.Libs.MultiPlatform.coroutines) {
-        // we should force native-mt version for ktor 1.4.0 on iOS
-        isForce = true
-    }
+    commonMainImplementation(Deps.Libs.MultiPlatform.coroutines)
+    commonMainImplementation(Deps.Libs.MultiPlatform.ktorClient)
 
     androidMainImplementation(Deps.Libs.Android.lifecycle)
 
     mppLibs.forEach { commonMainApi(it.common) }
     mppModules.forEach { commonMainApi(project(it.name)) }
+
+    commonTestImplementation(Deps.Libs.MultiPlatform.Tests.mokoTestCore)
+    commonTestImplementation(Deps.Libs.MultiPlatform.Tests.mokoMvvmTest)
+    commonTestImplementation(Deps.Libs.MultiPlatform.Tests.mokoUnitsTest)
+    commonTestImplementation(Deps.Libs.MultiPlatform.Tests.multiplatformSettingsTest)
+    commonTestImplementation(Deps.Libs.MultiPlatform.Tests.ktorClientMock)
 }
 
 multiplatformResources {
