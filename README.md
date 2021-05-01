@@ -141,6 +141,10 @@ All development of template is performed in the `master` branch. Please send PRs
 
 Please refer to the [contributing guide](CONTRIBUTING.md) for more details.
 
+## Thanks
+We test Apple Silicon support with [MacStadium](https://www.macstadium.com/).
+![macstadium](https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png)
+
 ## License
 
     Copyright 2019 IceRock MAG Inc
