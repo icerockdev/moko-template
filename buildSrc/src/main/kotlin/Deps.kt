@@ -159,8 +159,13 @@ object Deps {
             val multiplatformSettings =
                 "com.russhwolf:multiplatform-settings:$multiplatformSettingsVersion"
                 .defaultMPL(ios = true)
-            val napier = "com.github.aakira:napier:$napierVersion"
-                .defaultMPL(ios = true)
+            val napier = "com.github.aakira:napier:$napierVersion".let {
+                MultiPlatformLibrary(
+                    common = it,
+                    iosX64 = it.replace(Regex("(.*):(.*):(.*)"), "$1:$2-iosX64:$3"),
+                    iosArm64 = it.replace(Regex("(.*):(.*):(.*)"), "$1:$2-iosArm64:$3")
+                )
+            }
 
             object Tests {
                 const val kotlinTest =
