@@ -31,12 +31,11 @@ allprojects {
         mavenCentral()
         google()
 
-        maven { url = uri("https://dl.bintray.com/aakira/maven") }
-
         jcenter {
             content {
                 includeGroup("org.jetbrains.trove4j")
                 includeGroup("org.jetbrains.kotlinx")
+                includeGroup("com.github.aakira")
             }
         }
     }
