@@ -14,6 +14,7 @@ object Deps {
     private const val espressoCoreVersion = "3.2.0"
     private const val testRunnerVersion = "1.2.0"
     private const val testExtJunitVersion = "1.1.1"
+    private const val hiltVersion = "2.35"
 
     // should be as kotlin version! see buildSrc/build.gradle.kts
     private const val kotlinTestVersion = "1.4.31"
@@ -79,6 +80,11 @@ object Deps {
             id = "io.gitlab.arturbosch.detekt",
             version = detektVersion
         )
+
+        val hilt = GradlePlugin(
+            id = "dagger.hilt.android.plugin",
+            module = "com.google.dagger:hilt-android-gradle-plugin:$hiltVersion"
+        )
     }
 
     object Libs {
@@ -100,6 +106,8 @@ object Deps {
             val ktorClientOkHttp =
                 "io.ktor:ktor-client-okhttp:$ktorClientVersion"
             val mokoMvvmDataBinding = "dev.icerock.moko:mvvm-databinding:$mokoMvvmVersion"
+            const val hilt = "com.google.dagger:hilt-android:$hiltVersion"
+            const val hiltCompiler = "com.google.dagger:hilt-android-compiler:$hiltVersion"
 
             object Tests {
                 const val espressoCore =
@@ -158,7 +166,7 @@ object Deps {
                 .defaultMPL(ios = true)
             val multiplatformSettings =
                 "com.russhwolf:multiplatform-settings:$multiplatformSettingsVersion"
-                .defaultMPL(ios = true)
+                    .defaultMPL(ios = true)
             val napier = "com.github.aakira:napier:$napierVersion".let {
                 MultiPlatformLibrary(
                     common = it,

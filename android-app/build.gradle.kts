@@ -7,6 +7,7 @@ plugins {
     plugin(Deps.Plugins.kotlinAndroid)
     plugin(Deps.Plugins.kotlinKapt)
     plugin(Deps.Plugins.mokoUnits)
+    plugin(Deps.Plugins.hilt)
 }
 
 android {
@@ -55,6 +56,10 @@ dependencies {
     implementation(Deps.Libs.Android.recyclerView)
     implementation(Deps.Libs.Android.swipeRefreshLayout)
     implementation(Deps.Libs.Android.mokoMvvmDataBinding)
+
+    // Hilt
+    implementation(Deps.Libs.Android.hilt)
+    kapt(Deps.Libs.Android.hiltCompiler)
 
     implementation(project(":mpp-library"))
 }
