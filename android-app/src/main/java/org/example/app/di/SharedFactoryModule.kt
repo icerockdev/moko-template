@@ -22,7 +22,7 @@ object SharedFactoryModule {
         settings: Settings,
         antilog: Antilog,
         newsUnitFactory: SharedFactory.NewsUnitsFactory
-    ): SharedFactory = SharedFactory.createFactory(
+    ): SharedFactory = SharedFactory(
         settings = settings,
         antilog = antilog,
         newsUnitsFactory = newsUnitFactory,
