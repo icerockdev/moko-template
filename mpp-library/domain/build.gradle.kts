@@ -3,25 +3,32 @@
  */
 
 plugins {
-    plugin(Deps.Plugins.androidLibrary)
-    plugin(Deps.Plugins.kotlinMultiplatform)
-    plugin(Deps.Plugins.kotlinParcelize)
-    plugin(Deps.Plugins.kotlinSerialization)
-    plugin(Deps.Plugins.mobileMultiplatform)
-    plugin(Deps.Plugins.mokoNetwork)
+    id("com.android.library")
+    id("android-base-convention")
+    id("detekt-convention")
+    id("org.jetbrains.kotlin.multiplatform")
+    id("kotlin-parcelize")
+    id("kotlinx-serialization")
+    id("dev.icerock.mobile.multiplatform.android-manifest")
+    id("dev.icerock.mobile.multiplatform-network-generator")
+}
+
+kotlin {
+    android()
+    ios()
 }
 
 dependencies {
-    commonMainImplementation(Deps.Libs.MultiPlatform.coroutines)
-    commonMainImplementation(Deps.Libs.MultiPlatform.kotlinSerialization)
-    commonMainImplementation(Deps.Libs.MultiPlatform.ktorClient)
-    commonMainImplementation(Deps.Libs.MultiPlatform.ktorClientLogging)
+    commonMainImplementation(libs.coroutines)
+    commonMainImplementation(libs.kotlinSerialization)
+    commonMainImplementation(libs.ktorClient)
+    commonMainImplementation(libs.ktorClientLogging)
 
-    commonMainImplementation(Deps.Libs.MultiPlatform.mokoParcelize.common)
-    commonMainImplementation(Deps.Libs.MultiPlatform.mokoNetwork.common)
+    commonMainImplementation(libs.mokoParcelize)
+    commonMainImplementation(libs.mokoNetwork)
 
-    commonMainImplementation(Deps.Libs.MultiPlatform.multiplatformSettings.common)
-    commonMainImplementation(Deps.Libs.MultiPlatform.napier.common)
+    commonMainImplementation(libs.multiplatformSettings)
+    commonMainImplementation(libs.napier)
 }
 
 mokoNetwork {
