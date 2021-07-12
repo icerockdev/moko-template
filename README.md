@@ -1,4 +1,4 @@
-![moko-template](https://user-images.githubusercontent.com/5010169/66987007-1bbe9880-f0ea-11e9-8c3c-46b25926794b.png)
+![moko-template](https://user-images.githubusercontent.com/5010169/66987007-1bbe9880-f0ea-11e9-8c3c-46b25926794b.png) 
 [![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0) ![kotlin-version](https://img.shields.io/badge/kotlin-1.5.20-orange)
 
 # Mobile Kotlin multiplatform project template
