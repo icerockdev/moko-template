@@ -3,11 +3,8 @@
  */
 
 plugins {
-    id("com.android.library")
-    id("android-base-convention")
     id("detekt-convention")
-    id("org.jetbrains.kotlin.multiplatform")
-    id("dev.icerock.mobile.multiplatform.android-manifest")
+    id("multiplatform-library-convention")
 }
 
 kotlin {

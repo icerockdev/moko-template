@@ -99,10 +99,7 @@ Put your iOS icon to `ios-app/src/Assets.xcassets/AppIcon.appiconset`.
 Create a file `mpp-library/feature/myfeature/build.gradle.kts` with the following content:
 ```kotlin
 plugins {
-    id("com.android.library")
-    id("android-base-convention")
-    id("org.jetbrains.kotlin.multiplatform")
-    id("dev.icerock.mobile.multiplatform.android-manifest")
+    id("multiplatform-library-convention")
 }
 ```
 Add module to `settings.gradle.kts`:

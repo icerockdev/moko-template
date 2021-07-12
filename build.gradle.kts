@@ -15,7 +15,7 @@ buildscript {
         classpath("dev.icerock.moko:units-generator:0.6.1")
         classpath("org.jetbrains.kotlin:kotlin-serialization:1.5.20")
 
-        classpath(":template-build-logic")
+        classpath(":build-logic")
     }
 }
 

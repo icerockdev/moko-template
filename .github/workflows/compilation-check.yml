@@ -9,12 +9,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - name: Set up JDK 1.8
+      - name: Set up JDK 11
         uses: actions/setup-java@v1
         with:
-          java-version: 1.8
+          java-version: 11
       - name: Build and test
-        run: ./gradlew build syncMultiPlatformLibraryDebugFrameworkIosX64 -x linkMultiPlatformLibraryDebugFrameworkIosArm64 -x linkMultiPlatformLibraryReleaseFrameworkIosArm64 -x linkMultiPlatformLibraryReleaseFrameworkIosX64
+        run: ./gradlew build syncMultiPlatformLibraryDebugFrameworkIosX64
       - name: Install pods
         run: cd ios-app && pod install
       - name: build ios sample

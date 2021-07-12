@@ -19,7 +19,7 @@ dependencyResolutionManagement {
     }
 }
 
-includeBuild("template-build-logic")
+includeBuild("build-logic")
 
 include(":android-app")
 include(":mpp-library")
