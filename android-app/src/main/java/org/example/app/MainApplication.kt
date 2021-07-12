@@ -6,7 +6,7 @@ package org.example.app
 
 import android.app.Application
 import android.content.Context
-import com.github.aakira.napier.DebugAntilog
+import io.github.aakira.napier.DebugAntilog
 import com.russhwolf.settings.AndroidSettings
 import org.example.app.units.NewsListUnitsFactory
 import org.example.library.SharedFactory

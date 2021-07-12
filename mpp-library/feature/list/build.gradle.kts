@@ -3,22 +3,21 @@
  */
 
 plugins {
-    plugin(Deps.Plugins.androidLibrary)
-    plugin(Deps.Plugins.kotlinMultiplatform)
-    plugin(Deps.Plugins.kotlinParcelize)
-    plugin(Deps.Plugins.mobileMultiplatform)
+    id("multiplatform-library-convention")
+    id("detekt-convention")
+    id("kotlin-parcelize")
 }
 
 dependencies {
-    commonMainImplementation(Deps.Libs.MultiPlatform.coroutines)
+    commonMainImplementation(libs.coroutines)
 
-    androidMainImplementation(Deps.Libs.Android.lifecycle)
-    androidMainImplementation(Deps.Libs.Android.recyclerView)
+    "androidMainImplementation"(libs.lifecycle)
+    "androidMainImplementation"(libs.recyclerView)
 
-    commonMainImplementation(Deps.Libs.MultiPlatform.mokoMvvmLiveData.common)
-    commonMainImplementation(Deps.Libs.MultiPlatform.mokoMvvmState.common)
-    commonMainImplementation(Deps.Libs.MultiPlatform.mokoResources.common)
-    commonMainImplementation(Deps.Libs.MultiPlatform.mokoUnits.common)
+    commonMainImplementation(libs.mokoMvvmLiveData)
+    commonMainImplementation(libs.mokoMvvmState)
+    commonMainImplementation(libs.mokoResources)
+    commonMainImplementation(libs.mokoUnits)
 
-    commonMainImplementation(Deps.Libs.MultiPlatform.napier.common)
+    commonMainImplementation(libs.napier)
 }

@@ -4,7 +4,7 @@
 
 package org.example.library.domain.di
 
-import com.github.aakira.napier.Napier
+import io.github.aakira.napier.Napier
 import com.russhwolf.settings.Settings
 import dev.icerock.moko.network.exceptionfactory.HttpExceptionFactory
 import dev.icerock.moko.network.exceptionfactory.parser.ErrorExceptionParser

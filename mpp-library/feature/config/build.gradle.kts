@@ -3,17 +3,16 @@
  */
 
 plugins {
-    plugin(Deps.Plugins.androidLibrary)
-    plugin(Deps.Plugins.kotlinMultiplatform)
-    plugin(Deps.Plugins.mobileMultiplatform)
+    id("detekt-convention")
+    id("multiplatform-library-convention")
 }
 
 dependencies {
-    commonMainImplementation(Deps.Libs.MultiPlatform.coroutines)
+    commonMainImplementation(libs.coroutines)
 
-    androidMainImplementation(Deps.Libs.Android.lifecycle)
+    "androidMainImplementation"(libs.lifecycle)
 
-    commonMainImplementation(Deps.Libs.MultiPlatform.mokoMvvmLiveData.common)
-    commonMainImplementation(Deps.Libs.MultiPlatform.mokoResources.common)
-    commonMainImplementation(Deps.Libs.MultiPlatform.mokoFields.common)
+    commonMainImplementation(libs.mokoMvvmLiveData)
+    commonMainImplementation(libs.mokoResources)
+    commonMainImplementation(libs.mokoFields)
 }

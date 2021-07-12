@@ -4,8 +4,8 @@
 
 package org.example.library
 
-import com.github.aakira.napier.Antilog
-import com.github.aakira.napier.Napier
+import io.github.aakira.napier.Antilog
+import io.github.aakira.napier.Napier
 import com.russhwolf.settings.Settings
 import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.desc.ResourceFormatted

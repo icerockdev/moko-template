@@ -4,7 +4,7 @@
 
 package org.example.library.feature.list.presentation
 
-import com.github.aakira.napier.Napier
+import io.github.aakira.napier.Napier
 import dev.icerock.moko.mvvm.ResourceState
 import dev.icerock.moko.mvvm.asState
 import dev.icerock.moko.mvvm.livedata.LiveData
