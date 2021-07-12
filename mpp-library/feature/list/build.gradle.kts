@@ -8,11 +8,6 @@ plugins {
     id("kotlin-parcelize")
 }
 
-kotlin {
-    android()
-    ios()
-}
-
 dependencies {
     commonMainImplementation(libs.coroutines)
 

@@ -7,11 +7,6 @@ plugins {
     id("multiplatform-library-convention")
 }
 
-kotlin {
-    android()
-    ios()
-}
-
 dependencies {
     commonMainImplementation(libs.coroutines)
 
