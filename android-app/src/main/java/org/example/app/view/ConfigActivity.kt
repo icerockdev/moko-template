@@ -14,7 +14,7 @@ import javax.inject.Inject
 import org.example.app.BR
 import org.example.app.R
 import org.example.app.databinding.ActivityConfigBinding
-import org.example.library.SharedFactory
+import org.example.library.feature.config.di.ConfigFactory
 import org.example.library.feature.config.presentation.ConfigViewModel
 
 // MvvmEventsActivity for simplify creation of MVVM screen with https://github.com/icerockdev/moko-mvvm
@@ -27,12 +27,13 @@ class ConfigActivity :
     override val viewModelClass: Class<ConfigViewModel> = ConfigViewModel::class.java
     override val viewModelVariableId: Int = BR.viewModel
 
-    @Inject lateinit var factory: SharedFactory
+    @Inject
+    lateinit var factory: ConfigFactory
 
     // createViewModelFactory is extension from https://github.com/icerockdev/moko-mvvm
     // ViewModel not recreating at configuration changes
     override fun viewModelFactory(): ViewModelProvider.Factory = createViewModelFactory {
-        factory.configFactory.createConfigViewModel(
+        factory.createConfigViewModel(
             eventsDispatcher = eventsDispatcherOnMain()
         )
     }

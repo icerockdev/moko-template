@@ -15,22 +15,25 @@ import org.example.app.R
 import org.example.app.databinding.ActivityNewsBinding
 import org.example.library.SharedFactory
 import org.example.library.domain.entity.News
+import org.example.library.feature.list.di.ListFactory
 import org.example.library.feature.list.presentation.ListViewModel
 
 // MvvmActivity for simplify creation of MVVM screen with https://github.com/icerockdev/moko-mvvm
 @AndroidEntryPoint
 class NewsActivity : MvvmActivity<ActivityNewsBinding, ListViewModel<News>>() {
     override val layoutId: Int = R.layout.activity_news
+
     @Suppress("UNCHECKED_CAST")
     override val viewModelClass = ListViewModel::class.java as Class<ListViewModel<News>>
     override val viewModelVariableId: Int = BR.viewModel
 
-    @Inject lateinit var factory: SharedFactory
+    @Inject
+    lateinit var factory: ListFactory<News>
 
     // createViewModelFactory is extension from https://github.com/icerockdev/moko-mvvm
     // ViewModel not recreating at configuration changes
     override fun viewModelFactory(): ViewModelProvider.Factory = createViewModelFactory {
-        factory.newsFactory.createListViewModel().apply { onCreated() }
+        factory.createListViewModel().apply { onCreated() }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
