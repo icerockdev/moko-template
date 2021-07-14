@@ -18,6 +18,7 @@ object Deps {
 
     // should be as kotlin version! see buildSrc/build.gradle.kts
     private const val kotlinTestVersion = "1.4.31"
+
     // should be as kotlin version! see buildSrc/build.gradle.kts
     private const val kotlinxSerializationPluginVersion = "1.4.31"
     private const val kotlinxSerializationVersion = "1.1.0"
@@ -166,7 +167,7 @@ object Deps {
                 .defaultMPL(ios = true)
             val multiplatformSettings =
                 "com.russhwolf:multiplatform-settings:$multiplatformSettingsVersion"
-                    .defaultMPL(ios = true)
+                .defaultMPL(ios = true)
             val napier = "com.github.aakira:napier:$napierVersion".let {
                 MultiPlatformLibrary(
                     common = it,
