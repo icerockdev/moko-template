@@ -4,8 +4,8 @@
 
 package org.example.library
 
-import com.github.aakira.napier.Antilog
-import com.github.aakira.napier.Napier
+import io.github.aakira.napier.Antilog
+import io.github.aakira.napier.Napier
 
 internal class TestAntilog : Antilog() {
     override fun performLog(

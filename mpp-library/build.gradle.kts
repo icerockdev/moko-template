@@ -3,44 +3,45 @@
  */
 
 plugins {
-    plugin(Deps.Plugins.androidLibrary)
-    plugin(Deps.Plugins.kotlinMultiplatform)
-    plugin(Deps.Plugins.mobileMultiplatform)
-    plugin(Deps.Plugins.mokoResources)
-    plugin(Deps.Plugins.iosFramework)
+    id("com.android.library")
+    id("android-base-convention")
+    id("detekt-convention")
+    id("org.jetbrains.kotlin.multiplatform")
+    id("dev.icerock.mobile.multiplatform.android-manifest")
+    id("dev.icerock.mobile.multiplatform-resources")
+    id("dev.icerock.mobile.multiplatform.ios-framework")
 }
 
-val mppLibs = listOf(
-    Deps.Libs.MultiPlatform.multiplatformSettings,
-    Deps.Libs.MultiPlatform.napier,
-    Deps.Libs.MultiPlatform.mokoParcelize,
-    Deps.Libs.MultiPlatform.mokoResources,
-    Deps.Libs.MultiPlatform.mokoMvvmCore,
-    Deps.Libs.MultiPlatform.mokoMvvmLiveData,
-    Deps.Libs.MultiPlatform.mokoMvvmState,
-    Deps.Libs.MultiPlatform.mokoUnits,
-    Deps.Libs.MultiPlatform.mokoFields
-)
-val mppModules = listOf(
-    Deps.Modules.domain,
-    Deps.Modules.Feature.config,
-    Deps.Modules.Feature.list
-)
+kotlin {
+    android()
+    ios()
+}
 
 dependencies {
-    commonMainImplementation(Deps.Libs.MultiPlatform.coroutines)
-    commonMainImplementation(Deps.Libs.MultiPlatform.ktorClient)
+    commonMainImplementation(libs.coroutines)
+    commonMainImplementation(libs.ktorClient)
 
-    androidMainImplementation(Deps.Libs.Android.lifecycle)
+    "androidMainImplementation"(libs.lifecycle)
 
-    mppLibs.forEach { commonMainApi(it.common) }
-    mppModules.forEach { commonMainApi(project(it.name)) }
+    commonMainApi(libs.multiplatformSettings)
+    commonMainApi(libs.napier)
+    commonMainApi(libs.mokoParcelize)
+    commonMainApi(libs.mokoResources)
+    commonMainApi(libs.mokoMvvmCore)
+    commonMainApi(libs.mokoMvvmLiveData)
+    commonMainApi(libs.mokoMvvmState)
+    commonMainApi(libs.mokoUnits)
+    commonMainApi(libs.mokoFields)
 
-    commonTestImplementation(Deps.Libs.MultiPlatform.Tests.mokoTestCore)
-    commonTestImplementation(Deps.Libs.MultiPlatform.Tests.mokoMvvmTest)
-    commonTestImplementation(Deps.Libs.MultiPlatform.Tests.mokoUnitsTest)
-    commonTestImplementation(Deps.Libs.MultiPlatform.Tests.multiplatformSettingsTest)
-    commonTestImplementation(Deps.Libs.MultiPlatform.Tests.ktorClientMock)
+    commonTestImplementation(libs.mokoTestCore)
+    commonTestImplementation(libs.mokoMvvmTest)
+    commonTestImplementation(libs.mokoUnitsTest)
+    commonTestImplementation(libs.multiplatformSettingsTest)
+    commonTestImplementation(libs.ktorClientMock)
+
+    commonMainApi(projects.mppLibrary.domain)
+    commonMainApi(projects.mppLibrary.feature.config)
+    commonMainApi(projects.mppLibrary.feature.list)
 }
 
 multiplatformResources {
@@ -48,6 +49,17 @@ multiplatformResources {
 }
 
 framework {
-    mppModules.forEach { export(it) }
-    mppLibs.forEach { export(it) }
+    export(projects.mppLibrary.domain)
+    export(projects.mppLibrary.feature.config)
+    export(projects.mppLibrary.feature.list)
+
+    export(libs.multiplatformSettings)
+    export(libs.napier)
+    export(libs.mokoParcelize)
+    export(libs.mokoResources)
+    export(libs.mokoMvvmCore)
+    export(libs.mokoMvvmLiveData)
+    export(libs.mokoMvvmState)
+    export(libs.mokoUnits)
+    export(libs.mokoFields)
 }
