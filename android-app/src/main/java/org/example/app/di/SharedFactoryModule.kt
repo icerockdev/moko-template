@@ -4,12 +4,12 @@
 
 package org.example.app.di
 
-import com.github.aakira.napier.Antilog
 import com.russhwolf.settings.Settings
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import io.github.aakira.napier.Antilog
 import javax.inject.Singleton
 import org.example.app.BuildConfig
 import org.example.library.SharedFactory

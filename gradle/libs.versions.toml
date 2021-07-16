@@ -5,6 +5,7 @@ swipeRefreshLayoutVersion = "1.1.0"
 constraintLayoutVersion = "2.0.0"
 lifecycleVersion = "2.2.0"
 glideVersion = "4.9.0"
+hiltVersion = "2.35"
 androidAppCompatVersion = "1.2.0"
 espressoCoreVersion = "3.2.0"
 testRunnerVersion = "1.2.0"
@@ -39,6 +40,8 @@ swipeRefreshLayout = { module = "androidx.swiperefreshlayout:swiperefreshlayout"
 constraintLayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintLayoutVersion" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glideVersion" }
 lifecycle = { module =  "androidx.lifecycle:lifecycle-extensions", version.ref = "lifecycleVersion" }
+hilt = { module =  "com.google.dagger:hilt-android", version.ref = "hiltVersion" }
+hiltCompiler = { module =  "com.google.dagger:hilt-android-compiler", version.ref = "hiltVersion" }
 ktorClientOkHttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktorClientVersion" }
 mokoMvvmDataBinding = { module = "dev.icerock.moko:mvvm-databinding", version.ref = "mokoMvvmVersion" }
 espressoCore = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoCoreVersion" }

@@ -14,7 +14,7 @@ buildscript {
         classpath("dev.icerock.moko:network-generator:0.16.0")
         classpath("dev.icerock.moko:units-generator:0.6.1")
         classpath("org.jetbrains.kotlin:kotlin-serialization:1.5.20")
-        plugin(Deps.Plugins.hilt)
+        classpath("com.google.dagger:hilt-android-gradle-plugin:2.35")
         classpath(":build-logic")
     }
 }

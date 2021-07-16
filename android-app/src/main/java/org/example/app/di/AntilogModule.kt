@@ -4,12 +4,12 @@
 
 package org.example.app.di
 
-import com.github.aakira.napier.Antilog
-import com.github.aakira.napier.DebugAntilog
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import io.github.aakira.napier.Antilog
+import io.github.aakira.napier.DebugAntilog
 import javax.inject.Singleton
 
 /**

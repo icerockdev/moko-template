@@ -7,7 +7,7 @@ plugins {
     id("detekt-convention")
     id("kotlin-kapt")
     id("dev.icerock.mobile.multiplatform-units")
-    plugin(Deps.Plugins.hilt)
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -32,8 +32,8 @@ dependencies {
     implementation(libs.mokoMvvmDataBinding)
 
     // Hilt
-    implementation(Deps.Libs.Android.hilt)
-    kapt(Deps.Libs.Android.hiltCompiler)
+    implementation(libs.hilt)
+    kapt(libs.hiltCompiler)
 
     implementation(projects.mppLibrary)
 }
