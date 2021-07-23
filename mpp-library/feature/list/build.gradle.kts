@@ -11,7 +11,7 @@ plugins {
 dependencies {
     commonMainImplementation(libs.coroutines)
 
-    "androidMainImplementation"(libs.lifecycle)
+    "androidMainImplementation"(libs.lifecycleViewModel)
     "androidMainImplementation"(libs.recyclerView)
 
     commonMainImplementation(libs.mokoMvvmLiveData)

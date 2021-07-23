@@ -21,7 +21,8 @@ dependencies {
     commonMainImplementation(libs.coroutines)
     commonMainImplementation(libs.ktorClient)
 
-    "androidMainImplementation"(libs.lifecycle)
+    "androidMainImplementation"(libs.multidex)
+    "androidMainImplementation"(libs.lifecycleViewModel)
 
     commonMainApi(libs.multiplatformSettings)
     commonMainApi(libs.napier)
