@@ -10,7 +10,7 @@ buildscript {
         gradlePluginPortal()
     }
     dependencies {
-        classpath("dev.icerock.moko:resources-generator:0.16.1")
+        classpath("dev.icerock.moko:resources-generator:0.16.2")
         classpath("dev.icerock.moko:network-generator:0.16.0")
         classpath("dev.icerock.moko:units-generator:0.6.1")
         classpath("org.jetbrains.kotlin:kotlin-serialization:1.5.20")

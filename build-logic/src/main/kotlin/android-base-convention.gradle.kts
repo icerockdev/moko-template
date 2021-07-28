@@ -10,5 +10,6 @@ configure<BaseExtension> {
     defaultConfig {
         minSdkVersion(16)
         targetSdkVersion(30)
+        multiDexEnabled = true
     }
 }
