@@ -3,14 +3,13 @@
  */
 
 plugins {
-    id("detekt-convention")
     id("multiplatform-library-convention")
 }
 
 dependencies {
     commonMainImplementation(libs.coroutines)
 
-    "androidMainImplementation"(libs.lifecycleViewModel)
+    androidMainImplementation(libs.lifecycleViewModel)
 
     commonMainImplementation(libs.mokoMvvmLiveData)
     commonMainImplementation(libs.mokoResources)

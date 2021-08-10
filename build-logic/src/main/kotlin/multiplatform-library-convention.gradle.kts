@@ -3,6 +3,7 @@
  */
 
 plugins {
+    id("base-convention")
     id("com.android.library")
     id("android-base-convention")
     id("org.jetbrains.kotlin.multiplatform")
