@@ -4,15 +4,14 @@
 
 plugins {
     id("multiplatform-library-convention")
-    id("detekt-convention")
     id("kotlin-parcelize")
 }
 
 dependencies {
     commonMainImplementation(libs.coroutines)
 
-    "androidMainImplementation"(libs.lifecycleViewModel)
-    "androidMainImplementation"(libs.recyclerView)
+    androidMainImplementation(libs.lifecycleViewModel)
+    androidMainImplementation(libs.recyclerView)
 
     commonMainImplementation(libs.mokoMvvmLiveData)
     commonMainImplementation(libs.mokoMvvmState)

@@ -3,26 +3,17 @@
  */
 
 plugins {
-    id("com.android.library")
-    id("android-base-convention")
-    id("detekt-convention")
-    id("org.jetbrains.kotlin.multiplatform")
-    id("dev.icerock.mobile.multiplatform.android-manifest")
+    id("multiplatform-library-convention")
     id("dev.icerock.mobile.multiplatform-resources")
     id("dev.icerock.mobile.multiplatform.ios-framework")
-}
-
-kotlin {
-    android()
-    ios()
 }
 
 dependencies {
     commonMainImplementation(libs.coroutines)
     commonMainImplementation(libs.ktorClient)
 
-    "androidMainImplementation"(libs.multidex)
-    "androidMainImplementation"(libs.lifecycleViewModel)
+    androidMainImplementation(libs.multidex)
+    androidMainImplementation(libs.lifecycleViewModel)
 
     commonMainApi(libs.multiplatformSettings)
     commonMainApi(libs.napier)
@@ -34,15 +25,16 @@ dependencies {
     commonMainApi(libs.mokoUnits)
     commonMainApi(libs.mokoFields)
 
+    commonMainApi(projects.mppLibrary.domain)
+    commonMainApi(projects.mppLibrary.feature.config)
+    commonMainApi(projects.mppLibrary.feature.list)
+
     commonTestImplementation(libs.mokoTestCore)
     commonTestImplementation(libs.mokoMvvmTest)
     commonTestImplementation(libs.mokoUnitsTest)
     commonTestImplementation(libs.multiplatformSettingsTest)
     commonTestImplementation(libs.ktorClientMock)
 
-    commonMainApi(projects.mppLibrary.domain)
-    commonMainApi(projects.mppLibrary.feature.config)
-    commonMainApi(projects.mppLibrary.feature.list)
 }
 
 multiplatformResources {

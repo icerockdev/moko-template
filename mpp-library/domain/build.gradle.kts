@@ -3,19 +3,10 @@
  */
 
 plugins {
-    id("com.android.library")
-    id("android-base-convention")
-    id("detekt-convention")
-    id("org.jetbrains.kotlin.multiplatform")
+    id("multiplatform-library-convention")
     id("kotlin-parcelize")
     id("kotlinx-serialization")
-    id("dev.icerock.mobile.multiplatform.android-manifest")
     id("dev.icerock.mobile.multiplatform-network-generator")
-}
-
-kotlin {
-    android()
-    ios()
 }
 
 dependencies {
