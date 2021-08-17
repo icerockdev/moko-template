@@ -12,15 +12,30 @@ plugins {
 
 android {
     buildFeatures.dataBinding = true
+    buildFeatures.compose = true
 
     defaultConfig {
         applicationId = "org.example.app"
-
+        minSdkVersion(21)
         versionCode = 1
         versionName = "0.1.0"
 
         val url = "https://newsapi.org/v2/"
         buildConfigField("String", "BASE_URL", "\"$url\"")
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8 
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    composeOptions {
+        kotlinCompilerVersion = "1.5.21"
+        kotlinCompilerExtensionVersion = "1.0.1"
     }
 }
 
@@ -40,6 +55,14 @@ dependencies {
     implementation(libs.swipeRefreshLayout)
     implementation(libs.mokoMvvmDataBinding)
 
+    // Compose
+    implementation(libs.composeActivity)
+    implementation(libs.composeMaterial)
+    implementation(libs.composeAnimation)
+    implementation(libs.composeUi)
+    implementation(libs.composeLifecycleViewmodel)
+    androidTestImplementation(libs.composeTest)
+    
     // Hilt
     implementation(libs.hilt)
     kapt(libs.hiltCompiler)
