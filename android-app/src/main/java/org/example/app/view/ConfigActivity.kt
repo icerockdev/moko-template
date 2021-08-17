@@ -5,6 +5,18 @@
 package org.example.app.view
 
 import android.content.Intent
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Button
+import androidx.compose.material.TextField
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModelProvider
 import dagger.hilt.android.AndroidEntryPoint
 import dev.icerock.moko.mvvm.MvvmEventsActivity
@@ -40,6 +52,42 @@ class ConfigActivity :
 
     // route called by EventsDispatcher from ViewModel (https://github.com/icerockdev/moko-mvvm)
     override fun routeToNews() {
+        setContent{
+            testConfigActivity()
+        }
         Intent(this, NewsActivity::class.java).also { startActivity(it) }
+    }
+}
+
+@Composable
+fun testConfigActivity() {
+    Column(modifier = Modifier
+        .fillMaxWidth()
+        .padding(20.dp),
+    ) {
+        val textState1 = remember { mutableStateOf(TextFieldValue()) }
+        TextField(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(4.dp),
+            value = textState1.value,
+            onValueChange = { textState1.value = it }
+        )
+
+        val textState2 = remember { mutableStateOf(TextFieldValue()) }
+        TextField(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(4.dp),
+            value = textState2.value,
+            onValueChange = { textState2.value = it }
+        )
+
+        Button(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(4.dp),
+            onClick = {  }) {
+        }
     }
 }

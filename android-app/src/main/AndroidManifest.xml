@@ -18,5 +18,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.NewsActivity" />
+        <activity android:name=".view.NewsActivityCompose" />
     </application>
 </manifest>
