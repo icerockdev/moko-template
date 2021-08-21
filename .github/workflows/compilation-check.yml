@@ -13,6 +13,8 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11
+      - name: warming up gradle
+        run: ./gradlew help
       - name: detekt check
         run: ./gradlew detekt
       - name: mpp-library build check
