@@ -7,9 +7,17 @@ plugins {
 }
 
 detekt {
-    input.setFrom("src/commonMain/kotlin", "src/androidMain/kotlin", "src/iosMain/kotlin", "src/main/kotlin")
+    source.setFrom(
+        "src/commonMain/kotlin",
+        "src/androidMain/kotlin",
+        "src/iosMain/kotlin",
+        "src/iosX64Main/kotlin",
+        "src/iosArm64Main/kotlin",
+        "src/main/kotlin",
+        "src/main/java"
+    )
 }
 
 dependencies {
-    "detektPlugins"("io.gitlab.arturbosch.detekt:detekt-formatting:1.15.0")
+    "detektPlugins"("io.gitlab.arturbosch.detekt:detekt-formatting:1.18.0")
 }

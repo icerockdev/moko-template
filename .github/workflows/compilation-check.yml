@@ -13,8 +13,14 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11
-      - name: Build and test
-        run: ./gradlew build syncMultiPlatformLibraryDebugFrameworkIosX64
+      - name: warming up gradle
+        run: ./gradlew help
+      - name: detekt check
+        run: ./gradlew detekt
+      - name: mpp-library build check
+        run: ./gradlew :mpp-library:build -x linkMultiPlatformLibraryDebugFrameworkIosArm64 -x linkMultiPlatformLibraryReleaseFrameworkIosArm64 -x linkMultiPlatformLibraryReleaseFrameworkIosX64 -x linkMultiPlatformLibraryDebugFrameworkIosFat -x linkMultiPlatformLibraryReleaseFrameworkIosFat
+      - name: full project build check
+        run: ./gradlew build syncMultiPlatformLibraryDebugFrameworkIosX64 -x linkMultiPlatformLibraryDebugFrameworkIosArm64 -x linkMultiPlatformLibraryReleaseFrameworkIosArm64 -x linkMultiPlatformLibraryReleaseFrameworkIosX64 -x linkMultiPlatformLibraryDebugFrameworkIosFat -x linkMultiPlatformLibraryReleaseFrameworkIosFat
       - name: Install pods
         run: cd ios-app && pod install
       - name: build ios sample

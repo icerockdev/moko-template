@@ -9,14 +9,13 @@ import androidx.lifecycle.ViewModelProvider
 import dagger.hilt.android.AndroidEntryPoint
 import dev.icerock.moko.mvvm.MvvmActivity
 import dev.icerock.moko.mvvm.createViewModelFactory
-import javax.inject.Inject
 import org.example.app.BR
 import org.example.app.R
 import org.example.app.databinding.ActivityNewsBinding
-import org.example.library.SharedFactory
 import org.example.library.domain.entity.News
 import org.example.library.feature.list.di.ListFactory
 import org.example.library.feature.list.presentation.ListViewModel
+import javax.inject.Inject
 
 // MvvmActivity for simplify creation of MVVM screen with https://github.com/icerockdev/moko-mvvm
 @AndroidEntryPoint
