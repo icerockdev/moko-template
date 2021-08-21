@@ -1,0 +1,29 @@
+complexity:
+  LongParameterList:
+    active: false
+
+exceptions:
+  TooGenericExceptionCaught:
+    active: true
+    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
+    exceptionNames:
+      - 'Error'
+      - 'RuntimeException'
+      - 'Throwable'
+    allowedExceptionNameRegex: '_|(ignore|expected).*'
+
+naming:
+  FunctionNaming:
+    functionPattern: '([A-Za-z][a-zA-Z0-9]*)|(`.*)'
+
+formatting:
+  CommentSpacing:
+    active: false
+
+style:
+  ForbiddenComment:
+    active: true
+    values:
+      - 'FIXME:'
+      - 'STOPSHIP:'
+    allowedPatterns: ''
