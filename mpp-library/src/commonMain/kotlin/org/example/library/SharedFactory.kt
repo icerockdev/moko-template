@@ -43,7 +43,7 @@ class SharedFactory(
         httpClientEngine = null
     )
 
-    private val domainFactory = DomainFactory(
+    private val domainFactory: DomainFactory = DomainFactory(
         settings = settings,
         baseUrl = baseUrl,
         httpClientEngine = httpClientEngine
@@ -69,7 +69,7 @@ class SharedFactory(
         }
     )
 
-    val configFactory = ConfigFactory(
+    val configFactory: ConfigFactory = ConfigFactory(
         configStore = object : ConfigStore {
             override var apiToken: String?
                 get() = domainFactory.configRepository.apiToken

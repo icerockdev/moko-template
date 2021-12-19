@@ -26,7 +26,6 @@ mokoTestVersion = "0.4.0"
 # multiplatform
 multiplatformSettingsVersion = "0.7.7"
 napierVersion = "1.5.0"
-mobileMultiplatformVersion = "0.12.0"
 
 # android
 materialVersion = "1.4.0"
@@ -38,7 +37,6 @@ glideVersion = "4.12.0"
 hiltVersion = "2.38.1"
 androidAppCompatVersion = "1.3.1"
 multidexVersion = "2.0.1"
-androidGradlePluginVersion = "7.0.1"
 
 # android tests
 espressoCoreVersion = "3.2.0"
@@ -46,9 +44,6 @@ testRunnerVersion = "1.2.0"
 testExtJunitVersion = "1.1.1"
 testCoreVersion = "1.3.0"
 robolectricVersion = "4.6.1"
-
-# tools
-detektVersion = "1.19.0"
 
 [libraries]
 # kotlin
@@ -129,7 +124,10 @@ mokoNetworkGeneratorGradle = { module = "dev.icerock.moko:network-generator", ve
 mokoUnitsGeneratorGradle = { module = "dev.icerock.moko:units-generator", version.ref = "mokoUnitsVersion" }
 kotlinSerializationGradle = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlinVersion" }
 hiltGradle = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hiltVersion" }
-mobileMultiplatformGradle = { module = "dev.icerock:mobile-multiplatform", version.ref = "mobileMultiplatformVersion" }
+mobileMultiplatformGradle = { module = "dev.icerock:mobile-multiplatform", version = "0.12.0" }
 kotlinGradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlinVersion" }
-androidGradle = { module = "com.android.tools.build:gradle", version.ref = "androidGradlePluginVersion" }
-detektGradle = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detektVersion" }
+androidGradle = { module = "com.android.tools.build:gradle", version = "7.0.1" }
+detektGradle = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version = "1.19.0" }
+
+[plugins]
+nativeCoroutines = { id = "com.rickclephas.kmp.nativecoroutines", version = "0.10.0" }

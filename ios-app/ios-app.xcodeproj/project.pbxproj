@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2258C969276F89C700FBD535 /* StateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2258C968276F89C700FBD535 /* StateViewController.swift */; };
 		451D7B1A235845B100095112 /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451D7B19235845B100095112 /* AppComponent.swift */; };
 		4539A7B3235437660081362B /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4539A7B2235437660081362B /* NewsViewController.swift */; };
 		4539A7B52354376F0081362B /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4539A7B42354376F0081362B /* ConfigViewController.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2258C968276F89C700FBD535 /* StateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateViewController.swift; sourceTree = "<group>"; };
 		287627FF1F319065007FA12B /* mokoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mokoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		363BA6BFAA3FA87230445070 /* Pods_ios_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		451D7B19235845B100095112 /* AppComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppComponent.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 			children = (
 				4539A7B42354376F0081362B /* ConfigViewController.swift */,
 				4539A7B2235437660081362B /* NewsViewController.swift */,
+				2258C968276F89C700FBD535 /* StateViewController.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				4539A7B723543B1C0081362B /* NewsListUnitsFactory.swift in Sources */,
 				4539A7BE2354471C0081362B /* NewsTableViewCell.swift in Sources */,
 				4539A7B52354376F0081362B /* ConfigViewController.swift in Sources */,
+				2258C969276F89C700FBD535 /* StateViewController.swift in Sources */,
 				4539A7B3235437660081362B /* NewsViewController.swift in Sources */,
 				451D7B1A235845B100095112 /* AppComponent.swift in Sources */,
 			);

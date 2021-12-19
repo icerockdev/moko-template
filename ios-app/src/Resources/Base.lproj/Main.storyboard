@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="zIh-nI-gcX">
-    <device id="retina4_0" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hal-a8-U3G">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,7 +13,7 @@
             <objects>
                 <navigationController id="zIh-nI-gcX" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aGe-Yj-KQZ">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -24,6 +23,57 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dpF-aw-Lyj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-5946" y="-1482"/>
+        </scene>
+        <!--Login-->
+        <scene sceneID="Nvc-9p-h8u">
+            <objects>
+                <viewController title="Login" id="hal-a8-U3G" customClass="StateViewController" customModule="mokoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JiX-Do-6uQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="bjl-Hb-Lk7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Wai-9N-kQ7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TnX-an-0Eg">
+                                <rect key="frame" x="16" y="0.0" width="288" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="otI-Ex-8OQ">
+                                <rect key="frame" x="16" y="42" width="288" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KS7-E7-oo3">
+                                <rect key="frame" x="16" y="84" width="288" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="otI-Ex-8OQ" firstAttribute="leading" secondItem="Wai-9N-kQ7" secondAttribute="leadingMargin" id="1y4-Na-53s"/>
+                            <constraint firstItem="KS7-E7-oo3" firstAttribute="top" secondItem="otI-Ex-8OQ" secondAttribute="bottom" constant="8" id="Ccz-5H-2az"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="otI-Ex-8OQ" secondAttribute="trailing" id="ILL-ty-vSJ"/>
+                            <constraint firstItem="TnX-an-0Eg" firstAttribute="leading" secondItem="Wai-9N-kQ7" secondAttribute="leadingMargin" id="RJb-lh-PSC"/>
+                            <constraint firstItem="TnX-an-0Eg" firstAttribute="top" secondItem="JiX-Do-6uQ" secondAttribute="bottom" id="fCK-zO-F8u"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TnX-an-0Eg" secondAttribute="trailing" id="l8w-gP-EHk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KS7-E7-oo3" secondAttribute="trailing" id="lmB-5s-k4W"/>
+                            <constraint firstItem="otI-Ex-8OQ" firstAttribute="top" secondItem="TnX-an-0Eg" secondAttribute="bottom" constant="8" id="nSM-Z1-ERY"/>
+                            <constraint firstItem="KS7-E7-oo3" firstAttribute="leading" secondItem="Wai-9N-kQ7" secondAttribute="leadingMargin" id="oO1-YK-vR0"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="loginField" destination="TnX-an-0Eg" id="gc6-Nc-iHX"/>
+                        <outlet property="passwordField" destination="otI-Ex-8OQ" id="pj8-Wu-5KW"/>
+                        <outlet property="submitButton" destination="KS7-E7-oo3" id="Ksg-5O-P7S"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pqB-zl-elv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-5948" y="-678"/>
         </scene>
         <!--moko-app-->
         <scene sceneID="heM-ap-51W">
@@ -38,8 +88,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e3l-s2-CcZ" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                <rect key="frame" x="24" y="72" width="272" height="30"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="24" y="52" width="272" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
@@ -47,16 +96,15 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IOd-DU-OXy" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                <rect key="frame" x="24" y="110" width="272" height="30"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="24" y="94" width="272" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Language"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aeS-KV-Tvh">
-                                <rect key="frame" x="135.5" y="148" width="49" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aeS-KV-Tvh">
+                                <rect key="frame" x="135.5" y="136" width="49" height="30"/>
                                 <state key="normal" title="Submit"/>
                                 <connections>
                                     <action selector="onSubmitPressed" destination="tpQ-LY-4wm" eventType="touchUpInside" id="Dpc-tx-4t3"/>
@@ -99,7 +147,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="maq-rv-fNa">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="bbj-as-yMb">
@@ -107,16 +155,16 @@
                                 <color key="color" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SRk-3N-mDE">
-                                <rect key="frame" x="130" y="254.5" width="60.5" height="59"/>
+                                <rect key="frame" x="130" y="254.5" width="60" height="59"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JIh-jv-ezw">
-                                        <rect key="frame" x="0.0" y="0.0" width="60.5" height="21"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FRx-mX-ot3">
-                                        <rect key="frame" x="0.0" y="29" width="60.5" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FRx-mX-ot3">
+                                        <rect key="frame" x="0.0" y="29" width="60" height="30"/>
                                         <state key="normal" title="Reload"/>
                                         <connections>
                                             <action selector="onRetryPressed" destination="rc3-Fb-lqP" eventType="touchUpInside" id="pS9-NF-7UY"/>
@@ -135,16 +183,16 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a21-Ii-jMd">
-                                <rect key="frame" x="141" y="255" width="38" height="58.5"/>
+                                <rect key="frame" x="141.5" y="255" width="37.5" height="58.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gKw-y0-12b">
-                                        <rect key="frame" x="0.0" y="0.0" width="38" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="37.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PAM-MV-Xmm">
-                                        <rect key="frame" x="0.0" y="28.5" width="38" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PAM-MV-Xmm">
+                                        <rect key="frame" x="0.0" y="28.5" width="37.5" height="30"/>
                                         <state key="normal" title="Retry"/>
                                         <connections>
                                             <action selector="onRetryPressed" destination="rc3-Fb-lqP" eventType="touchUpInside" id="Dei-TT-rp3"/>
@@ -194,4 +242,17 @@
             <point key="canvasLocation" x="-4249" y="-1482"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="IOd-DU-OXy">
+            <size key="intrinsicContentSize" width="92" height="34"/>
+        </designable>
+        <designable name="e3l-s2-CcZ">
+            <size key="intrinsicContentSize" width="92" height="34"/>
+        </designable>
+    </designables>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
