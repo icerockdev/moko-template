@@ -6,9 +6,9 @@ package org.example.app.units
 
 import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.units.TableUnitItem
-import javax.inject.Inject
 import org.example.app.TileNews
 import org.example.library.SharedFactory
+import javax.inject.Inject
 
 class NewsListUnitsFactory @Inject constructor() : SharedFactory.NewsUnitsFactory {
     override fun createNewsTile(

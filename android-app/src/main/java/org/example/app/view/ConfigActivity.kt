@@ -10,12 +10,12 @@ import dagger.hilt.android.AndroidEntryPoint
 import dev.icerock.moko.mvvm.MvvmEventsActivity
 import dev.icerock.moko.mvvm.createViewModelFactory
 import dev.icerock.moko.mvvm.dispatcher.eventsDispatcherOnMain
-import javax.inject.Inject
 import org.example.app.BR
 import org.example.app.R
 import org.example.app.databinding.ActivityConfigBinding
 import org.example.library.feature.config.di.ConfigFactory
 import org.example.library.feature.config.presentation.ConfigViewModel
+import javax.inject.Inject
 
 // MvvmEventsActivity for simplify creation of MVVM screen with https://github.com/icerockdev/moko-mvvm
 @AndroidEntryPoint

@@ -13,7 +13,7 @@ import org.example.library.SharedFactory
 
 @InstallIn(SingletonComponent::class)
 @Module
-abstract class UnitFactoryModule {
+interface UnitFactoryModule {
     @Binds
-    abstract fun bindNewsListUnitFactory(impl: NewsListUnitsFactory): SharedFactory.NewsUnitsFactory
+    fun bindNewsListUnitFactory(impl: NewsListUnitsFactory): SharedFactory.NewsUnitsFactory
 }
