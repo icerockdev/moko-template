@@ -1,24 +1,75 @@
 complexity:
   LongParameterList:
     active: false
+  TooManyFunctions:
+    excludes: &excludePatterns
+      - '**/test/**'
+      - '**/androidTest/**'
+      - '**/commonTest/**'
+      - '**/jvmTest/**'
+      - '**/jsTest/**'
+      - '**/iosTest/**'
+      - '**/generated/**'
+  LargeClass:
+    excludes: *excludePatterns
 
 exceptions:
   TooGenericExceptionCaught:
     active: true
-    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
+    excludes: *excludePatterns
     exceptionNames:
       - 'Error'
       - 'RuntimeException'
       - 'Throwable'
     allowedExceptionNameRegex: '_|(ignore|expected).*'
+  SwallowedException:
+    excludes: *excludePatterns
 
 naming:
   FunctionNaming:
     functionPattern: '([A-Za-z][a-zA-Z0-9]*)|(`.*)'
+  ClassNaming:
+    excludes: *excludePatterns
+  FunctionParameterNaming:
+    excludes: *excludePatterns
+  ConstructorParameterNaming:
+    excludes: *excludePatterns
+
+empty-blocks:
+  EmptyClassBlock:
+    excludes: *excludePatterns
+  EmptyFunctionBlock:
+    excludes: *excludePatterns
 
 formatting:
   CommentSpacing:
     active: false
+  NoLineBreakBeforeAssignment:
+    excludes: *excludePatterns
+  NoUnusedImports:
+    excludes: *excludePatterns
+  ParameterListWrapping:
+    excludes: *excludePatterns
+  SpacingAroundColon:
+    excludes: *excludePatterns
+  SpacingAroundCurly:
+    excludes: *excludePatterns
+  NoUnitReturn:
+    excludes: *excludePatterns
+  NoConsecutiveBlankLines:
+    excludes: *excludePatterns
+  NoTrailingSpaces:
+    excludes: *excludePatterns
+  MaximumLineLength:
+    excludes: *excludePatterns
+  SpacingAroundKeyword:
+    excludes: *excludePatterns
+  NoBlankLineBeforeRbrace:
+    excludes: *excludePatterns
+  SpacingAroundParens:
+    excludes: *excludePatterns
+  NoEmptyClassBody:
+    excludes: *excludePatterns
 
 style:
   ForbiddenComment:
@@ -27,3 +78,7 @@ style:
       - 'FIXME:'
       - 'STOPSHIP:'
     allowedPatterns: ''
+  MagicNumber:
+    excludes: *excludePatterns
+  MaxLineLength:
+    excludes: *excludePatterns
