@@ -13,12 +13,15 @@ import dev.icerock.moko.test.cases.InstantTaskRule
 import dev.icerock.moko.test.cases.TestCases
 import dev.icerock.moko.test.waitChildrenCompletion
 import dev.icerock.moko.units.TableUnitItem
+import io.ktor.client.*
 import io.ktor.client.engine.mock.*
-import org.example.library.NewsTableUnit
-import org.example.library.SharedFactory
-import org.example.library.createSharedFactory
+import org.example.library.*
 import org.example.library.domain.entity.News
 import org.example.library.feature.list.presentation.ListViewModel
+import org.koin.core.context.startKoin
+import org.koin.core.qualifier.StringQualifier
+import org.koin.dsl.koinApplication
+import org.koin.dsl.module
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -71,13 +74,7 @@ class NewsViewModelTests : TestCases() {
     private fun createViewModel(
         settings: Settings
     ): ListViewModel<News> {
-        val factory: SharedFactory = createSharedFactory(settings) { request ->
-            if (request.url.encodedPath == "top-headlines") {
-                respondOk(newsResponseMock)
-            } else {
-                respondBadRequest()
-            }
-        }
-        return factory.newsFactory.createListViewModel()
+        val app = startTestKoin(settings)
+        return app.koin.get()
     }
 }

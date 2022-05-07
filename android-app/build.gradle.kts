@@ -6,7 +6,6 @@ plugins {
     id("android-app-convention")
     id("kotlin-kapt")
     id("dev.icerock.mobile.multiplatform-units")
-    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -38,10 +37,7 @@ dependencies {
     implementation(libs.recyclerView)
     implementation(libs.swipeRefreshLayout)
     implementation(libs.mokoMvvmDataBinding)
-
-    // Hilt
-    implementation(libs.hilt)
-    kapt(libs.hiltCompiler)
+    implementation("io.insert-koin:koin-android:3.1.6")
 
     implementation(projects.mppLibrary)
 }

@@ -7,7 +7,7 @@ package org.example.library
 import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.units.TableUnitItem
 
-class TestUnitFactory : SharedFactory.NewsUnitsFactory {
+class TestUnitFactory : NewsUnitsFactory {
     override fun createNewsTile(id: Long, title: String, description: StringDesc): TableUnitItem {
         return NewsTableUnit(
             id = id,

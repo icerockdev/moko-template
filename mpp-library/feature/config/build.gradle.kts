@@ -14,4 +14,5 @@ dependencies {
     commonMainImplementation(libs.mokoMvvmLiveData)
     commonMainImplementation(libs.mokoResources)
     commonMainImplementation(libs.mokoFields)
+    commonMainImplementation("io.insert-koin:koin-core:3.1.6")
 }

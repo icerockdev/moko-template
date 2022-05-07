@@ -4,16 +4,12 @@
 
 package org.example.app.di
 
-import dagger.Binds
-import dagger.Module
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
 import org.example.app.units.NewsListUnitsFactory
-import org.example.library.SharedFactory
+import org.example.library.NewsUnitsFactory
+import org.koin.dsl.module
 
-@InstallIn(SingletonComponent::class)
-@Module
-abstract class UnitFactoryModule {
-    @Binds
-    abstract fun bindNewsListUnitFactory(impl: NewsListUnitsFactory): SharedFactory.NewsUnitsFactory
+fun unitsFactoryModule() = module {
+    single<NewsUnitsFactory> {
+        NewsListUnitsFactory()
+    }
 }

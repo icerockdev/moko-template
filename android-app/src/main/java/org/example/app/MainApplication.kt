@@ -5,7 +5,11 @@
 package org.example.app
 
 import android.app.Application
-import dagger.hilt.android.HiltAndroidApp
+import org.example.app.di.startAppKoin
 
-@HiltAndroidApp
-class MainApplication : Application()
+class MainApplication : Application() {
+    override fun onCreate() {
+        super.onCreate()
+        startAppKoin(context = this)
+    }
+}

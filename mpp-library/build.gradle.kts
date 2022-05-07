@@ -28,13 +28,14 @@ dependencies {
     commonMainApi(projects.mppLibrary.domain)
     commonMainApi(projects.mppLibrary.feature.config)
     commonMainApi(projects.mppLibrary.feature.list)
+    commonMainApi("io.insert-koin:koin-core:3.1.6")
 
     commonTestImplementation(libs.mokoTestCore)
     commonTestImplementation(libs.mokoMvvmTest)
     commonTestImplementation(libs.mokoUnitsTest)
     commonTestImplementation(libs.multiplatformSettingsTest)
     commonTestImplementation(libs.ktorClientMock)
-
+    commonTestImplementation("io.insert-koin:koin-test:3.1.6")
 }
 
 multiplatformResources {
@@ -55,4 +56,5 @@ framework {
     export(libs.mokoMvvmState)
     export(libs.mokoUnits)
     export(libs.mokoFields)
+    export("io.insert-koin:koin-core:3.1.6")
 }

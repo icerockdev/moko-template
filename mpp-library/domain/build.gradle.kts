@@ -17,6 +17,7 @@ dependencies {
 
     commonMainImplementation(libs.mokoParcelize)
     commonMainImplementation(libs.mokoNetwork)
+    commonMainImplementation("io.insert-koin:koin-core:3.1.6")
 
     commonMainImplementation(libs.multiplatformSettings)
     commonMainImplementation(libs.napier)

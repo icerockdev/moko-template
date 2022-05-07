@@ -11,10 +11,9 @@ import dev.icerock.moko.mvvm.test.TestViewModelScopeRule
 import dev.icerock.moko.mvvm.test.createTestEventsDispatcher
 import dev.icerock.moko.test.cases.InstantTaskRule
 import dev.icerock.moko.test.cases.TestCases
-import io.ktor.client.engine.mock.*
-import org.example.library.SharedFactory
-import org.example.library.createSharedFactory
 import org.example.library.feature.config.presentation.ConfigViewModel
+import org.example.library.startTestKoin
+import org.koin.core.parameter.parametersOf
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -83,9 +82,7 @@ class ConfigViewModelTests : TestCases() {
         settings: Settings,
         eventsDispatcher: EventsDispatcher<ConfigViewModel.EventsListener>
     ): ConfigViewModel {
-        val factory: SharedFactory = createSharedFactory(settings) {
-            respondBadRequest()
-        }
-        return factory.configFactory.createConfigViewModel(eventsDispatcher)
+        val app = startTestKoin(settings)
+        return app.koin.get { parametersOf(eventsDispatcher) }
     }
 }

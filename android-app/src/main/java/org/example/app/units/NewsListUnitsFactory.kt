@@ -6,11 +6,10 @@ package org.example.app.units
 
 import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.units.TableUnitItem
-import javax.inject.Inject
 import org.example.app.TileNews
-import org.example.library.SharedFactory
+import org.example.library.NewsUnitsFactory
 
-class NewsListUnitsFactory @Inject constructor() : SharedFactory.NewsUnitsFactory {
+class NewsListUnitsFactory : NewsUnitsFactory {
     override fun createNewsTile(
         id: Long,
         title: String,

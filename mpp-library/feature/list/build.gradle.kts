@@ -19,4 +19,5 @@ dependencies {
     commonMainImplementation(libs.mokoUnits)
 
     commonMainImplementation(libs.napier)
+    commonMainImplementation("io.insert-koin:koin-core:3.1.6")
 }
