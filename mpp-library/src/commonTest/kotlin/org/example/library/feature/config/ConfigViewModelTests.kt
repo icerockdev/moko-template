@@ -13,12 +13,17 @@ import dev.icerock.moko.test.cases.InstantTaskRule
 import dev.icerock.moko.test.cases.TestCases
 import org.example.library.feature.config.presentation.ConfigViewModel
 import org.example.library.startTestKoin
+import org.koin.core.KoinApplication
+import org.koin.core.context.startKoin
+import org.koin.core.context.stopKoin
 import org.koin.core.parameter.parametersOf
+import org.koin.test.KoinTest
+import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class ConfigViewModelTests : TestCases() {
+class ConfigViewModelTests : TestCases()  {
     override val rules: List<Rule> = listOf(
         InstantTaskRule(),
         TestViewModelScopeRule()
@@ -27,11 +32,11 @@ class ConfigViewModelTests : TestCases() {
     private lateinit var settings: MockSettings
     private lateinit var listener: ConfigViewModel.EventsListener
     private lateinit var listenerEvents: List<String>
+    private lateinit var koinApp: KoinApplication
 
     @BeforeTest
     fun setup() {
         val events = mutableListOf<String>()
-
         listener = object : ConfigViewModel.EventsListener {
             override fun routeToNews() {
                 events.add("routeToNews")
@@ -39,14 +44,17 @@ class ConfigViewModelTests : TestCases() {
         }
         settings = MockSettings()
         listenerEvents = events
+        koinApp = startTestKoin(settings)
+    }
+
+    @AfterTest
+    fun cleanup() {
+        stopKoin()
     }
 
     @Test
     fun `test default fields`() {
-        val viewModel = createConfigViewModel(
-            settings = settings,
-            eventsDispatcher = createTestEventsDispatcher(listener)
-        )
+        val viewModel = createConfigViewModel(createTestEventsDispatcher(listener))
 
         assertEquals(
             expected = "ed155d0a445e4b4fbd878fe1f3bc1b7f",
@@ -63,10 +71,7 @@ class ConfigViewModelTests : TestCases() {
         settings.putString("pref_token", "test")
         settings.putString("pref_language", "ru")
 
-        val viewModel = createConfigViewModel(
-            settings = settings,
-            eventsDispatcher = createTestEventsDispatcher(listener)
-        )
+        val viewModel = createConfigViewModel(createTestEventsDispatcher(listener))
 
         assertEquals(
             expected = "test",
@@ -78,11 +83,6 @@ class ConfigViewModelTests : TestCases() {
         )
     }
 
-    private fun createConfigViewModel(
-        settings: Settings,
-        eventsDispatcher: EventsDispatcher<ConfigViewModel.EventsListener>
-    ): ConfigViewModel {
-        val app = startTestKoin(settings)
-        return app.koin.get { parametersOf(eventsDispatcher) }
-    }
+    private fun createConfigViewModel(eventsDispatcher: EventsDispatcher<ConfigViewModel.EventsListener>): ConfigViewModel =
+        koinApp.koin.get { parametersOf(eventsDispatcher) }
 }

@@ -4,6 +4,7 @@
 
 package org.example.app.di
 
+import io.github.aakira.napier.Antilog
 import io.github.aakira.napier.DebugAntilog
 import org.koin.dsl.module
 
@@ -11,7 +12,7 @@ import org.koin.dsl.module
  * module to provide Antilog for multiplatform factory
  */
 fun antilogModule() = module {
-    single {
+    single<Antilog> {
         DebugAntilog()
     }
 }

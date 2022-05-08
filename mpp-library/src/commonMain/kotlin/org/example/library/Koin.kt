@@ -15,6 +15,7 @@ import org.example.library.feature.config.presentation.ConfigViewModel
 import org.example.library.feature.list.di.listModule
 import org.example.library.feature.list.model.ListSource
 import org.example.library.feature.list.presentation.ListViewModel
+import org.koin.core.KoinApplication
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
 import org.koin.core.qualifier.StringQualifier
@@ -57,7 +58,7 @@ private fun sharedNewsModule() = module {
 }
 
 private fun sharedConfigModule() = module {
-    single {
+    single<ConfigStore> {
         val configRepository: ConfigRepository = get()
         object : ConfigStore {
             override var apiToken: String?
@@ -68,7 +69,7 @@ private fun sharedConfigModule() = module {
                 set(value) { configRepository.language = value }
         }
     }
-    single {
+    single<ConfigViewModel.Validations> {
         object : ConfigViewModel.Validations {
             override fun validateToken(value: String): StringDesc? {
                 return if (value.isBlank()) {
@@ -99,15 +100,17 @@ private fun sharedConfigModule() = module {
     }
 }
 
-fun startLibraryKoin(vararg modules: Module) = startKoin {
-    modules(
-        *modules,
-        domainModule(),
-        sharedNewsModule(),
-        listModule<News>(),
-        sharedConfigModule(),
-        configModule()
-    )
-}.apply {
-    Napier.base(koin.get())
+fun startLibraryKoin(vararg modules: Module): KoinApplication {
+    return startKoin {
+        modules(
+            *modules,
+            domainModule(),
+            sharedNewsModule(),
+            listModule<News>(),
+            sharedConfigModule(),
+            configModule()
+        )
+    }.apply {
+        Napier.base(koin.get())
+    }
 }
