@@ -30,7 +30,7 @@ interface NewsUnitsFactory {
 }
 
 private fun sharedNewsModule() = module {
-    single {
+    single<ListSource<News>> {
         val newsRepository: NewsRepository = get()
         object : ListSource<News> {
             override suspend fun getList(): List<News> {
@@ -38,12 +38,12 @@ private fun sharedNewsModule() = module {
             }
         }
     }
-    single {
+    single<ListViewModel.Strings> {
         object : ListViewModel.Strings {
             override val unknownError = MR.strings.unknown_error
         }
     }
-    single {
+    single<ListViewModel.UnitsFactory<News>> {
         val newsUnitsFactory: NewsUnitsFactory = get()
         object : ListViewModel.UnitsFactory<News> {
             override fun createTile(data: News): TableUnitItem {

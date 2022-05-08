@@ -6,6 +6,9 @@ import org.koin.android.ext.koin.androidContext
 
 
 fun startAppKoin(context: Context) =
-    startLibraryKoin(antilogModule(), settingsModule(), unitsFactoryModule()).apply {
+    startLibraryKoin(
+        antilogModule(), settingsModule(),
+        unitsFactoryModule(), baseUrlModule()
+    ).apply {
         androidContext(context)
     }
