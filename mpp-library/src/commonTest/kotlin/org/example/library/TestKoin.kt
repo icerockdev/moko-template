@@ -2,6 +2,7 @@ package org.example.library
 
 import com.russhwolf.settings.Settings
 import io.github.aakira.napier.Antilog
+import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.engine.mock.*
 import org.example.library.feature.list.newsResponseMock
 import org.koin.core.qualifier.StringQualifier
@@ -16,7 +17,7 @@ fun startTestKoin(settings: Settings) =
             single(StringQualifier("BaseUrl")) {
                 "https://localhost"
             }
-            single {
+            single<HttpClientEngine> {
                 MockEngine { request ->
                     if (request.url.encodedPath == "top-headlines") {
                         respondOk(newsResponseMock)
@@ -25,7 +26,7 @@ fun startTestKoin(settings: Settings) =
                     }
                 }
             }
-            single {
+            single<NewsUnitsFactory> {
                 TestUnitFactory()
             }
         }

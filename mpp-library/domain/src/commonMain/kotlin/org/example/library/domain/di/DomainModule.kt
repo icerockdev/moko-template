@@ -7,10 +7,13 @@ import dev.icerock.moko.network.features.ExceptionFeature
 import dev.icerock.moko.network.features.TokenFeature
 import dev.icerock.moko.network.generated.apis.NewsApi
 import io.github.aakira.napier.Napier
-import io.ktor.client.*
-import io.ktor.client.engine.*
-import io.ktor.client.features.logging.*
-import io.ktor.http.*
+import io.ktor.client.HttpClient
+import io.ktor.client.HttpClientConfig
+import io.ktor.client.engine.HttpClientEngine
+import io.ktor.client.features.logging.LogLevel
+import io.ktor.client.features.logging.Logger
+import io.ktor.client.features.logging.Logging
+import io.ktor.http.HttpStatusCode
 import kotlinx.serialization.json.Json
 import org.example.library.domain.repository.ConfigRepository
 import org.example.library.domain.repository.NewsRepository

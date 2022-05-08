@@ -18,10 +18,13 @@ import io.ktor.client.engine.mock.*
 import org.example.library.*
 import org.example.library.domain.entity.News
 import org.example.library.feature.list.presentation.ListViewModel
+import org.koin.core.KoinApplication
 import org.koin.core.context.startKoin
+import org.koin.core.context.stopKoin
 import org.koin.core.qualifier.StringQualifier
 import org.koin.dsl.koinApplication
 import org.koin.dsl.module
+import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -36,15 +39,22 @@ class NewsViewModelTests : TestCases() {
     )
 
     private lateinit var settings: MockSettings
+    private lateinit var koinApp: KoinApplication
 
     @BeforeTest
     fun setup() {
         settings = MockSettings()
+        koinApp = startTestKoin(settings)
+    }
+
+    @AfterTest
+    fun cleanup() {
+        stopKoin()
     }
 
     @Test
     fun `load news items`() {
-        val viewModel = createViewModel(settings)
+        val viewModel = createViewModel()
 
         assertTrue(viewModel.state.value is ResourceState.Empty)
 
@@ -71,10 +81,6 @@ class NewsViewModelTests : TestCases() {
         assertEquals(expected = items, actual = dataState.data)
     }
 
-    private fun createViewModel(
-        settings: Settings
-    ): ListViewModel<News> {
-        val app = startTestKoin(settings)
-        return app.koin.get()
-    }
+    private fun createViewModel(): ListViewModel<News> =
+        koinApp.koin.get()
 }

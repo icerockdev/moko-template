@@ -4,12 +4,14 @@
 
 package org.example.library
 
+import com.russhwolf.settings.MockSettings
+import io.ktor.http.parametersOf
 import org.koin.test.check.checkModules
 import kotlin.test.Test
 
 class DITest {
     @Test
     fun test() {
-        startLibraryKoin().checkModules()
+        startTestKoin(MockSettings()).checkModules()
     }
 }
